@@ -1,0 +1,32 @@
+
+@import '~@angular/material/theming';
+
+$heading-font: '"Oswald", serif';
+$body-font: '"Montserrat", sans-serif';
+
+$app-typography: mat-typography-config(
+  $font-family:   $body-font,
+  $display-4:     mat-typography-level(112px, 112px, 300, $letter-spacing: -0.05em, $font-family: $heading-font),
+  $display-3:     mat-typography-level(56px, 56px, 400, $letter-spacing: -0.02em, $font-family: $heading-font),
+  $display-2:     mat-typography-level(45px, 48px, 400, $letter-spacing: -0.005em, $font-family: $heading-font),
+  $display-1:     mat-typography-level(34px, 40px, 400, $font-family: $heading-font),
+  $headline:      mat-typography-level(24px, 32px, 400, $font-family: $heading-font),
+  $title:         mat-typography-level(20px, 32px, 300, $font-family: $heading-font),
+  $subheading-2:  mat-typography-level(16px, 28px, 400),
+  $subheading-1:  mat-typography-level(15px, 24px, 400),
+  $body-2:        mat-typography-level(14px, 24px, 500),
+  $body-1:        mat-typography-level(14px, 20px, 400),
+  $caption:       mat-typography-level(12px, 20px, 400),
+  $button:        mat-typography-level(14px, 14px, 500),
+  $input:         mat-typography-level(inherit, 1.125, 400)
+);
+
+@mixin app-typography($typography: $app-typography) {
+  @include angular-material-typography($typography);
+  @include mat-base-typography($typography);
+  @include mat-card-typography($typography);
+  @include mat-select-typography($typography);
+  @include mat-form-field-typography($typography);
+  @include mat-slide-toggle-typography($typography);
+  @include mat-toolbar-typography($typography);
+}

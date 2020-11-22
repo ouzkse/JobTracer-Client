@@ -48,8 +48,8 @@
   </mat-card-content>
 
   <mat-card-actions align="end">
-    <button mat-stroked-button>Geri Dön</button>
-    <button mat-stroked-button [disabled]="!isAllFormsValidated()">Devam Et</button>
+    <button mat-stroked-button (click)="onBackPressed()">Geri Dön</button>
+    <button mat-stroked-button [disabled]="!isAllFormsValidated()" (click)="emitUserContactInformation()">Devam Et</button>
   </mat-card-actions>
 
 </mat-card>

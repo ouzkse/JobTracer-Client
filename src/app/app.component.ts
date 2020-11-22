@@ -4,6 +4,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ComponentType} from '@angular/cdk/overlay';
 import {PopupComponent} from './components/popup/popup.component';
 import {PopupCommonModel} from './models/common/PopupCommonModel';
+import {UserContactInformation} from './models/userinformation/UserContactInformation';
 
 @Component({
   selector: 'app-root',
@@ -31,6 +32,10 @@ export class AppComponent implements OnInit{
     dialogRef.afterClosed().subscribe(
       data => console.log('Dialog output:', data)
     );
+  }
+
+  logEmittedValue(value: UserContactInformation) {
+    console.log(value);
   }
 
   ngOnInit(): void {

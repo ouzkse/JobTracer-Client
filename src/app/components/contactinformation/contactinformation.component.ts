@@ -11,10 +11,8 @@ export class ContactInformationComponent {
   componentTitle = 'İletişim Bilgileri';
   date = new FormControl(new Date());
   emailControl = new FormControl('', [Validators.required, Validators.email]);
-  phoneFormControl = new FormControl('', [Validators.required, Validators.pattern(('[6-9]\\d{9}'))]);
 
   dateOfBirth: string;
-
   today = new Date();
   minAge = new Date(this.today.getFullYear() - 18, this.today.getMonth(), this.today.getDate());
 
@@ -35,5 +33,9 @@ export class ContactInformationComponent {
       return 'E-posta adresi boş bırakılamaz.';
     }
     return this.emailControl.hasError('email') ? 'Geçerli bir e-posta adresi giriniz.' : '';
+  }
+
+  isAllFormsValidated() {
+    return this.selectedProvince != null && !this.emailControl.invalid && this.dateOfBirth != null;
   }
 }

@@ -7,7 +7,7 @@
 
   <mat-card-content>
 
-    <div fxLayout="row" fxLayoutGap="8px"
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutGap.lt-sm="0"
       fxLayout.lt-sm="column">
 
       <mat-form-field color="primary" appearance="outline" fxFlex hideRequiredMarker>
@@ -17,17 +17,6 @@
         </label>
         <mat-error *ngIf="emailControl.invalid">{{getEmailErrorMessage()}}</mat-error>
       </mat-form-field>
-
-      <mat-form-field color="primary" appearance="outline" fxFlex hideRequiredMarker>
-        <mat-label>Cep Telefonu Numaranız</mat-label>
-        <label>
-          <input matInput type="tel" [formControl]="phoneFormControl" required/>
-        </label>
-        <mat-error *ngIf="phoneFormControl.invalid">Geçerli telefon numarası pls</mat-error>
-      </mat-form-field>
-    </div>
-
-    <div fxLayout="row" fxLayoutGap="8px" fxLayout.lt-sm="column">
 
       <mat-form-field color="primary" appearance="outline" fxFlex="50" hideRequiredMarker>
         <mat-label>Doğum Tarihiniz</mat-label>
@@ -42,8 +31,11 @@
         <mat-datepicker #picker></mat-datepicker>
         <mat-error>Doğum tarihinizi giriniz.</mat-error>
       </mat-form-field>
+    </div>
 
-      <mat-form-field color="primary" appearance="outline" fxFlex="50" hideRequiredMarker>
+    <div fxLayout="row" fxLayoutGap="8px" fxLayout.lt-sm="column">
+
+      <mat-form-field color="primary" appearance="outline" fxFlex hideRequiredMarker>
         <mat-label>Yaşadığınız Şehir</mat-label>
         <mat-select [(ngModel)]="selectedProvince" (ngModelChange)="selectProvince(selectedProvince)" required>
           <mat-option *ngFor="let province of provinces" [value]="province">{{ province.cityName }}</mat-option>
@@ -53,12 +45,11 @@
 
     </div>
 
-
   </mat-card-content>
 
-  <mat-card-actions>
-    <button mat-stroked-button>LIKE</button>
-    <button mat-stroked-button>SHARE</button>
+  <mat-card-actions align="end">
+    <button mat-stroked-button>Geri Dön</button>
+    <button mat-stroked-button [disabled]="!isAllFormsValidated()">Devam Et</button>
   </mat-card-actions>
 
 </mat-card>

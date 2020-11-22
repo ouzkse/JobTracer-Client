@@ -1,0 +1,21 @@
+
+<div fxLayout="column"
+                      fxFlex.lt-sm="100"
+                      fxFlex="100" fxLayoutAlign="center center">
+
+  <h2 mat-dialog-title>{{componentData.title}}</h2>
+
+  <mat-dialog-content>
+
+    <div class="mat-body-1">{{componentData.description}}</div>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-stroked-button *ngIf="componentData.leftButtonText" (click)="close(leftButton)">{{componentData.leftButtonText}}</button>
+    <button mat-stroked-button *ngIf="componentData.rightButtonText" (click)="close(rightButton)">{{componentData.rightButtonText}}</button>
+  </mat-dialog-actions>
+
+</div>
+
+

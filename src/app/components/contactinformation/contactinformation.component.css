@@ -1,0 +1,8 @@
+.mat-card {
+  border-radius: .8em;
+  padding: 1em;
+}
+
+.mat-card-content {
+  margin-top: 16px;
+}

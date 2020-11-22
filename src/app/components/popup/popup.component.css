@@ -1,0 +1,11 @@
+
+.mat-card {
+  border-radius: .8em;
+  padding: 1em;
+  border: 1px solid black;
+}
+
+.mat-button {
+  margin-top: 32px;
+  alignment: right;
+}

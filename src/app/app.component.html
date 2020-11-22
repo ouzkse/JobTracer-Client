@@ -1,38 +1,9 @@
 
-<p class="mat-body-1">{{title}}</p>
+<div class="main-container" fxLayout="column"
+     fxLayoutGap="16px">
 
-<div class="mat-display-1">{{selectorText}} mat-display-1</div>
-<div class="mat-display-2">{{selectorText}} mat-display-2</div>
-<div class="mat-display-3">{{selectorText}} mat-display-3</div>
-<div class="mat-display-4">{{selectorText}} mat-display-4</div>
+  <app-contact-information fxFlex="100"></app-contact-information>
+  <button mat-stroked-button (click)="openPopupComponent()">Popup deneme</button>
 
-<div class="mat-headline">{{selectorText}} mat-headline</div>
-<div class="mat-title">{{selectorText}} mat-title</div>
-<div class="mat-subheading-1">{{selectorText}} mat-subheading-1</div>
-<div class="mat-subheading-2">{{selectorText}} mat-subheading-2</div>
-
-<div class="mat-body-1">{{selectorText}} mat-body-1</div>
-<div class="mat-body-2">{{selectorText}} mat-body-2</div>
-<div class="mat-caption">{{selectorText}} mat-caption</div>
-
-<button mat-raised-button color="accent">Button Raised</button>
-<button mat-button color="accent">Button</button>
-<button mat-stroked-button color="primary">Stroke</button>
-
-<div class="general-container">
-  <mat-form-field color="accent"
-                  appearance="outline">
-    <mat-label>Name</mat-label>
-    <label>
-      <input matInput type="text" [formControl]="nameControl" required/>
-    </label>
-    <mat-error *ngIf="nameControl.invalid">You must enter a name</mat-error>
-  </mat-form-field>
 </div>
 
-<div class="mat-card">
-  <mat-card-content>
-    <div class="mat-headline">Card Title</div>
-    <p class="mat-body-1">Personal Information</p>
-  </mat-card-content>
-</div>

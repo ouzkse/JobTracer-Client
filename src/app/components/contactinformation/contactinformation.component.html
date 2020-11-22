@@ -1,0 +1,47 @@
+
+<mat-card class="mat-elevation-z5">
+
+  <mat-card-header>
+    <mat-card-title class="mat-headline">{{componentTitle}}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <div fxLayout="row" fxLayoutGap="8px"
+      fxLayout.lt-sm="column">
+
+      <mat-form-field color="primary" appearance="outline" fxFlex="50" hideRequiredMarker>
+        <mat-label>E-Posta Adresiniz</mat-label>
+        <label>
+          <input matInput type="text" required/>
+        </label>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" fxFlex="50" hideRequiredMarker>
+        <mat-label>Cep Telefonu Numaranız</mat-label>
+        <label>
+          <input matInput type="text" required/>
+        </label>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="8px" fxLayout.lt-sm="column">
+
+      <mat-form-field color="primary" appearance="outline" fxFlex="100" hideRequiredMarker>
+        <mat-label>Doğum Tarihiniz</mat-label>
+        <label>
+          <input matInput type="text" required/>
+        </label>
+      </mat-form-field>
+
+    </div>
+
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-stroked-button>LIKE</button>
+    <button mat-stroked-button>SHARE</button>
+  </mat-card-actions>
+
+</mat-card>

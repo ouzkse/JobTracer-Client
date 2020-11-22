@@ -10,28 +10,45 @@
     <div fxLayout="row" fxLayoutGap="8px"
       fxLayout.lt-sm="column">
 
-      <mat-form-field color="primary" appearance="outline" fxFlex="50" hideRequiredMarker>
+      <mat-form-field color="primary" appearance="outline" fxFlex hideRequiredMarker>
         <mat-label>E-Posta Adresiniz</mat-label>
         <label>
-          <input matInput type="text" required/>
+          <input matInput type="text" [formControl]="emailControl" required/>
         </label>
+        <mat-error *ngIf="emailControl.invalid">{{getEmailErrorMessage()}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" fxFlex="50" hideRequiredMarker>
+      <mat-form-field color="primary" appearance="outline" fxFlex hideRequiredMarker>
         <mat-label>Cep Telefonu Numaranız</mat-label>
         <label>
-          <input matInput type="text" required/>
+          <input matInput type="tel" [formControl]="phoneFormControl" required/>
         </label>
+        <mat-error *ngIf="phoneFormControl.invalid">Geçerli telefon numarası pls</mat-error>
       </mat-form-field>
     </div>
 
     <div fxLayout="row" fxLayoutGap="8px" fxLayout.lt-sm="column">
 
-      <mat-form-field color="primary" appearance="outline" fxFlex="100" hideRequiredMarker>
+      <mat-form-field color="primary" appearance="outline" fxFlex="50" hideRequiredMarker>
         <mat-label>Doğum Tarihiniz</mat-label>
         <label>
-          <input matInput type="text" required/>
+          <input matInput
+                 [matDatepicker]="picker"
+                 max="{{minAge | date:'yyyy-MM-dd'}}"
+                 [(ngModel)]="dateOfBirth"
+                 [formControl]="date" required>
         </label>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>Doğum tarihinizi giriniz.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field color="primary" appearance="outline" fxFlex="50" hideRequiredMarker>
+        <mat-label>Yaşadığınız Şehir</mat-label>
+        <mat-select [(ngModel)]="selectedProvince" (ngModelChange)="selectProvince(selectedProvince)" required>
+          <mat-option *ngFor="let province of provinces" [value]="province">{{ province.cityName }}</mat-option>
+        </mat-select>
+        <mat-error>Lütfen yaşadığınız şehri seçiniz.</mat-error>
       </mat-form-field>
 
     </div>

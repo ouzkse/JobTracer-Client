@@ -12,15 +12,23 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 
 import { ContactInformationComponent } from './components/contactinformation/contactinformation.component';
 import { PopupComponent} from './components/popup/popup.component';
+import { EducationInformationListComponent } from './components/educationinformationlist/educationinformationlist.component';
+import { EducationDetailComponent } from './components/educationdetail/educationdetail.component';
+import { EducationInformationComponent } from './components/educationinformation/educationinformation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PopupComponent,
-    ContactInformationComponent
+    ContactInformationComponent,
+    EducationInformationComponent,
+    EducationInformationListComponent,
+    EducationDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +43,9 @@ import { PopupComponent} from './components/popup/popup.component';
     MatNativeDateModule,
     MatOptionModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

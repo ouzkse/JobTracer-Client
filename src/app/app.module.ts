@@ -14,6 +14,7 @@ import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ContactInformationComponent } from './components/contactinformation/contactinformation.component';
 import { PopupComponent} from './components/popup/popup.component';
@@ -45,7 +46,8 @@ import { EducationInformationComponent } from './components/educationinformation
     MatSelectModule,
     FormsModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

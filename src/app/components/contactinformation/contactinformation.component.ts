@@ -2,13 +2,14 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {CityCommonModel} from '../../models/common/CityCommonModel';
 import {UserContactInformation} from '../../models/userinformation/UserContactInformation';
+import {CommonTaskService} from '../../services/tasks/common/common.task.service';
 
 @Component({
   selector: 'app-contact-information',
   templateUrl: './contactinformation.component.html',
   styleUrls: ['./contactinformation.component.css']
 })
-export class ContactInformationComponent {
+export class ContactInformationComponent implements OnInit {
 
   @Output() contactInformationEvent = new EventEmitter<UserContactInformation>();
 
@@ -27,6 +28,21 @@ export class ContactInformationComponent {
     new CityCommonModel('34', 'İstanbul'),
     new CityCommonModel('35', 'İzmir')
   ];
+
+  constructor(private commonService: CommonTaskService) { }
+
+  ngOnInit() {
+    this.getProvinces();
+  }
+
+  private getProvinces() {
+    this.commonService.getProvinces().subscribe((response: any) => {
+      if (response.status === 200) {
+        this.provinces = [];
+        this.provinces = response.body;
+      }
+    });
+  }
 
   selectProvince(province: CityCommonModel) {
     this.selectedProvince = province;

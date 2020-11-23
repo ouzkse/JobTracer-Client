@@ -1,0 +1,36 @@
+import { Injectable } from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ApiService {
+
+  readonly ROOT_URL;
+
+  constructor(private httpClient: HttpClient) {
+    this.ROOT_URL = 'http://localhost:8080/';
+  }
+
+  private getRequestHeader() {
+    return new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+  }
+
+  get(url: string) {
+    return this.httpClient.get(this.ROOT_URL + url);
+  }
+
+  post(url: string, content: object, headerType = false) {
+    const header = this.getRequestHeader();
+    return this.httpClient.post(
+      this.ROOT_URL + url, content,
+      {
+        headers: header,
+        observe: 'response',
+        reportProgress: true
+      }
+    );
+  }
+}

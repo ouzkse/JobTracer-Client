@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {EducationInformation} from '../../models/educationinforamation/EducationInformation';
+import {EducationInformation} from '../../models/educationinformation/EducationInformation';
 import {EducationInformationDataService} from '../../services/data/education-information/education-information.data.service';
 import {MatTableDataSource} from '@angular/material/table';
 

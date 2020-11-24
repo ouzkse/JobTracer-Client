@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {EducationInformation} from '../../models/educationinforamation/EducationInformation';
-import {EducationDetailModel} from '../../models/educationinforamation/EducationDetailModel';
+import {EducationInformation} from '../../models/educationinformation/EducationInformation';
+import {EducationDetailModel} from '../../models/educationinformation/EducationDetailModel';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {EducationDetailComponent} from '../educationdetail/educationdetail.component';
 import {EducationInformationDataService} from '../../services/data/education-information/education-information.data.service';

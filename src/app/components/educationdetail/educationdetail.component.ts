@@ -1,8 +1,8 @@
 import {Component, Inject} from '@angular/core';
-import {EducationDetailModel} from '../../models/educationinforamation/EducationDetailModel';
+import {EducationDetailModel} from '../../models/educationinformation/EducationDetailModel';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormControl} from '@angular/forms';
-import {EducationInformation} from '../../models/educationinforamation/EducationInformation';
+import {EducationInformation} from '../../models/educationinformation/EducationInformation';
 
 @Component({
   selector: 'app-education-detail',

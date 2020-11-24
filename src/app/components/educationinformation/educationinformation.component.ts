@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {EducationInformation} from '../../models/educationinforamation/EducationInformation';
-import {FormControl} from '@angular/forms';
 import {EducationDetailModel} from '../../models/educationinforamation/EducationDetailModel';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {EducationDetailComponent} from '../educationdetail/educationdetail.component';
+import {EducationInformationDataService} from '../../services/data/education-information/education-information.data.service';
 
 @Component({
   selector: 'app-education-component',
@@ -17,7 +17,7 @@ export class EducationInformationComponent {
   count = 0;
 
   // Dummy datas
-  educationInformationArray: Array<EducationInformation> = Array();
+  educationInformationArray: Array<EducationInformation> = new Array<EducationInformation>();
 
   degreeArray: Array<string> = ['Doktora', 'Yüksek Lisans', 'Lisans', 'Ön Lisans'];
   universityArray: Array<string> = ['Dokuz Eylül Üniversitesi', 'Ege Üniversitesi', 'İzmir Ekonomi Üniversitesi', 'Yıldız Teknik Üniversitesi'];
@@ -31,10 +31,11 @@ export class EducationInformationComponent {
     this.facultyArray
   );
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private dataService: EducationInformationDataService) { }
 
   onDeleteEvent(id) {
     this.educationInformationArray = this.educationInformationArray.filter(item => item.id !== id);
+    this.dataService.setUserEducationInformation(this.educationInformationArray);
   }
 
   addNewInfo() {
@@ -58,6 +59,7 @@ export class EducationInformationComponent {
         this.isAddingInfo = false;
         if (data != null) {
           this.educationInformationArray.push(data);
+          this.dataService.setUserEducationInformation(this.educationInformationArray);
           this.count = this.count + 1;
         }
       }

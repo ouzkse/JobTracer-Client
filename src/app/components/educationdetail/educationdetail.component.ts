@@ -78,4 +78,8 @@ export class EducationDetailComponent {
 
     this.dialogReference.close(educationInformation);
   }
+
+  filterFaculties(value) {
+    console.log(value);
+  }
 }

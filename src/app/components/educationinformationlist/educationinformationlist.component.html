@@ -1,5 +1,5 @@
 
-<table mat-table class="mat-elevation-z0" [dataSource]="source">
+<table mat-table class="mat-elevation-z0" [dataSource]="dataSource" *ngIf="dataSource.data.length > 0">
 
   <ng-container matColumnDef="type">
     <th mat-header-cell *matHeaderCellDef> Eğitim Türü </th>

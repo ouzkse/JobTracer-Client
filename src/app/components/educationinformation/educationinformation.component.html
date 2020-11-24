@@ -7,9 +7,9 @@
   <mat-card-content>
 
     <div fxLayout="row" fxLayoutGap="16px" fxLayoutGap.lt-sm="0"
-         fxLayout.lt-sm="column" *ngIf="educationInformationArray.length > 0">
+         fxLayout.lt-sm="column">
 
-      <app-education-information-list fxFlexFill [source]="educationInformationArray" (deleteEvent)="onDeleteEvent($event)"></app-education-information-list>
+      <app-education-information-list fxFlexFill (deleteEvent)="onDeleteEvent($event)"></app-education-information-list>
 
     </div>
 

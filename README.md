@@ -4,6 +4,26 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ##Authors
 
-#####Kamil Oğuz Köse
-#####Ahmet Melih Çelik
-#####Tuğrul Yüksel
+####Kamil Oğuz Köse
+####Ahmet Melih Çelik
+####Tuğrul Yüksel
+
+##To be Done
+
+Foreign Language Component
+
+Personal Info Component
+
+Work Experiences Component
+
+Result Component
+
+Loading Dialog
+
+Main Dashboard
+
+Page Transitions
+
+Routes
+
+MediaQuery Problem with MatTable

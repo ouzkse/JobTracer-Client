@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
-import {ApiService} from '../../api/api.service';
+import {CityCommonModel} from '../../../models/common/CityCommonModel';
+import {Observable} from 'rxjs';
+import {catchError, map, retry} from 'rxjs/operators';
+import {BaseTaskService} from '../base/base.task.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CommonTaskService {
+export class CommonTaskService extends BaseTaskService{
 
-  constructor(private requestService: ApiService) { }
+  constructor() { super(); }
 
-  getProvinces() {
-    return this.requestService.post('rest/common/getProvinces', null);
+  getProvinces(): Observable<CityCommonModel[]> {
+    return super.requestService.post<CityCommonModel[]>('rest/common/getProvinces', null)
+      .pipe(
+        map(data => data.body),
+        catchError(super.handleError),
+        retry(super.totalNumberOfRetry)
+      );
   }
 }

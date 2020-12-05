@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,13 +19,13 @@ export class ApiService {
     });
   }
 
-  get(url: string) {
-    return this.httpClient.get(this.ROOT_URL + url);
+  get<T>(url: string) {
+    return this.httpClient.get<T>(this.ROOT_URL + url);
   }
 
-  post(url: string, content: object, headerType = false) {
+  post<T>(url: string, content: object) {
     const header = this.getRequestHeader();
-    return this.httpClient.post(
+    return this.httpClient.post<T>(
       this.ROOT_URL + url, content,
       {
         headers: header,

@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -17,7 +17,7 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ContactInformationComponent } from './components/contactinformation/contactinformation.component';
-import { PopupComponent} from './components/popup/popup.component';
+import { PopupComponent } from './components/popup/popup.component';
 import { EducationInformationListComponent } from './components/educationinformationlist/educationinformationlist.component';
 import { EducationDetailComponent } from './components/educationdetail/educationdetail.component';
 import { EducationInformationComponent } from './components/educationinformation/educationinformation.component';

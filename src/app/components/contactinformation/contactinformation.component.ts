@@ -36,12 +36,7 @@ export class ContactInformationComponent implements OnInit {
   }
 
   private getProvinces() {
-    this.commonService.getProvinces().subscribe((response: any) => {
-      if (response.status === 200) {
-        this.provinces = [];
-        this.provinces = response.body;
-      }
-    });
+    this.commonService.getProvinces().subscribe((data => this.provinces = data));
   }
 
   selectProvince(province: CityCommonModel) {

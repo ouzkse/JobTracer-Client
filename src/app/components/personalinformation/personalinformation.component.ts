@@ -1,14 +1,15 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {GenderType, getDefaultGenderOptions} from '../../models/common/GenderCommonModel';
 import {UserPersonalInformation} from '../../models/personalinformation/UserPersonalInformation';
 import {FormControl} from '@angular/forms';
+import {CommonTaskService} from '../../services/tasks/common/common.task.service';
 
 @Component({
   selector: 'app-personal-information',
   templateUrl: './personalinformation.component.html',
   styleUrls: ['personalinformation.component.css']
 })
-export class PersonalInformationComponent {
+export class PersonalInformationComponent implements OnInit{
 
   @Output() personalInformationEvent = new EventEmitter<UserPersonalInformation>();
 
@@ -25,6 +26,16 @@ export class PersonalInformationComponent {
   isMilitaryStatusDisabled = true;
   selectedGender: GenderType = GenderType.undefined;
   nationality: string;
+
+  constructor(private commonService: CommonTaskService) { }
+
+  ngOnInit() {
+    this.getDriverLicenseList();
+  }
+
+  getDriverLicenseList() {
+    this.commonService.getDriverLicenseList().subscribe(data => this.driverLicenseOptions = data);
+  }
 
   selectGender(value) {
     this.selectedGender = value.type;

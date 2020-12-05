@@ -1,15 +1,16 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {getDefaultLanguageLevels, getDummyLanguages} from '../../models/common/LanguageCommonModel';
+import {getDefaultLanguageLevels, LanguageCommonModel} from '../../models/common/LanguageCommonModel';
 import {MatTableDataSource} from '@angular/material/table';
 import {ForeignLanguageInformation} from '../../models/foreignlanguageinformation/ForeignLanguageInformation';
+import {CommonTaskService} from '../../services/tasks/common/common.task.service';
 
 @Component({
   selector: 'app-foreign-language-information',
   templateUrl: './foreignlanguageinformation.component.html',
   styleUrls: ['foreignlanguageinformation.component.css']
 })
-export class ForeignLanguageInformationComponent {
+export class ForeignLanguageInformationComponent implements OnInit {
 
   componentTitle = 'Yabancı Dil Bilgileri';
 
@@ -27,8 +28,22 @@ export class ForeignLanguageInformationComponent {
   newLanguageLevelFormControl = new FormControl('', [Validators.required]);
   languageLevelOptions = getDefaultLanguageLevels();
 
+  private allForeignLanguages: Array<LanguageCommonModel>;
   newLanguageFormControl = new FormControl('', [Validators.required]);
-  foreignLanguages = getDummyLanguages();
+  foreignLanguages: Array<LanguageCommonModel>;
+
+  constructor(private commonService: CommonTaskService) { }
+
+  ngOnInit() {
+    this.getForeignLanguageList();
+  }
+
+  getForeignLanguageList() {
+    this.commonService.getForeignLanguages().subscribe((data => {
+        this.allForeignLanguages = data;
+        this.foreignLanguages = this.allForeignLanguages;
+    }));
+  }
 
   addNewInfo() {
     this.isAddingInfo = true;
@@ -41,7 +56,7 @@ export class ForeignLanguageInformationComponent {
 
   private resetNewLanguageOptions() {
     this.languageLevelOptions = getDefaultLanguageLevels();
-    this.foreignLanguages = getDummyLanguages();
+    this.foreignLanguages = this.allForeignLanguages;
     this.filterForeignLanguages();
   }
 
@@ -72,6 +87,7 @@ export class ForeignLanguageInformationComponent {
   deleteEntry(id) {
     this.foreignInformationList = this.foreignInformationList.filter(x => x.id !== id);
     this.setTableData();
+    this.resetNewLanguageOptions();
   }
 
   onBackPressed() {

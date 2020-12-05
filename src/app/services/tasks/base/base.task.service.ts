@@ -8,7 +8,6 @@ import {throwError} from 'rxjs';
 })
 export class BaseTaskService {
 
-  protected requestService: ApiService;
   protected totalNumberOfRetry = 3;
 
   constructor() { }

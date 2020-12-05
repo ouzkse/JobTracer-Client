@@ -1,14 +1,14 @@
 
 export class EducationDetailModel {
-  degreeArray: Array<string>;
-  universityArray: Array<string>;
-  departmentArray: Array<string>;
-  facultyArray: Array<string>;
+  educationdegrees: Array<string>;
+  universities: Array<string>;
+  departments: Array<string>;
+  faculties: Array<string>;
 
   constructor(degreeArray: Array<string>, universityArray: Array<string>, departmentArray: Array<string>, facultyArray: Array<string>) {
-    this.degreeArray = degreeArray;
-    this.universityArray = universityArray;
-    this.departmentArray = departmentArray;
-    this.facultyArray = facultyArray;
+    this.educationdegrees = degreeArray;
+    this.universities = universityArray;
+    this.departments = departmentArray;
+    this.faculties = facultyArray;
   }
 }

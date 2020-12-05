@@ -1,16 +1,17 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EducationInformation} from '../../models/educationinformation/EducationInformation';
 import {EducationDetailModel} from '../../models/educationinformation/EducationDetailModel';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {EducationDetailComponent} from '../educationdetail/educationdetail.component';
 import {EducationInformationDataService} from '../../services/data/education-information/education-information.data.service';
+import {CommonTaskService} from '../../services/tasks/common/common.task.service';
 
 @Component({
   selector: 'app-education-component',
   templateUrl: './educationinformation.component.html',
   styleUrls: ['educationinformation.component.css']
 })
-export class EducationInformationComponent {
+export class EducationInformationComponent implements OnInit {
 
   componentTitle = 'Eğitim Bilgileri';
   isAddingInfo = false;
@@ -31,7 +32,15 @@ export class EducationInformationComponent {
     this.facultyArray
   );
 
-  constructor(private dialog: MatDialog, private dataService: EducationInformationDataService) { }
+  constructor(private dialog: MatDialog, private dataService: EducationInformationDataService, private commonService: CommonTaskService) { }
+
+  ngOnInit() {
+    this.getEducationInformation();
+  }
+
+  private getEducationInformation() {
+    this.commonService.getEducationInformation().subscribe((data => this.dummyAddModel = data));
+  }
 
   onDeleteEvent(id) {
     this.educationInformationArray = this.educationInformationArray.filter(item => item.id !== id);

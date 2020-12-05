@@ -11,7 +11,7 @@
       <mat-form-field color="primary" appearance="outline"hideRequiredMarker>
         <mat-label>Eğitim Düzeyi</mat-label>
         <mat-select [(ngModel)]="selectedDegree" (ngModelChange)="selectDegree(selectedDegree)" required>
-          <mat-option *ngFor="let degree of componentData.degreeArray" [value]="degree">{{ degree }}</mat-option>
+          <mat-option *ngFor="let degree of componentData.educationdegrees" [value]="degree">{{ degree }}</mat-option>
         </mat-select>
         <mat-error>Bu alan boş bırakılamaz.</mat-error>
       </mat-form-field>
@@ -25,7 +25,7 @@
               <input matInput type="text" autocomplete="off" (keyup)="filterFaculties($event)" (keydown)="$event.stopPropagation()"/>
             </label>
           </mat-form-field>
-          <mat-option *ngFor="let university of componentData.universityArray" [value]="university">{{ university }}</mat-option>
+          <mat-option *ngFor="let university of componentData.universities" [value]="university">{{ university }}</mat-option>
         </mat-select>
         <mat-error>Bu alan boş bırakılamaz.</mat-error>
       </mat-form-field>
@@ -39,7 +39,7 @@
               <input matInput type="text" autocomplete="off" (keyup)="filterFaculties($event)" (keydown)="$event.stopPropagation()"/>
             </label>
           </mat-form-field>
-          <mat-option *ngFor="let faculty of componentData.facultyArray" [value]="faculty">{{ faculty }}</mat-option>
+          <mat-option *ngFor="let faculty of componentData.faculties" [value]="faculty">{{ faculty }}</mat-option>
         </mat-select>
         <mat-error>Bu alan boş bırakılamaz.</mat-error>
       </mat-form-field>
@@ -53,7 +53,7 @@
               <input matInput type="text" autocomplete="off" (keyup)="filterFaculties($event)" (keydown)="$event.stopPropagation()"/>
             </label>
           </mat-form-field>
-          <mat-option *ngFor="let department of componentData.departmentArray" [value]="department">{{ department }}</mat-option>
+          <mat-option *ngFor="let department of componentData.departments" [value]="department">{{ department }}</mat-option>
         </mat-select>
         <mat-error>Bu alan boş bırakılamaz.</mat-error>
       </mat-form-field>

@@ -2,19 +2,10 @@ import {ForeignLanguageLevel} from '../foreignlanguageinformation/ForeignLanguag
 
 export class LanguageCommonModel {
   name: string;
-  isAllowed = true;
 
   constructor(name: string) {
     this.name = name;
   }
-}
-
-export function getDummyLanguages() {
-  return new Array<LanguageCommonModel>(
-    new LanguageCommonModel('İngilizce'),
-    new LanguageCommonModel('Almanca'),
-    new LanguageCommonModel('Fransızca'),
-  );
 }
 
 export class LanguageLevelCommonModel {

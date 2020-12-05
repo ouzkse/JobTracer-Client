@@ -4,6 +4,10 @@ import {getDefaultLanguageLevels, LanguageCommonModel} from '../../models/common
 import {MatTableDataSource} from '@angular/material/table';
 import {ForeignLanguageInformation} from '../../models/foreignlanguageinformation/ForeignLanguageInformation';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
+import {PopupComponent} from '../popup/popup.component';
+import {ComponentType} from '@angular/cdk/overlay';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {PopupCommonModel} from '../../models/common/PopupCommonModel';
 
 @Component({
   selector: 'app-foreign-language-information',
@@ -32,7 +36,7 @@ export class ForeignLanguageInformationComponent implements OnInit {
   newLanguageFormControl = new FormControl('', [Validators.required]);
   foreignLanguages: Array<LanguageCommonModel>;
 
-  constructor(private commonService: CommonTaskService) { }
+  constructor(private commonService: CommonTaskService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.getForeignLanguageList();
@@ -46,7 +50,11 @@ export class ForeignLanguageInformationComponent implements OnInit {
   }
 
   addNewInfo() {
-    this.isAddingInfo = true;
+    if (this.foreignLanguages.length !== 0) {
+      this.isAddingInfo = true;
+    } else {
+      this.openPopupComponent(this.getNoLanguagesAvailablePopupData());
+    }
   }
 
   cancelAddOperation() {
@@ -97,5 +105,31 @@ export class ForeignLanguageInformationComponent implements OnInit {
   emitForeignLanguageInformation() {
     console.log(this.foreignInformationList);
     this.foreignLanguageEvent.emit(this.foreignInformationList);
+  }
+
+  openPopupComponent(popupData: PopupCommonModel) {
+    this.openDialog(PopupComponent, popupData);
+  }
+
+  private openDialog(component: ComponentType<any>, popupData: PopupCommonModel) {
+    const dialogConfig: MatDialogConfig = {
+      panelClass: 'dialog-responsive',
+      data: popupData
+    };
+
+    const dialogRef = this.dialog.open(component, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data => console.log('Dialog output:', data)
+    );
+  }
+
+  private getNoLanguagesAvailablePopupData() {
+    return new PopupCommonModel(
+      'Uyarı',
+      'Şuan ekleyebileceğiniz başka bir dil sistemimizde bulunmamaktadır.',
+      '',
+      'Tamam'
+    );
   }
 }

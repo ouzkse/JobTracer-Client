@@ -1,0 +1,53 @@
+<mat-card class="mat-elevation-z5">
+
+  <mat-card-header>
+    <mat-card-title class="mat-headline">{{componentTitle}}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutGap.lt-sm="0"
+         fxLayout.lt-sm="column">
+
+      <mat-form-field color="primary" appearance="outline" fxFlex="50">
+          <mat-label>Cinsiyetiniz</mat-label>
+          <mat-select [(ngModel)]="selectedGender" (ngModelChange)="selectGender(selectedGender)">
+            <mat-option *ngFor="let gender of genderOptions" [value]="gender">{{ gender.name }}</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <mat-form-field color="primary" appearance="outline" fxFlex="50">
+        <mat-label>Askerlik Durumunuz</mat-label>
+        <mat-select [disabled]="isMilitaryStatusDisabled" [formControl]="militaryStatusFormControl" required>
+          <mat-option *ngFor="let status of militaryStatusOptions" [value]="status">{{ status }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutGap.lt-sm="0"
+         fxLayout.lt-sm="column">
+
+      <mat-form-field color="primary" appearance="outline" fxFlex="50">
+        <mat-label>Vatandaşı olduğunuz ülke</mat-label>
+        <label>
+          <input matInput type="text" [(ngModel)]="nationality"/>
+        </label>
+      </mat-form-field>
+
+      <mat-form-field color="primary" appearance="outline" fxFlex="50">
+        <mat-label>Sürücü Belgesi</mat-label>
+        <mat-select [formControl]="driverLicenseFormControl" multiple>
+          <mat-option *ngFor="let license of driverLicenseOptions" [value]="license">{{ license }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-stroked-button (click)="onBackPressed()">Geri Dön</button>
+    <button mat-stroked-button [disabled]="validationControl()" (click)="emitPersonalInformation()">Devam Et</button>
+  </mat-card-actions>
+</mat-card>

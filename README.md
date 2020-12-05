@@ -12,7 +12,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Foreign Language Component
 
-Personal Info Component
+<s> Personal Info Component </s>
 
 Work Experiences Component
 

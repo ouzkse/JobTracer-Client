@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ComponentType} from '@angular/cdk/overlay';
 import {PopupComponent} from './components/popup/popup.component';
@@ -13,7 +12,6 @@ import {UserContactInformation} from './models/contactinformation/UserContactInf
 })
 export class AppComponent implements OnInit{
   title = 'CME4402-SeniorProject-Client';
-  selectorText = 'This is ';
 
   constructor(private dialog: MatDialog) { }
 

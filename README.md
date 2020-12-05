@@ -10,7 +10,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## To be Done
 
-Foreign Language Component
+<s> Foreign Language Component </s>
 
 <s> Personal Info Component </s>
 

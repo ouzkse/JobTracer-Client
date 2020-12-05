@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {CityCommonModel} from '../../models/common/CityCommonModel';
-import {UserContactInformation} from '../../models/userinformation/UserContactInformation';
+import {UserContactInformation} from '../../models/contactinformation/UserContactInformation';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
 
 @Component({

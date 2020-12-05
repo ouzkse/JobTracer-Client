@@ -1,10 +1,12 @@
 
-<div class="main-container" fxLayout="column"
-     fxLayoutGap="16px">
+<div class="main-container"
+     fxLayout="row"
+     fxLayoutAlign="center center"
+     fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
 
   <app-education-component fxFlex="100"></app-education-component>
   <!--<app-contact-information (contactInformationEvent)="logEmittedValue($event)" fxFlex="100"></app-contact-information>-->
-  <button mat-stroked-button (click)="openPopupComponent()">Popup deneme</button>
+  <!--<button mat-stroked-button (click)="openPopupComponent()">Popup deneme</button>-->
 
 </div>
 

@@ -4,7 +4,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ComponentType} from '@angular/cdk/overlay';
 import {PopupComponent} from './components/popup/popup.component';
 import {PopupCommonModel} from './models/common/PopupCommonModel';
-import {UserContactInformation} from './models/userinformation/UserContactInformation';
+import {UserContactInformation} from './models/contactinformation/UserContactInformation';
 
 @Component({
   selector: 'app-root',

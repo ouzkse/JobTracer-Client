@@ -1,0 +1,86 @@
+<mat-card class="mat-elevation-z5">
+
+  <mat-card-header>
+    <mat-card-title class="mat-headline">{{componentTitle}}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutGap.lt-sm="0" fxFlexFill
+         fxLayout.lt-sm="column" fxLayoutAlign="center">
+
+      <table mat-table class="mat-elevation-z0" fxFlexFill [dataSource]="dataTableSource" *ngIf="dataTableSource.data.length > 0 && !isAddingInfo">
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Yabancı Dil </th>
+          <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="level">
+          <th mat-header-cell *matHeaderCellDef> Seviye </th>
+          <td mat-cell *matCellDef="let element"> {{ element.level.levelName }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-button (click)="deleteEntry(element.id)" fxLayoutAlign="end">
+              <mat-icon>clear</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         [style]="'margin: 16px'"
+         *ngIf="!isAddingInfo">
+
+      <button mat-stroked-button (click)="addNewInfo()">
+        <mat-icon>add_circle_outline</mat-icon>
+        Dil Bilgisi Ekle
+      </button>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutGap.lt-sm="0"
+         fxLayout.lt-sm="column" *ngIf="isAddingInfo">
+
+      <mat-form-field color="primary" appearance="outline" fxFlex="50">
+        <mat-label>Yabancı Dil</mat-label>
+        <label>
+          <mat-select [formControl]="newLanguageFormControl" (ngModelChange)="checkAddOperationValidation()">
+            <mat-option *ngFor="let language of foreignLanguages" [value]="language" [disabled]="!language.isAllowed">{{ language.name }}</mat-option>
+          </mat-select>
+        </label>
+      </mat-form-field>
+
+      <mat-form-field color="primary" appearance="outline" fxFlex="50">
+        <mat-label>Yetkinlik Seviyesi</mat-label>
+        <mat-select [formControl]="newLanguageLevelFormControl" (ngModelChange)="checkAddOperationValidation()">
+          <mat-option *ngFor="let level of languageLevelOptions" [value]="level">{{ level.levelName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutGap.lt-sm="8px" fxLayoutAlign="end center"
+         fxLayout.lt-sm="column"
+         fxLayoutAlign.lt-sm="center"
+         *ngIf="isAddingInfo">
+      <button fxFlex.lt-sm="50" mat-stroked-button (click)="cancelAddOperation()">Vazgeç</button>
+      <button fxFlex.lt-sm="50" mat-stroked-button [disabled]="!isNewInfoValid" (click)="saveLanguageInformation()">Ekle</button>
+    </div>
+
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-stroked-button (click)="onBackPressed()">Geri Dön</button>
+    <button mat-stroked-button (click)="emitForeignLanguageInformation()">Devam Et</button>
+  </mat-card-actions>
+</mat-card>

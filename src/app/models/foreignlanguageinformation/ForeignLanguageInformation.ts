@@ -1,15 +1,18 @@
+import {LanguageLevelCommonModel} from '../common/LanguageCommonModel';
 
 export class ForeignLanguageInformation {
+  id: number;
   name: string;
-  level: ForeignLanguageLevel = ForeignLanguageLevel.Beginner;
+  level: LanguageLevelCommonModel;
 
-  constructor(name: string, level: ForeignLanguageLevel) {
+  constructor(id: number, name: string, level: LanguageLevelCommonModel) {
+    this.id = id;
     this.name = name;
     this.level = level;
   }
 }
 
-enum ForeignLanguageLevel {
+export enum ForeignLanguageLevel {
   Beginner,
   Intermediate,
   Advanced,

@@ -22,6 +22,7 @@ import { EducationInformationListComponent } from './components/educationinforma
 import { EducationDetailComponent } from './components/educationdetail/educationdetail.component';
 import { EducationInformationComponent } from './components/educationinformation/educationinformation.component';
 import { PersonalInformationComponent } from './components/personalinformation/personalinformation.component';
+import { ForeignLanguageInformationComponent } from './components/foreignlanguageinformation/foreignlanguageinformation.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PersonalInformationComponent } from './components/personalinformation/p
     EducationInformationComponent,
     EducationInformationListComponent,
     EducationDetailComponent,
-    PersonalInformationComponent
+    PersonalInformationComponent,
+    ForeignLanguageInformationComponent
   ],
   imports: [
     BrowserModule,

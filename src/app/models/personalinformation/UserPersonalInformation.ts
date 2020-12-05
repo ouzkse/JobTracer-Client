@@ -1,4 +1,4 @@
-import {GenderType} from '../common/CommonGenderModel';
+import {GenderType} from '../common/GenderCommonModel';
 
 export class UserPersonalInformation {
   gender: GenderType;

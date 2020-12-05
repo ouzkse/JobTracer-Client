@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {GenderType, getDefaultGenderOptions} from '../../models/common/CommonGenderModel';
+import {GenderType, getDefaultGenderOptions} from '../../models/common/GenderCommonModel';
 import {UserPersonalInformation} from '../../models/personalinformation/UserPersonalInformation';
 import {FormControl} from '@angular/forms';
 

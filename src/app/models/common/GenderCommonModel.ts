@@ -1,5 +1,5 @@
 
-export class CommonGenderModel {
+export class GenderCommonModel {
   name: string;
   type: GenderType = GenderType.undefined;
 
@@ -10,10 +10,10 @@ export class CommonGenderModel {
 }
 
 export function getDefaultGenderOptions() {
-  return new Array<CommonGenderModel>(
-    new CommonGenderModel('Kadın', GenderType.woman),
-    new CommonGenderModel('Erkek', GenderType.man),
-    new CommonGenderModel('Belirtmek istemiyorum', GenderType.undefined)
+  return new Array<GenderCommonModel>(
+    new GenderCommonModel('Kadın', GenderType.woman),
+    new GenderCommonModel('Erkek', GenderType.man),
+    new GenderCommonModel('Belirtmek istemiyorum', GenderType.undefined)
   );
 }
 

@@ -49,4 +49,13 @@ export class CommonTaskService extends BaseTaskService{
         retry(this.totalNumberOfRetry)
       );
   }
+
+  getProfessionList(): Observable<Array<string>> {
+    return this.requestService.post<Array<string>>('rest/GetProfessions', null)
+      .pipe(
+        map(data => data.body),
+        catchError(this.handleError),
+        retry(this.totalNumberOfRetry)
+      );
+  }
 }

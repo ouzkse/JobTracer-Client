@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { ContactInformationComponent } from './components/contactinformation/contactinformation.component';
 import { PopupComponent } from './components/popup/popup.component';
@@ -23,6 +24,7 @@ import { EducationDetailComponent } from './components/educationdetail/education
 import { EducationInformationComponent } from './components/educationinformation/educationinformation.component';
 import { PersonalInformationComponent } from './components/personalinformation/personalinformation.component';
 import { ForeignLanguageInformationComponent } from './components/foreignlanguageinformation/foreignlanguageinformation.component';
+import { WorkExperienceComponent } from './components/workexperience/workexperience.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { ForeignLanguageInformationComponent } from './components/foreignlanguag
     EducationInformationListComponent,
     EducationDetailComponent,
     PersonalInformationComponent,
-    ForeignLanguageInformationComponent
+    ForeignLanguageInformationComponent,
+    WorkExperienceComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { ForeignLanguageInformationComponent } from './components/foreignlanguag
     FormsModule,
     MatIconModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

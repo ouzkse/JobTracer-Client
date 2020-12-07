@@ -1,8 +1,10 @@
 
 export class UserWorkExperience {
-  experiences: [string];
+  profession: string;
+  experiences: string[];
 
-  constructor(experiences: [string]) {
+  constructor(profession: string, experiences: string[]) {
+    this.profession = profession;
     this.experiences = experiences;
   }
 }

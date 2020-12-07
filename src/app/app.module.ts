@@ -16,6 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { ContactInformationComponent } from './components/contactinformation/contactinformation.component';
 import { PopupComponent } from './components/popup/popup.component';
@@ -55,7 +57,9 @@ import { WorkExperienceComponent } from './components/workexperience/workexperie
     MatIconModule,
     MatTableModule,
     HttpClientModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatChipsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

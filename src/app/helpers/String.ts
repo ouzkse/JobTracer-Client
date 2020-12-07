@@ -5,5 +5,6 @@ export function removeDialect(value: string): string {
     .replace('ç', 'c')
     .replace('ğ', 'g')
     .replace('ö', 'o')
-    .replace('ü', 'u');
+    .replace('ü', 'u')
+    .replace('ı', 'i');
 }

@@ -11,29 +11,80 @@
 
       <mat-form-field color="primary" appearance="outline" fxFlex="100">
         <mat-label>Mesleğiniz</mat-label>
-        <input type="text"
-               placeholder="Mesleğiniz"
-               matInput
-               [formControl]="professionFormControl"
-               [matAutocomplete]="auto">
+        <label>
+          <input type="text"
+                 matInput
+                 [formControl]="professionFormControl"
+                 [matAutocomplete]="auto">
+        </label>
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let filtered of filteredOptions | async" [value]="filtered">{{filtered}}</mat-option>
         </mat-autocomplete>
 
-        <button mat-button *ngIf="professionFormControl.value" matSuffix mat-icon-button aria-label="Clear" (click)="professionFormControl.setValue('')">
+        <button mat-button
+                *ngIf="professionFormControl.value"
+                matSuffix mat-icon-button aria-label="Clear"
+                color="warn"
+                (click)="professionFormControl.setValue('')">
           <mat-icon>close</mat-icon>
         </button>
-
+        <mat-error>Bu alan boş bırakılamaz.</mat-error>
       </mat-form-field>
 
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0"
+         fxLayout.lt-sm="column"
+         [style]="'margin-bottom: 16px'"
+         *ngIf="experienceChipList.length > 0">
+
+      <mat-chip-list #chipList>
+        <mat-chip
+          *ngFor="let experience of experienceChipList"
+          [selectable]=true
+          [removable]=true
+          (removed)="removeExperience(experience.key)">
+          {{experience.value}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutGap.lt-sm="0"
+         fxLayout.lt-sm="column">
+
+      <mat-form-field color="primary" appearance="outline" fxFlex hideRequiredMarker>
+        <mat-label>Deneyimleriniz</mat-label>
+        <label>
+          <input matInput type="text" [formControl]="experienceFormControl" (keydown.enter)="addExperience()"/>
+        </label>
+        <button mat-button color="primary" *ngIf="experienceFormControl.value" matSuffix mat-icon-button aria-label="Clear" (click)="addExperience()">
+          <mat-icon>east</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutGap.lt-sm="0"
+         fxLayout.lt-sm="column">
+
+      <mat-expansion-panel class="mat-elevation-z0" fxFlexFill>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon color="warn" [style]="'margin-right: 8px; margin-top: 4px;'">warning</mat-icon>
+            <p class="mat-title">Önemli Uyarı</p>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="mat-subheading-2">Bu kısımda verdiğiniz bilgiler sistemimiz tarafından kullanılan algoritma için önem arz etmektedir. Lütfen deneyimlerinizi tek cümle halinde sırayla ekleyiniz. Bir sonraki aşamaya geçebilmeniz için en az 3 iş deneyimi girmeniz beklenmektedir. </p>
+      </mat-expansion-panel>
 
     </div>
 
   </mat-card-content>
 
   <mat-card-actions align="end">
-    <button mat-stroked-button>Geri Dön</button>
-    <button mat-stroked-button>Devam Et</button>
+    <button mat-stroked-button (click)="onBackPressed()">Geri Dön</button>
+    <button mat-stroked-button [disabled]="!isValidationsValid()" (click)="emitUserExperiences()">Devam Et</button>
   </mat-card-actions>
 
 </mat-card>

@@ -14,7 +14,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 <s> Personal Info Component </s>
 
-Work Experiences Component
+<s> Work Experiences Component </s>
 
 Result Component
 

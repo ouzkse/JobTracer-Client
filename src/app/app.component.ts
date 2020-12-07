@@ -4,6 +4,7 @@ import {ComponentType} from '@angular/cdk/overlay';
 import {PopupComponent} from './components/popup/popup.component';
 import {PopupCommonModel} from './models/common/PopupCommonModel';
 import {UserContactInformation} from './models/contactinformation/UserContactInformation';
+import {getDummyResultList, MatchResultInformation, MatchResultItem} from './models/matchresult/MatchResultInformation';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,12 @@ import {UserContactInformation} from './models/contactinformation/UserContactInf
 export class AppComponent implements OnInit{
   title = 'CME4402-SeniorProject-Client';
 
-  constructor(private dialog: MatDialog) { }
+  result: MatchResultInformation;
+
+  constructor(private dialog: MatDialog) {
+    this.result = getDummyResultList();
+    // new MatchResultInformation(new Array<MatchResultItem>()); // getDummyResultList();
+  }
 
   openPopupComponent() {
     this.openDialog(PopupComponent);

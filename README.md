@@ -16,7 +16,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 <s> Work Experiences Component </s>
 
-Result Component
+<s> Result Component </s>
 
 Loading Dialog
 

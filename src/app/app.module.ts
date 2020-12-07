@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { ContactInformationComponent } from './components/contactinformation/contactinformation.component';
 import { PopupComponent } from './components/popup/popup.component';
@@ -27,6 +28,7 @@ import { EducationInformationComponent } from './components/educationinformation
 import { PersonalInformationComponent } from './components/personalinformation/personalinformation.component';
 import { ForeignLanguageInformationComponent } from './components/foreignlanguageinformation/foreignlanguageinformation.component';
 import { WorkExperienceComponent } from './components/workexperience/workexperience.component';
+import { MatchResultComponent } from './components/matchresult/matchresult.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { WorkExperienceComponent } from './components/workexperience/workexperie
     EducationDetailComponent,
     PersonalInformationComponent,
     ForeignLanguageInformationComponent,
-    WorkExperienceComponent
+    WorkExperienceComponent,
+    MatchResultComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import { WorkExperienceComponent } from './components/workexperience/workexperie
     HttpClientModule,
     MatAutocompleteModule,
     MatChipsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

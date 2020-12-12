@@ -19,16 +19,20 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
+import { RouterModule } from '@angular/router';
 
-import { ContactInformationComponent } from './components/contactinformation/contactinformation.component';
-import { PopupComponent } from './components/popup/popup.component';
-import { EducationInformationListComponent } from './components/educationinformationlist/educationinformationlist.component';
-import { EducationDetailComponent } from './components/educationdetail/educationdetail.component';
-import { EducationInformationComponent } from './components/educationinformation/educationinformation.component';
-import { PersonalInformationComponent } from './components/personalinformation/personalinformation.component';
-import { ForeignLanguageInformationComponent } from './components/foreignlanguageinformation/foreignlanguageinformation.component';
-import { WorkExperienceComponent } from './components/workexperience/workexperience.component';
-import { MatchResultComponent } from './components/matchresult/matchresult.component';
+import { ContactInformationComponent } from './uicomponents/contactinformation/contactinformation.component';
+import { PopupComponent } from './uicomponents/popup/popup.component';
+import { EducationInformationListComponent } from './uicomponents/educationinformationlist/educationinformationlist.component';
+import { EducationDetailComponent } from './uicomponents/educationdetail/educationdetail.component';
+import { EducationInformationComponent } from './uicomponents/educationinformation/educationinformation.component';
+import { PersonalInformationComponent } from './uicomponents/personalinformation/personalinformation.component';
+import { ForeignLanguageInformationComponent } from './uicomponents/foreignlanguageinformation/foreignlanguageinformation.component';
+import { WorkExperienceComponent } from './uicomponents/workexperience/workexperience.component';
+import { MatchResultComponent } from './uicomponents/matchresult/matchresult.component';
+import { AppRoutingModule, appRoutingProviders } from './app-routing/app.routing.module';
+import { DashboardComponent } from './routecomponents/dashboard/dashboard.component';
+import { JobFinderComponent } from './routecomponents/jobfinder/jobfinder.component';
 
 @NgModule({
   declarations: [
@@ -41,9 +45,12 @@ import { MatchResultComponent } from './components/matchresult/matchresult.compo
     PersonalInformationComponent,
     ForeignLanguageInformationComponent,
     WorkExperienceComponent,
-    MatchResultComponent
+    MatchResultComponent,
+    DashboardComponent,
+    JobFinderComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -63,9 +70,10 @@ import { MatchResultComponent } from './components/matchresult/matchresult.compo
     MatAutocompleteModule,
     MatChipsModule,
     MatExpansionModule,
-    MatDividerModule
+    MatDividerModule,
+    RouterModule
   ],
-  providers: [],
+  providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

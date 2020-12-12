@@ -5,7 +5,7 @@
 @include app-typography();
 @include angular-material-theme($app-theme);
 
-html, body { height: 100%; }
+html, body { height: 100%; margin: 0; width: 100%; }
 
 .dialog-responsive {
   width: 50%;

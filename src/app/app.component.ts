@@ -1,10 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ComponentType} from '@angular/cdk/overlay';
-import {PopupComponent} from './components/popup/popup.component';
+import {PopupComponent} from './uicomponents/popup/popup.component';
 import {PopupCommonModel} from './models/common/PopupCommonModel';
 import {UserContactInformation} from './models/contactinformation/UserContactInformation';
-import {getDummyResultList, MatchResultInformation, MatchResultItem} from './models/matchresult/MatchResultInformation';
+import {MatchResultInformation} from './models/matchresult/MatchResultInformation';
+import {Router} from '@angular/router';
+import {MainNavigationService} from './services/navigation/main/main.navigation.service';
+import {MainNavigationEnum} from './models/navigation/MainNavigationEnum';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +19,24 @@ export class AppComponent implements OnInit{
 
   result: MatchResultInformation;
 
-  constructor(private dialog: MatDialog) {
-    this.result = getDummyResultList();
+  constructor(private mainNavigationService: MainNavigationService, private dialog: MatDialog, private router: Router) {
+    this.mainNavigationService.event.subscribe(event => {
+      this.evaluateMainNavigationEvent(event);
+    });
+    // this.result = getDummyResultList();
     // new MatchResultInformation(new Array<MatchResultItem>()); // getDummyResultList();
+  }
+
+  private evaluateMainNavigationEvent(event: MainNavigationEnum) {
+    if (event != null) {
+      this.navigate(event);
+    } else {
+      this.navigate(MainNavigationEnum.dashboard);
+    }
+  }
+
+  private navigate(route: string) {
+    this.router.navigate([route]);
   }
 
   openPopupComponent() {
@@ -43,5 +61,6 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.router.navigate(['dashboard']);
   }
 }

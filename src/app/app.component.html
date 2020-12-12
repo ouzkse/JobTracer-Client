@@ -1,8 +1,8 @@
 
-<div class="main-container"
+<!--<div class="main-container"
      fxLayout="row"
      fxLayoutAlign="center center"
-     fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
+     fxLayoutGap="16px" fxLayoutGap.lt-sm="0"> -->
 
   <!--<app-education-component fxFlex="100"></app-education-component>-->
   <!--<app-personal-information fxFlex="100"></app-personal-information>-->
@@ -10,7 +10,13 @@
   <!--<app-contact-information (contactInformationEvent)="logEmittedValue($event)" fxFlex="100"></app-contact-information>-->
   <!--<button mat-stroked-button (click)="openPopupComponent()">Popup deneme</button>-->
   <!--<app-work-experience fxFlex="100"></app-work-experience>-->
-  <app-match-result [resultList]="result.matchResultArray" fxFlex="100"></app-match-result>
+  <!--<app-match-result [resultList]="result.matchResultArray" fxFlex="100"></app-match-result>-->
 
-</div>
+<!-- </div> -->
+
+<main>
+  <div class="main-container">
+    <router-outlet name="primary"></router-outlet>
+  </div>
+</main>
 

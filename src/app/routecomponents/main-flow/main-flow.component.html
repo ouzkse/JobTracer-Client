@@ -1,0 +1,43 @@
+
+<mat-vertical-stepper [linear]="true" #flowStepper>
+  <mat-step #firstStep>
+    <ng-template matStepLabel>İletişim Bilgileriniz</ng-template>
+    <ng-container *ngIf="flowStepper.selected === firstStep || userContactInformation != null">
+      <app-contact-information #stepOne (contactInformationEvent)="setUserContactInformation($event)"></app-contact-information>
+    </ng-container>
+  </mat-step>
+  <mat-step #secondStep [stepControl]="">
+    <ng-template matStepLabel>Kişisel Bilgileriniz</ng-template>
+    <ng-container *ngIf="flowStepper.selected === secondStep || userPersonalInformation != null">
+      <app-personal-information #stepTwo (personalInformationEvent)="setUserPersonalInformation($event)"></app-personal-information>
+    </ng-container>
+  </mat-step>
+  <mat-step #thirdStep>
+    <ng-template matStepLabel>Eğitim Bilgileriniz</ng-template>
+    <ng-container *ngIf="flowStepper.selected === thirdStep || userEducationInformation != null">
+      <app-education-component #stepThree (educationInformationEvent)="setUserEducationInformation($event)"></app-education-component>
+    </ng-container>
+  </mat-step>
+  <mat-step optional="Opsiyonel" #fourthStep>
+    <ng-template matStepLabel>Yabancı Dil Bilgileriniz</ng-template>
+    <ng-container *ngIf="flowStepper.selected === fourthStep || userForeignLanguageInformation != null">
+      <app-foreign-language-information #stepFour (foreignLanguageEvent)="setUserForeignLanguageInformation($event)"></app-foreign-language-information>
+    </ng-container>
+  </mat-step>
+  <mat-step #fifthStep>
+    <ng-template matStepLabel>İş Deneyimleriniz</ng-template>
+    <ng-container *ngIf="flowStepper.selected === fifthStep || userWorkExperiences != null">
+      <app-work-experience (workExperienceEvent)="setUserWorkExperiences($event)"></app-work-experience>
+    </ng-container>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Gözden Geçir</ng-template>
+    <p class="mat-subheading-2">Bilgi girişinizi tamamladınız. Girdiğiniz bilgileri düzenleyebilir ya da bilgilerinizi kaydedip bir sonraki aşamaya geçebilirsiniz.</p>
+    <div fxLayoutGap="8px">
+      <button mat-stroked-button matStepperPrevious>Geri Dön</button>
+      <button mat-stroked-button (click)="flowStepper.reset()">İlk Aşamaya Geri Dön</button>
+      <button mat-stroked-button (click)="emitUserInformation()">Kaydet ve Devam Et</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
+

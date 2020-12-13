@@ -8,6 +8,7 @@ import {PopupComponent} from '../popup/popup.component';
 import {ComponentType} from '@angular/cdk/overlay';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {PopupCommonModel} from '../../models/common/PopupCommonModel';
+import {UserForeignLanguageInformation} from '../../models/foreignlanguageinformation/UserForeignLanguageInformation';
 
 @Component({
   selector: 'app-foreign-language-information',
@@ -18,7 +19,7 @@ export class ForeignLanguageInformationComponent implements OnInit {
 
   componentTitle = 'Yabancı Dil Bilgileri';
 
-  @Output() foreignLanguageEvent = new EventEmitter<Array<ForeignLanguageInformation>>();
+  @Output() foreignLanguageEvent = new EventEmitter<UserForeignLanguageInformation>();
 
   displayedColumns: string[] = ['name', 'level', 'action'];
   dataTableSource: MatTableDataSource<ForeignLanguageInformation> = new MatTableDataSource<ForeignLanguageInformation>();
@@ -50,7 +51,7 @@ export class ForeignLanguageInformationComponent implements OnInit {
   }
 
   addNewInfo() {
-    if (this.foreignLanguages.length !== 0) {
+    if (this.foreignLanguages != null && this.foreignLanguages.length !== 0) {
       this.isAddingInfo = true;
     } else {
       this.openPopupComponent(this.getNoLanguagesAvailablePopupData());
@@ -104,7 +105,8 @@ export class ForeignLanguageInformationComponent implements OnInit {
 
   emitForeignLanguageInformation() {
     console.log(this.foreignInformationList);
-    this.foreignLanguageEvent.emit(this.foreignInformationList);
+    const value = new UserForeignLanguageInformation(this.foreignInformationList);
+    this.foreignLanguageEvent.emit(value);
   }
 
   openPopupComponent(popupData: PopupCommonModel) {

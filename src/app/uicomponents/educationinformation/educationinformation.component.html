@@ -1,8 +1,4 @@
-<mat-card class="mat-elevation-z5">
-
-  <mat-card-header>
-    <mat-card-title class="mat-headline">{{componentTitle}}</mat-card-title>
-  </mat-card-header>
+<mat-card class="mat-elevation-z0">
 
   <mat-card-content>
 
@@ -27,8 +23,11 @@
   </mat-card-content>
 
   <mat-card-actions align="end">
-    <button mat-stroked-button>Geri Dön</button>
-    <button mat-stroked-button [disabled]="educationInformationArray.length == 0">Devam Et</button>
+    <button mat-stroked-button matStepperPrevious>Geri Dön</button>
+    <button mat-stroked-button
+            matStepperNext
+            [disabled]="educationInformationArray.length == 0"
+            (click)="emitUserEducationInformation()">Devam Et</button>
   </mat-card-actions>
 
 </mat-card>

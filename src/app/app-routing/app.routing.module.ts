@@ -7,11 +7,17 @@ import {PersonalInformationComponent} from '../uicomponents/personalinformation/
 import {EducationInformationComponent} from '../uicomponents/educationinformation/educationinformation.component';
 import {ForeignLanguageInformationComponent} from '../uicomponents/foreignlanguageinformation/foreignlanguageinformation.component';
 import {WorkExperienceComponent} from '../uicomponents/workexperience/workexperience.component';
+import {MainFlowComponent} from '../routecomponents/main-flow/main-flow.component';
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    outlet: 'primary'
+  },
+  {
+    path: 'mainFlow',
+    component: MainFlowComponent,
     outlet: 'primary'
   },
   {

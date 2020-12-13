@@ -10,7 +10,7 @@ import {WorkExperienceComponent} from '../uicomponents/workexperience/workexperi
 
 const routes: Routes = [
   {
-    path: 'dashboard',
+    path: '',
     component: DashboardComponent,
     outlet: 'primary'
   },
@@ -25,7 +25,8 @@ const routes: Routes = [
       { path: 'foreignLanguageInformation', component: ForeignLanguageInformationComponent, outlet: 'sub' },
       { path: 'workExperiences', component: WorkExperienceComponent, outlet: 'sub' }
     ]
-  }
+  },
+  { path: '**', component: DashboardComponent }
 ];
 
 @NgModule({

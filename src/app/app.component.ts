@@ -61,6 +61,6 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.router.navigate(['dashboard']);
+    // this.router.navigate(['dashboard'], {replaceUrl: true, skipLocationChange: true});
   }
 }

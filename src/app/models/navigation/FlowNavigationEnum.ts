@@ -1,8 +1,8 @@
 
 export enum FlowNavigationEnum {
-  contactInformation,
-  personalInformation,
-  educationInformation,
-  foreignLanguageInformation,
-  workExperiences
+  contactInformation = 'contactInformation',
+  personalInformation = 'personalInformation',
+  educationInformation = 'educationInformation',
+  foreignLanguageInformation = 'foreignLanguageInformation',
+  workExperiences = 'workExperiences'
 }

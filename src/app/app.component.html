@@ -15,8 +15,8 @@
 <!-- </div> -->
 
 <main>
-  <div class="main-container">
-    <router-outlet name="primary"></router-outlet>
+  <div class="main-container" [@routeAnimation]="getDepth(routerOutlet)">
+    <router-outlet #routerOutlet="outlet"></router-outlet>
   </div>
 </main>
 

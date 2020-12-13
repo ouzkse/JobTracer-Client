@@ -7,17 +7,20 @@ import {MatchResultComponent} from '../ui-components/match-result/match-result.c
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent
+    component: DashboardComponent,
+    data: { depth: 1 }
   },
   {
     path: 'mainFlow',
     component: MainFlowComponent,
+    data: { depth: 2 }
   },
   {
     path: 'result',
-    component: MatchResultComponent
+    component: MatchResultComponent,
+    data: { depth: 3 }
   },
-  { path: '**', component: DashboardComponent }
+  { path: '**', component: DashboardComponent, data: { depth: 0 } }
 ];
 
 @NgModule({

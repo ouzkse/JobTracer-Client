@@ -1,10 +1,10 @@
 import {Component, Input} from '@angular/core';
-import {MatchResultItem} from '../../models/matchresult/MatchResultInformation';
+import {MatchResultItem} from '../../models/match-result/MatchResultInformation';
 
 @Component({
   selector: 'app-match-result',
-  templateUrl: './matchresult.component.html',
-  styleUrls: ['matchresult.component.css']
+  templateUrl: './match-result.component.html',
+  styleUrls: ['match-result.component.css']
 })
 export class MatchResultComponent {
 

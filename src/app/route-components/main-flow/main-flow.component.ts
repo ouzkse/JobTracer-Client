@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {UserContactInformation} from '../../models/contactinformation/UserContactInformation';
-import {UserPersonalInformation} from '../../models/personalinformation/UserPersonalInformation';
-import {UserEducationInformation} from '../../models/educationinformation/UserEducationInformation';
-import {UserForeignLanguageInformation} from '../../models/foreignlanguageinformation/UserForeignLanguageInformation';
-import {UserWorkExperience} from '../../models/workexperienceinformation/UserWorkExperience';
-import {UserInformation} from '../../models/userinformation/UserInformation';
+import {UserContactInformation} from '../../models/contact-information/UserContactInformation';
+import {UserPersonalInformation} from '../../models/personal-information/UserPersonalInformation';
+import {UserEducationInformation} from '../../models/education-information/UserEducationInformation';
+import {UserForeignLanguageInformation} from '../../models/foreign-language-information/UserForeignLanguageInformation';
+import {UserWorkExperience} from '../../models/work-experience-information/UserWorkExperience';
+import {UserInformation} from '../../models/user-information/UserInformation';
 import {UserInformationDataService} from '../../services/data/user-information/user-information.data.service';
 
 @Component({

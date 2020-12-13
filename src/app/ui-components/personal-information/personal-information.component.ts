@@ -1,13 +1,13 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {GenderCommonModel, GenderType, getDefaultGenderOptions} from '../../models/common/GenderCommonModel';
-import {UserPersonalInformation} from '../../models/personalinformation/UserPersonalInformation';
+import {UserPersonalInformation} from '../../models/personal-information/UserPersonalInformation';
 import {FormControl} from '@angular/forms';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
 
 @Component({
   selector: 'app-personal-information',
-  templateUrl: './personalinformation.component.html',
-  styleUrls: ['personalinformation.component.css']
+  templateUrl: './personal-information.component.html',
+  styleUrls: ['personal-information.component.css']
 })
 export class PersonalInformationComponent implements OnInit{
 

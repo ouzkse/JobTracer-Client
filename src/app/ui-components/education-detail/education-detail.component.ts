@@ -1,13 +1,13 @@
 import {Component, Inject} from '@angular/core';
-import {EducationDetailModel} from '../../models/educationinformation/EducationDetailModel';
+import {EducationDetailModel} from '../../models/education-information/EducationDetailModel';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormControl} from '@angular/forms';
-import {EducationInformation} from '../../models/educationinformation/EducationInformation';
+import {EducationInformation} from '../../models/education-information/EducationInformation';
 
 @Component({
   selector: 'app-education-detail',
-  templateUrl: './educationdetail.component.html',
-  styleUrls: ['./educationdetail.component.css']
+  templateUrl: './education-detail.component.html',
+  styleUrls: ['./education-detail.component.css']
 })
 export class EducationDetailComponent {
 

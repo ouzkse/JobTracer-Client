@@ -20,21 +20,20 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
-
-import { ContactInformationComponent } from './uicomponents/contactinformation/contactinformation.component';
-import { PopupComponent } from './uicomponents/popup/popup.component';
-import { EducationInformationListComponent } from './uicomponents/educationinformationlist/educationinformationlist.component';
-import { EducationDetailComponent } from './uicomponents/educationdetail/educationdetail.component';
-import { EducationInformationComponent } from './uicomponents/educationinformation/educationinformation.component';
-import { PersonalInformationComponent } from './uicomponents/personalinformation/personalinformation.component';
-import { ForeignLanguageInformationComponent } from './uicomponents/foreignlanguageinformation/foreignlanguageinformation.component';
-import { WorkExperienceComponent } from './uicomponents/workexperience/workexperience.component';
-import { MatchResultComponent } from './uicomponents/matchresult/matchresult.component';
-import { AppRoutingModule, appRoutingProviders } from './app-routing/app.routing.module';
-import { DashboardComponent } from './routecomponents/dashboard/dashboard.component';
-import { JobFinderComponent } from './routecomponents/jobfinder/jobfinder.component';
-import { MainFlowComponent } from './routecomponents/main-flow/main-flow.component';
 import {MatStepperModule} from '@angular/material/stepper';
+
+import { ContactInformationComponent } from './ui-components/contact-information/contact-information.component';
+import { PopupComponent } from './ui-components/popup/popup.component';
+import { EducationInformationListComponent } from './ui-components/education-information-list/education-information-list.component';
+import { EducationDetailComponent } from './ui-components/education-detail/education-detail.component';
+import { EducationInformationComponent } from './ui-components/education-information/education-information.component';
+import { PersonalInformationComponent } from './ui-components/personal-information/personal-information.component';
+import { ForeignLanguageInformationComponent } from './ui-components/foreign-language-information/foreign-language-information.component';
+import { WorkExperienceComponent } from './ui-components/work-experience/work-experience.component';
+import { MatchResultComponent } from './ui-components/match-result/match-result.component';
+import { AppRoutingModule, appRoutingProviders } from './app-routing/app-routing.module';
+import { DashboardComponent } from './route-components/dashboard/dashboard.component';
+import { MainFlowComponent } from './route-components/main-flow/main-flow.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +48,6 @@ import {MatStepperModule} from '@angular/material/stepper';
     WorkExperienceComponent,
     MatchResultComponent,
     DashboardComponent,
-    JobFinderComponent,
     MainFlowComponent
   ],
   imports: [

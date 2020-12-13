@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {EducationInformation} from '../../models/educationinformation/EducationInformation';
 import {EducationDetailModel} from '../../models/educationinformation/EducationDetailModel';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {EducationDetailComponent} from '../educationdetail/educationdetail.component';
 import {EducationInformationDataService} from '../../services/data/education-information/education-information.data.service';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
+import {UserEducationInformation} from '../../models/educationinformation/UserEducationInformation';
 
 @Component({
   selector: 'app-education-component',
@@ -17,9 +18,10 @@ export class EducationInformationComponent implements OnInit {
   isAddingInfo = false;
   count = 0;
 
-  // Dummy datas
+  @Output() educationInformationEvent = new EventEmitter<UserEducationInformation>();
   educationInformationArray: Array<EducationInformation> = new Array<EducationInformation>();
 
+  // Dummy datas
   degreeArray: Array<string> = ['Doktora', 'Yüksek Lisans', 'Lisans', 'Ön Lisans'];
   universityArray: Array<string> = ['Dokuz Eylül Üniversitesi', 'Ege Üniversitesi', 'İzmir Ekonomi Üniversitesi', 'Yıldız Teknik Üniversitesi'];
   departmentArray: Array<string> = ['Bilgisayar Mühendisliği', 'Elektrik-Elektronik Mühendisliği', 'İşletme'];
@@ -73,5 +75,11 @@ export class EducationInformationComponent implements OnInit {
         }
       }
     );
+  }
+
+  emitUserEducationInformation() {
+    console.log(this.educationInformationArray);
+    const value = new UserEducationInformation(this.educationInformationArray);
+    this.educationInformationEvent.emit(value);
   }
 }

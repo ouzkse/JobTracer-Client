@@ -33,6 +33,8 @@ import { MatchResultComponent } from './uicomponents/matchresult/matchresult.com
 import { AppRoutingModule, appRoutingProviders } from './app-routing/app.routing.module';
 import { DashboardComponent } from './routecomponents/dashboard/dashboard.component';
 import { JobFinderComponent } from './routecomponents/jobfinder/jobfinder.component';
+import { MainFlowComponent } from './routecomponents/main-flow/main-flow.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { JobFinderComponent } from './routecomponents/jobfinder/jobfinder.compon
     WorkExperienceComponent,
     MatchResultComponent,
     DashboardComponent,
-    JobFinderComponent
+    JobFinderComponent,
+    MainFlowComponent
   ],
   imports: [
     AppRoutingModule,
@@ -71,7 +74,8 @@ import { JobFinderComponent } from './routecomponents/jobfinder/jobfinder.compon
     MatChipsModule,
     MatExpansionModule,
     MatDividerModule,
-    RouterModule
+    RouterModule,
+    MatStepperModule
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]

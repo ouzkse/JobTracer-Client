@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {GenderType, getDefaultGenderOptions} from '../../models/common/GenderCommonModel';
+import {GenderCommonModel, GenderType, getDefaultGenderOptions} from '../../models/common/GenderCommonModel';
 import {UserPersonalInformation} from '../../models/personalinformation/UserPersonalInformation';
 import {FormControl} from '@angular/forms';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
@@ -24,7 +24,7 @@ export class PersonalInformationComponent implements OnInit{
   driverLicenseOptions = ['A', 'B', 'C', 'D', 'E', 'F'];
 
   isMilitaryStatusDisabled = true;
-  selectedGender: GenderType = GenderType.undefined;
+  selectedGender: GenderCommonModel;
   nationality: string;
 
   constructor(private commonService: CommonTaskService) { }
@@ -38,16 +38,12 @@ export class PersonalInformationComponent implements OnInit{
   }
 
   selectGender(value) {
-    this.selectedGender = value.type;
+    this.selectedGender = value;
     this.evaluateMilitaryFieldVisibility();
   }
 
   private evaluateMilitaryFieldVisibility() {
-    if (this.selectedGender !== GenderType.man) {
-      this.isMilitaryStatusDisabled = true;
-    } else {
-      this.isMilitaryStatusDisabled = false;
-    }
+    this.isMilitaryStatusDisabled = this.selectedGender.type !== GenderType.man;
   }
 
   validationControl() {

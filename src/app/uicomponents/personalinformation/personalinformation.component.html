@@ -1,8 +1,4 @@
-<mat-card class="mat-elevation-z5">
-
-  <mat-card-header>
-    <mat-card-title class="mat-headline">{{componentTitle}}</mat-card-title>
-  </mat-card-header>
+<mat-card class="mat-elevation-z0">
 
   <mat-card-content>
 
@@ -18,7 +14,7 @@
 
       <mat-form-field color="primary" appearance="outline" fxFlex="50">
         <mat-label>Askerlik Durumunuz</mat-label>
-        <mat-select [disabled]="isMilitaryStatusDisabled" [formControl]="militaryStatusFormControl" required>
+        <mat-select [disabled]="isMilitaryStatusDisabled" [formControl]="militaryStatusFormControl">
           <mat-option *ngFor="let status of militaryStatusOptions" [value]="status">{{ status }}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -47,7 +43,7 @@
   </mat-card-content>
 
   <mat-card-actions align="end">
-    <button mat-stroked-button (click)="onBackPressed()">Geri Dön</button>
-    <button mat-stroked-button [disabled]="validationControl()" (click)="emitPersonalInformation()">Devam Et</button>
+    <button mat-stroked-button matStepperPrevious (click)="onBackPressed()">Geri Dön</button>
+    <button mat-stroked-button matStepperNext [disabled]="validationControl()" (click)="emitPersonalInformation()">Devam Et</button>
   </mat-card-actions>
 </mat-card>

@@ -13,6 +13,6 @@ export class DashboardComponent {
   }
 
   startJobFindingFlow() {
-    this.mainNavigationService.setEvent(MainNavigationEnum.operate);
+    this.mainNavigationService.setEvent(MainNavigationEnum.mainFlow);
   }
 }

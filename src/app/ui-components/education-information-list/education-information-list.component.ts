@@ -1,12 +1,12 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {EducationInformation} from '../../models/educationinformation/EducationInformation';
+import {EducationInformation} from '../../models/education-information/EducationInformation';
 import {EducationInformationDataService} from '../../services/data/education-information/education-information.data.service';
 import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-education-information-list',
-  templateUrl: './educationinformationlist.component.html',
-  styleUrls: ['educationinformationlist.component.css']
+  templateUrl: './education-information-list.component.html',
+  styleUrls: ['education-information-list.component.css']
 })
 export class EducationInformationListComponent {
 

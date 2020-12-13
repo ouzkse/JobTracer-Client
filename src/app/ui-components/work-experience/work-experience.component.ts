@@ -5,12 +5,12 @@ import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { removeDialect } from '../../helpers/String';
 import {KeyValuePair} from '../../models/common/KeyValuePair';
-import {UserWorkExperience} from '../../models/workexperienceinformation/UserWorkExperience';
+import {UserWorkExperience} from '../../models/work-experience-information/UserWorkExperience';
 
 @Component({
   selector: 'app-work-experience',
-  templateUrl: './workexperience.component.html',
-  styleUrls: ['workexperience.component.css']
+  templateUrl: './work-experience.component.html',
+  styleUrls: ['work-experience.component.css']
 })
 export class WorkExperienceComponent implements OnInit {
 

@@ -1,4 +1,4 @@
-import {ForeignLanguageLevel} from '../foreignlanguageinformation/ForeignLanguageInformation';
+import {ForeignLanguageLevel} from '../foreign-language-information/ForeignLanguageInformation';
 
 export class LanguageCommonModel {
   name: string;

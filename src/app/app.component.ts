@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ComponentType} from '@angular/cdk/overlay';
-import {PopupComponent} from './uicomponents/popup/popup.component';
+import {PopupComponent} from './ui-components/popup/popup.component';
 import {PopupCommonModel} from './models/common/PopupCommonModel';
-import {UserContactInformation} from './models/contactinformation/UserContactInformation';
-import {MatchResultInformation} from './models/matchresult/MatchResultInformation';
+import {UserContactInformation} from './models/contact-information/UserContactInformation';
+import {MatchResultInformation} from './models/match-result/MatchResultInformation';
 import {Router} from '@angular/router';
 import {MainNavigationService} from './services/navigation/main/main.navigation.service';
 import {MainNavigationEnum} from './models/navigation/MainNavigationEnum';

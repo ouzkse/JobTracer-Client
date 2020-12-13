@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {catchError, map, retry} from 'rxjs/operators';
 import {BaseTaskService} from '../base/base.task.service';
 import {ApiService} from '../../api/api.service';
-import {EducationDetailModel} from '../../../models/educationinformation/EducationDetailModel';
+import {EducationDetailModel} from '../../../models/education-information/EducationDetailModel';
 import {LanguageCommonModel} from '../../../models/common/LanguageCommonModel';
 
 @Injectable({

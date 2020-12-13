@@ -1,16 +1,16 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {EducationInformation} from '../../models/educationinformation/EducationInformation';
-import {EducationDetailModel} from '../../models/educationinformation/EducationDetailModel';
+import {EducationInformation} from '../../models/education-information/EducationInformation';
+import {EducationDetailModel} from '../../models/education-information/EducationDetailModel';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {EducationDetailComponent} from '../educationdetail/educationdetail.component';
+import {EducationDetailComponent} from '../education-detail/education-detail.component';
 import {EducationInformationDataService} from '../../services/data/education-information/education-information.data.service';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
-import {UserEducationInformation} from '../../models/educationinformation/UserEducationInformation';
+import {UserEducationInformation} from '../../models/education-information/UserEducationInformation';
 
 @Component({
   selector: 'app-education-component',
-  templateUrl: './educationinformation.component.html',
-  styleUrls: ['educationinformation.component.css']
+  templateUrl: './education-information.component.html',
+  styleUrls: ['education-information.component.css']
 })
 export class EducationInformationComponent implements OnInit {
 

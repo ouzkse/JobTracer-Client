@@ -1,14 +1,14 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {CityCommonModel} from '../../models/common/CityCommonModel';
-import {UserContactInformation} from '../../models/contactinformation/UserContactInformation';
+import {UserContactInformation} from '../../models/contact-information/UserContactInformation';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
 import {JobFinderNavigationService} from '../../services/navigation/jobfinder/jobfinder.navigation.service';
 
 @Component({
   selector: 'app-contact-information',
-  templateUrl: './contactinformation.component.html',
-  styleUrls: ['./contactinformation.component.css']
+  templateUrl: './contact-information.component.html',
+  styleUrls: ['./contact-information.component.css']
 })
 export class ContactInformationComponent implements OnInit {
 

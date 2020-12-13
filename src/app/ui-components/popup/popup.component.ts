@@ -11,8 +11,8 @@ export class PopupComponent {
 
   componentData: PopupCommonModel;
 
-  private leftButton = 0;
-  private rightButton = 1;
+  leftButton = 0;
+  rightButton = 1;
 
   constructor(
     private dialogReference: MatDialogRef<PopupComponent>,

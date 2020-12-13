@@ -1,9 +1,9 @@
 
-import {UserContactInformation} from '../contactinformation/UserContactInformation';
-import {UserEducationInformation} from '../educationinformation/UserEducationInformation';
-import {UserPersonalInformation} from '../personalinformation/UserPersonalInformation';
-import {UserWorkExperience} from '../workexperienceinformation/UserWorkExperience';
-import {UserForeignLanguageInformation} from '../foreignlanguageinformation/UserForeignLanguageInformation';
+import {UserContactInformation} from '../contact-information/UserContactInformation';
+import {UserEducationInformation} from '../education-information/UserEducationInformation';
+import {UserPersonalInformation} from '../personal-information/UserPersonalInformation';
+import {UserWorkExperience} from '../work-experience-information/UserWorkExperience';
+import {UserForeignLanguageInformation} from '../foreign-language-information/UserForeignLanguageInformation';
 
 export class UserInformation {
   contactInformation: UserContactInformation;

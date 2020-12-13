@@ -2,18 +2,18 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {getDefaultLanguageLevels, LanguageCommonModel} from '../../models/common/LanguageCommonModel';
 import {MatTableDataSource} from '@angular/material/table';
-import {ForeignLanguageInformation} from '../../models/foreignlanguageinformation/ForeignLanguageInformation';
+import {ForeignLanguageInformation} from '../../models/foreign-language-information/ForeignLanguageInformation';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
 import {PopupComponent} from '../popup/popup.component';
 import {ComponentType} from '@angular/cdk/overlay';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {PopupCommonModel} from '../../models/common/PopupCommonModel';
-import {UserForeignLanguageInformation} from '../../models/foreignlanguageinformation/UserForeignLanguageInformation';
+import {UserForeignLanguageInformation} from '../../models/foreign-language-information/UserForeignLanguageInformation';
 
 @Component({
   selector: 'app-foreign-language-information',
-  templateUrl: './foreignlanguageinformation.component.html',
-  styleUrls: ['foreignlanguageinformation.component.css']
+  templateUrl: './foreign-language-information.component.html',
+  styleUrls: ['foreign-language-information.component.css']
 })
 export class ForeignLanguageInformationComponent implements OnInit {
 

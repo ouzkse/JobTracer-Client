@@ -3,7 +3,6 @@ import {FormControl, Validators} from '@angular/forms';
 import {CityCommonModel} from '../../models/common/CityCommonModel';
 import {UserContactInformation} from '../../models/contact-information/UserContactInformation';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
-import {JobFinderNavigationService} from '../../services/navigation/jobfinder/jobfinder.navigation.service';
 
 @Component({
   selector: 'app-contact-information',
@@ -30,7 +29,7 @@ export class ContactInformationComponent implements OnInit {
     new CityCommonModel('35', 'İzmir')
   ];
 
-  constructor(private commonService: CommonTaskService, private flowNavigationService: JobFinderNavigationService) { }
+  constructor(private commonService: CommonTaskService) { }
 
   ngOnInit() {
     this.getProvinces();
@@ -63,6 +62,5 @@ export class ContactInformationComponent implements OnInit {
 
   onBackPressed() {
     console.log('On Back Pressed - User Contact Information');
-    this.flowNavigationService.setEvent(null);
   }
 }

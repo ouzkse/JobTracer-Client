@@ -21,10 +21,10 @@
                  [matDatepicker]="picker"
                  max="{{minAge | date:'yyyy-MM-dd'}}"
                  [(ngModel)]="dateOfBirth"
-                 [formControl]="date" required>
+                 [formControl]="date" disabled required>
         </label>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker #picker disabled="false"></mat-datepicker>
         <mat-error>Doğum tarihinizi giriniz.</mat-error>
       </mat-form-field>
     </div>

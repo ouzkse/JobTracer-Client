@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
@@ -83,6 +83,10 @@ import { LoadingDialogComponent } from './ui-components/loading-dialog/loading-d
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,
       multi: true
+    },
+    {
+      provide: MAT_DATE_LOCALE,
+      useValue: 'tr-TR'
     },
     appRoutingProviders
   ],

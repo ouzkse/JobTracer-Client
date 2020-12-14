@@ -15,7 +15,7 @@ import { trigger, transition, group, query, style, animate } from '@angular/anim
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('routeAnimation', [
-      transition('1 => 2, 2 => 3', [
+      transition('1 => 2, 2 => 3, 1 => 3', [
         style({ height: '!' }),
         query(':enter', style({ transform: 'translateX(100%)' })),
         query(':enter, :leave', style({ position: 'absolute', height: '100%', top: 0, left: 0, right: 0 })),

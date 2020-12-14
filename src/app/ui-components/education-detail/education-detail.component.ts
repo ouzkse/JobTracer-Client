@@ -3,6 +3,7 @@ import {EducationDetailModel} from '../../models/education-information/Education
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormControl} from '@angular/forms';
 import {EducationInformation} from '../../models/education-information/EducationInformation';
+import {getGraduationYearArray} from '../../helpers/String';
 
 @Component({
   selector: 'app-education-detail',
@@ -12,6 +13,7 @@ import {EducationInformation} from '../../models/education-information/Education
 export class EducationDetailComponent {
 
   componentData: EducationDetailModel;
+  yearArray = getGraduationYearArray();
 
   startDateControl = new FormControl(new Date());
   finishDateControl = new FormControl(new Date());
@@ -25,8 +27,7 @@ export class EducationDetailComponent {
   selectedUniversity: string;
   selectedFaculty: string;
   selectedDepartment: string;
-  startDate: string;
-  finishDate: string;
+  graduationYear: string;
 
   constructor(
     private dialogReference: MatDialogRef<EducationDetailComponent>,
@@ -52,6 +53,10 @@ export class EducationDetailComponent {
     this.selectedDepartment = department;
   }
 
+  selectGraduationYear(year) {
+    this.graduationYear = year;
+  }
+
   checkValidations() {
     return !this.startDateControl.invalid &&
       !this.finishDateControl.invalid &&
@@ -72,8 +77,7 @@ export class EducationDetailComponent {
       this.selectedUniversity,
       this.selectedFaculty,
       this.selectedDepartment,
-      new Date(this.startDate),
-      new Date(this.finishDate)
+      this.graduationYear
     );
 
     this.dialogReference.close(educationInformation);

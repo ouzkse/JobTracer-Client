@@ -58,9 +58,17 @@
         <mat-error>Bu alan boş bırakılamaz.</mat-error>
       </mat-form-field>
 
+      <mat-form-field color="primary" appearance="outline" fxFlex="30" fxFlex.lt-sm="100" hideRequiredMarker>
+        <mat-label>Mezun olduğunuz yıl</mat-label>
+        <mat-select [(ngModel)]="graduationYear" (ngModelChange)="selectGraduationYear(graduationYear)" required>
+          <mat-option *ngFor="let year of yearArray" [value]="year">{{ year }}</mat-option>
+        </mat-select>
+        <mat-error>Bu alan boş bırakılamaz.</mat-error>
+      </mat-form-field>
+
     </div>
 
-    <div fxLayout="row"
+    <!-- <div fxLayout="row"
          fxLayout.lt-sm="column"
          fxLayoutGap="8px" fxLayoutGap.lt-sm="0">
 
@@ -91,7 +99,7 @@
         <mat-datepicker #pickerFinishDate></mat-datepicker>
         <mat-error>Mezun olduğunuz tarihi giriniz.</mat-error>
       </mat-form-field>
-    </div>
+    </div> -->
 
   </mat-dialog-content>
 

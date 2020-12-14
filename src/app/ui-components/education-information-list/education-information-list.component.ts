@@ -10,7 +10,7 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class EducationInformationListComponent {
 
-  displayedColumns: string[] = ['type', 'university', 'faculty', 'department', 'startDate', 'finishDate', 'action'];
+  displayedColumns: string[] = ['type', 'university', 'faculty', 'department', 'graduationYear', 'action'];
   dataSource: MatTableDataSource<EducationInformation> = new MatTableDataSource<EducationInformation>();
   @Output() deleteEvent = new EventEmitter<number>();
 

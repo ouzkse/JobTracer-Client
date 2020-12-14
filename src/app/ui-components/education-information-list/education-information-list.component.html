@@ -21,14 +21,9 @@
     <td mat-cell *matCellDef="let element"> {{element.department}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="startDate">
-    <th mat-header-cell *matHeaderCellDef fxShow fxHide.lt-md> Başlangıç Tarihi </th>
-    <td mat-cell *matCellDef="let element" fxShow fxHide.lt-md> {{element.startDate}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="finishDate">
-    <th mat-header-cell *matHeaderCellDef fxShow fxHide.lt-md> Bitiş Tarihi </th>
-    <td mat-cell *matCellDef="let element" fxShow fxHide.lt-md> {{element.finishDate}} </td>
+  <ng-container matColumnDef="graduationYear">
+    <th mat-header-cell *matHeaderCellDef fxShow fxHide.lt-md> Mezuniyet Tarihi </th>
+    <td mat-cell *matCellDef="let element" fxShow fxHide.lt-md> {{element.graduationYear}} </td>
   </ng-container>
 
   <ng-container matColumnDef="action" fxFlex="6%">

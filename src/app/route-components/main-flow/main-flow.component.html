@@ -23,7 +23,7 @@
         <app-education-component #stepThree (educationInformationEvent)="setUserEducationInformation($event)"></app-education-component>
       </ng-container>
     </mat-step>
-    <mat-step optional="Opsiyonel" #fourthStep>
+    <mat-step optional #fourthStep>
       <ng-template matStepLabel>Yabancı Dil Bilgileriniz</ng-template>
       <ng-container *ngIf="flowStepper.selected === fourthStep || userForeignLanguageInformation != null">
         <app-foreign-language-information #stepFour (foreignLanguageEvent)="setUserForeignLanguageInformation($event)"></app-foreign-language-information>

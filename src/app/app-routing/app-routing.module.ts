@@ -20,7 +20,7 @@ const routes: Routes = [
     component: ResultComponent,
     data: { depth: 3 }
   },
-  { path: '**', component: DashboardComponent, data: { depth: 0 } }
+  { path: '**', component: DashboardComponent, data: { depth: 1 } }
 ];
 
 @NgModule({

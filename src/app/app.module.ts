@@ -36,6 +36,7 @@ import { DashboardComponent } from './route-components/dashboard/dashboard.compo
 import { MainFlowComponent } from './route-components/main-flow/main-flow.component';
 import {Interceptor} from './services/interceptor/interceptor';
 import { LoadingDialogComponent } from './ui-components/loading-dialog/loading-dialog.component';
+import { ResultComponent } from './route-components/result/result.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { LoadingDialogComponent } from './ui-components/loading-dialog/loading-d
     MatchResultComponent,
     DashboardComponent,
     MainFlowComponent,
-    LoadingDialogComponent
+    LoadingDialogComponent,
+    ResultComponent
   ],
   imports: [
     AppRoutingModule,

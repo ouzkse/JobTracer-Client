@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {UserInformation} from '../../../models/user-information/UserInformation';
 
 @Injectable({
@@ -7,7 +7,7 @@ import {UserInformation} from '../../../models/user-information/UserInformation'
 })
 export class UserInformationDataService {
 
-  private _userInformation = new Subject<UserInformation>();
+  private _userInformation = new BehaviorSubject<UserInformation>(null);
   userInformation = this._userInformation.asObservable();
 
   constructor() { }

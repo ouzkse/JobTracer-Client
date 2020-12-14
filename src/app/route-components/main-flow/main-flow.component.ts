@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserContactInformation} from '../../models/contact-information/UserContactInformation';
 import {UserPersonalInformation} from '../../models/personal-information/UserPersonalInformation';
 import {UserEducationInformation} from '../../models/education-information/UserEducationInformation';
@@ -6,6 +6,8 @@ import {UserForeignLanguageInformation} from '../../models/foreign-language-info
 import {UserWorkExperience} from '../../models/work-experience-information/UserWorkExperience';
 import {UserInformation} from '../../models/user-information/UserInformation';
 import {UserInformationDataService} from '../../services/data/user-information/user-information.data.service';
+import {MainNavigationService} from '../../services/navigation/main/main.navigation.service';
+import {MainNavigationEnum} from '../../models/navigation/MainNavigationEnum';
 
 @Component({
   selector: 'app-main-flow',
@@ -20,7 +22,7 @@ export class MainFlowComponent implements OnInit {
   userForeignLanguageInformation: UserForeignLanguageInformation = null;
   userWorkExperiences: UserWorkExperience = null;
 
-  constructor(private dataService: UserInformationDataService) { }
+  constructor(private dataService: UserInformationDataService, private mainNavigationService: MainNavigationService) { }
 
   ngOnInit(): void {
   }
@@ -63,5 +65,6 @@ export class MainFlowComponent implements OnInit {
       this.userWorkExperiences
     );
     this.dataService.setUserInformation(value);
+    this.mainNavigationService.setEvent(MainNavigationEnum.result);
   }
 }

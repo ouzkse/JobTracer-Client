@@ -38,7 +38,7 @@
     <mat-step>
       <ng-template matStepLabel>Gözden Geçir</ng-template>
       <p class="mat-subheading-2">Bilgi girişinizi tamamladınız. Girdiğiniz bilgileri düzenleyebilir ya da bilgilerinizi kaydedip bir sonraki aşamaya geçebilirsiniz.</p>
-      <div fxLayoutGap="8px">
+      <div>
         <button mat-stroked-button matStepperPrevious>Geri Dön</button>
         <button mat-stroked-button (click)="flowStepper.reset()">İlk Aşamaya Geri Dön</button>
         <button mat-stroked-button (click)="emitUserInformation()">Kaydet ve Devam Et</button>

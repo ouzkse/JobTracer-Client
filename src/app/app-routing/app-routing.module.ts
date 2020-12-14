@@ -2,7 +2,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {DashboardComponent} from '../route-components/dashboard/dashboard.component';
 import {MainFlowComponent} from '../route-components/main-flow/main-flow.component';
-import {MatchResultComponent} from '../ui-components/match-result/match-result.component';
+import {ResultComponent} from '../route-components/result/result.component';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'result',
-    component: MatchResultComponent,
+    component: ResultComponent,
     data: { depth: 3 }
   },
   { path: '**', component: DashboardComponent, data: { depth: 0 } }

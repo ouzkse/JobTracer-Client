@@ -1,4 +1,4 @@
-<mat-card class="mat-elevation-z5">
+<mat-card class="mat-elevation-z0">
 
   <mat-card-header>
     <mat-card-title class="mat-headline">{{componentTitle}}</mat-card-title>
@@ -35,5 +35,10 @@
     </div>
 
   </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-stroked-button [disabled]="true" (click)="emitButtonAction(matchResultButtonEnum.backToDashboard)">Sonuçları İndir</button>
+    <button mat-stroked-button (click)="emitButtonAction(matchResultButtonEnum.backToDashboard)">Ana sayfa'ya Geri Dön</button>
+  </mat-card-actions>
 
 </mat-card>

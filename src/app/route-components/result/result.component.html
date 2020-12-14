@@ -1,0 +1,8 @@
+
+<div class="result-container">
+  <app-match-result
+    *ngIf="resultList != null"
+    [resultList]="(resultList)"
+    (buttonActionEvent)="evaluateButtonAction($event)"></app-match-result>
+</div>
+

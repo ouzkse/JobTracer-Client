@@ -18,11 +18,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 <s> Result Component </s>
 
-Loading Dialog
+<s> Loading Dialog </s>
 
-Main Dashboard
+<s> Main Dashboard --DUMMY </s>
 
-Page Transitions
+<s> Page Transitions </s>
 
 Routes
 

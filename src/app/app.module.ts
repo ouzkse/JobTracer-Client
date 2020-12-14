@@ -14,7 +14,7 @@ import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -34,6 +34,8 @@ import { MatchResultComponent } from './ui-components/match-result/match-result.
 import { AppRoutingModule, appRoutingProviders } from './app-routing/app-routing.module';
 import { DashboardComponent } from './route-components/dashboard/dashboard.component';
 import { MainFlowComponent } from './route-components/main-flow/main-flow.component';
+import {Interceptor} from './services/interceptor/interceptor';
+import { LoadingDialogComponent } from './ui-components/loading-dialog/loading-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { MainFlowComponent } from './route-components/main-flow/main-flow.compon
     WorkExperienceComponent,
     MatchResultComponent,
     DashboardComponent,
-    MainFlowComponent
+    MainFlowComponent,
+    LoadingDialogComponent
   ],
   imports: [
     AppRoutingModule,
@@ -75,7 +78,14 @@ import { MainFlowComponent } from './route-components/main-flow/main-flow.compon
     RouterModule,
     MatStepperModule
   ],
-  providers: [appRoutingProviders],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true
+    },
+    appRoutingProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

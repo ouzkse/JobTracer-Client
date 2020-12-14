@@ -3,6 +3,7 @@ import {ApiService} from '../../api/api.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {throwError} from 'rxjs';
 
+// Remove this class, Not Used after HTTP Interceptor imp.
 @Injectable({
   providedIn: 'root'
 })

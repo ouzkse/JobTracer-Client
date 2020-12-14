@@ -17,9 +17,7 @@ export class CommonTaskService extends BaseTaskService{
   getProvinces(): Observable<CityCommonModel[]> {
     return this.requestService.post<CityCommonModel[]>('rest/cities', null)
       .pipe(
-        map(data => data.body),
-        catchError(this.handleError),
-        retry(this.totalNumberOfRetry)
+        map(data => data.body)
       );
   }
 

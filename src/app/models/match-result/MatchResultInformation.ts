@@ -8,22 +8,34 @@ export class MatchResultInformation {
 }
 
 export class MatchResultItem {
-  id: number;
-  jobTitle: string;
-  jobDescription: string;
+  id: string;
+  position: string;
+  experience: number;
+  maxExperience: number;
+  cities: string[];
+  educationStatus: number;
+  text: string;
+  htmlText: string;
 
-  constructor(id: number, jobTitle: string, jobDescription: string) {
+
+  constructor(
+    id: string,
+    position: string,
+    experience: number,
+    maxExperience: number,
+    cities: string[],
+    educationStatus: number,
+    text: string,
+    htmlText: string
+  ) {
     this.id = id;
-    this.jobTitle = jobTitle;
-    this.jobDescription = jobDescription;
+    this.position = position;
+    this.experience = experience;
+    this.maxExperience = maxExperience;
+    this.cities = cities;
+    this.educationStatus = educationStatus;
+    this.text = text;
+    this.htmlText = htmlText;
   }
 }
 
-export function getDummyResultList() {
-  const list = [new MatchResultItem(1, 'Title 1', 'Description 1'),
-    new MatchResultItem(2, 'Title 2', 'Description 2'),
-    new MatchResultItem(3, 'Title 3', 'Description 3'),
-    new MatchResultItem(4, 'Title 4', 'Description 4')];
-
-  return new MatchResultInformation(list);
-}

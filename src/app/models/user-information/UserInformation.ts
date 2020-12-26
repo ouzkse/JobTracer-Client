@@ -4,19 +4,20 @@ import {UserEducationInformation} from '../education-information/UserEducationIn
 import {UserPersonalInformation} from '../personal-information/UserPersonalInformation';
 import {UserWorkExperience} from '../work-experience-information/UserWorkExperience';
 import {UserForeignLanguageInformation} from '../foreign-language-information/UserForeignLanguageInformation';
+import {ForeignLanguageInformation} from '../foreign-language-information/ForeignLanguageInformation';
 
 export class UserInformation {
   contactInformation: UserContactInformation;
   personalInformation: UserPersonalInformation;
   educationInformation: UserEducationInformation;
-  foreignLanguageInformation: UserForeignLanguageInformation;
+  foreignLanguageInformation: Array<ForeignLanguageInformation>;
   workExperiences: UserWorkExperience;
 
   constructor(
     contactInformation: UserContactInformation,
     personalInformation: UserPersonalInformation,
     educationInformation: UserEducationInformation,
-    foreignLanguageInformation: UserForeignLanguageInformation,
+    foreignLanguageInformation: Array<ForeignLanguageInformation>,
     workExperiences: UserWorkExperience
   ) {
     this.contactInformation = contactInformation;

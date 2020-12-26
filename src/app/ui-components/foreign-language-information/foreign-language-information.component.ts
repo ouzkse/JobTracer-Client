@@ -19,7 +19,7 @@ export class ForeignLanguageInformationComponent implements OnInit {
 
   componentTitle = 'Yabancı Dil Bilgileri';
 
-  @Output() foreignLanguageEvent = new EventEmitter<UserForeignLanguageInformation>();
+  @Output() foreignLanguageEvent = new EventEmitter<Array<ForeignLanguageInformation>>();
 
   displayedColumns: string[] = ['name', 'level', 'action'];
   dataTableSource: MatTableDataSource<ForeignLanguageInformation> = new MatTableDataSource<ForeignLanguageInformation>();
@@ -105,8 +105,7 @@ export class ForeignLanguageInformationComponent implements OnInit {
 
   emitForeignLanguageInformation() {
     console.log(this.foreignInformationList);
-    const value = new UserForeignLanguageInformation(this.foreignInformationList);
-    this.foreignLanguageEvent.emit(value);
+    this.foreignLanguageEvent.emit(this.foreignInformationList);
   }
 
   openPopupComponent(popupData: PopupCommonModel) {

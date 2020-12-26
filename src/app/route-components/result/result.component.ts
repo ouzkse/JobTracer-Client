@@ -6,7 +6,7 @@ import {PopupComponent} from '../../ui-components/popup/popup.component';
 import {MainNavigationService} from '../../services/navigation/main/main.navigation.service';
 import {MainNavigationEnum} from '../../models/navigation/MainNavigationEnum';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
-import {getDummyResultList, MatchResultItem} from '../../models/match-result/MatchResultInformation';
+import {MatchResultItem} from '../../models/match-result/MatchResultInformation';
 import {MatchResultButtonEnum} from '../../models/match-result/MatchResultButtonEnum';
 
 @Component({
@@ -34,7 +34,6 @@ export class ResultComponent implements OnInit {
         console.log('result component');
         console.log(data);
       } else {
-        // this.resultList = getDummyResultList().matchResultArray; // new Array<MatchResultItem>();
         this.commonService.getResultList(data).subscribe(result => {
           this.resultList = result.matchResultArray;
           this.userInformationDataService.setUserInformation(null);

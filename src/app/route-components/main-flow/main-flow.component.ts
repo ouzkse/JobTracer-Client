@@ -8,6 +8,7 @@ import {UserInformation} from '../../models/user-information/UserInformation';
 import {UserInformationDataService} from '../../services/data/user-information/user-information.data.service';
 import {MainNavigationService} from '../../services/navigation/main/main.navigation.service';
 import {MainNavigationEnum} from '../../models/navigation/MainNavigationEnum';
+import {ForeignLanguageInformation} from '../../models/foreign-language-information/ForeignLanguageInformation';
 
 @Component({
   selector: 'app-main-flow',
@@ -19,7 +20,7 @@ export class MainFlowComponent implements OnInit {
   userContactInformation: UserContactInformation = null;
   userPersonalInformation: UserPersonalInformation = null;
   userEducationInformation: UserEducationInformation = null;
-  userForeignLanguageInformation: UserForeignLanguageInformation = null;
+  userForeignLanguageInformation: Array<ForeignLanguageInformation> = null;
   userWorkExperiences: UserWorkExperience = null;
 
   constructor(private dataService: UserInformationDataService, private mainNavigationService: MainNavigationService) { }
@@ -44,7 +45,7 @@ export class MainFlowComponent implements OnInit {
     console.log(this.userEducationInformation);
   }
 
-  setUserForeignLanguageInformation(foreignLanguageInformation: UserForeignLanguageInformation) {
+  setUserForeignLanguageInformation(foreignLanguageInformation: Array<ForeignLanguageInformation>) {
     console.log(this.userForeignLanguageInformation);
     this.userForeignLanguageInformation = foreignLanguageInformation;
     console.log(this.userForeignLanguageInformation);

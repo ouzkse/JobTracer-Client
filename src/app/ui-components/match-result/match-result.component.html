@@ -13,9 +13,9 @@
         <mat-expansion-panel class="mat-elevation-z0" [style]="'margin-bottom: 4px;'" *ngFor="let result of resultList">
 
           <mat-expansion-panel-header>
-            <mat-panel-title class="mat-subheading-2" style="margin: auto;"> #{{ result.id }} {{ result.jobTitle }}</mat-panel-title>
+            <mat-panel-title class="mat-subheading-2" style="margin: auto;"> #{{ result.id }} {{ result.position }}</mat-panel-title>
           </mat-expansion-panel-header>
-          <p class="mat-caption">{{ result.jobDescription }}</p>
+          <p class="mat-caption" [innerHTML]="result.htmlText"></p>
 
         </mat-expansion-panel>
       </mat-accordion>

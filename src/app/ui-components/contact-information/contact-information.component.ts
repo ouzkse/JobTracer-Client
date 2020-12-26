@@ -1,22 +1,29 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {Form, FormControl, Validators} from '@angular/forms';
 import {CityCommonModel} from '../../models/common/CityCommonModel';
 import {UserContactInformation} from '../../models/contact-information/UserContactInformation';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
+import {ReplaySubject, Subject} from 'rxjs';
+import {take, takeUntil} from 'rxjs/operators';
+import {MatSelect} from '@angular/material/select';
+import {removeDialect} from '../../helpers/String';
 
 @Component({
   selector: 'app-contact-information',
   templateUrl: './contact-information.component.html',
   styleUrls: ['./contact-information.component.css']
 })
-export class ContactInformationComponent implements OnInit {
+export class ContactInformationComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Output() contactInformationEvent = new EventEmitter<UserContactInformation>();
-
   componentTitle = 'İletişim Bilgileri';
 
   date = new FormControl(new Date());
   emailControl = new FormControl('', [Validators.required, Validators.email]);
+
+  multipleCityControl: FormControl = new FormControl('', [Validators.required, Validators.min(1)]);
+  multipleCityFilterControl: FormControl = new FormControl();
+  @ViewChild('multiSelectCity', { static: true }) multiSelectCity: MatSelect;
 
   dateOfBirth: string;
   dateOfToday = new Date();
@@ -26,8 +33,17 @@ export class ContactInformationComponent implements OnInit {
   provinces: Array<CityCommonModel> = [
     new CityCommonModel('17', 'Çanakkale'),
     new CityCommonModel('34', 'İstanbul'),
-    new CityCommonModel('35', 'İzmir')
+    new CityCommonModel('35', 'İzmir'),
+    new CityCommonModel('45', 'Abc')
   ];
+
+  noEntriesFoundLabel = 'Eşleşme bulunamadı.';
+  placeholderLabel = 'Arama';
+
+  public _filteredMultipleCities: ReplaySubject<CityCommonModel[]> = new ReplaySubject<CityCommonModel[]>(1);
+  private selectedCities: CityCommonModel[];
+
+  protected _onDestroy = new Subject<void>();
 
   constructor(private commonService: CommonTaskService) { }
 
@@ -35,13 +51,51 @@ export class ContactInformationComponent implements OnInit {
     this.getProvinces();
   }
 
-  private getProvinces() {
-    this.commonService.getProvinces().subscribe((data => this.provinces = data));
+  ngAfterViewInit() {
+    this.setInitialValue();
   }
 
-  selectProvince(province: CityCommonModel) {
-    this.selectedProvince = province;
-    console.log(province.zipCode + province.cityName);
+  private getProvinces() {
+    this.commonService.getProvinces().subscribe((data => {
+      this.provinces = data;
+      this._filteredMultipleCities.next(this.provinces);
+      this.setObservers();
+    }));
+  }
+
+  private setInitialValue() {
+    this._filteredMultipleCities
+      .pipe(take(1), takeUntil(this._onDestroy))
+      .subscribe(() => {
+        this.multiSelectCity.compareWith = (a: CityCommonModel, b: CityCommonModel) => a && b && a.zipCode === b.zipCode;
+      });
+  }
+
+  private setObservers() {
+    this.multipleCityFilterControl.valueChanges
+      .pipe(takeUntil(this._onDestroy))
+      .subscribe(() => {
+        this.filterCities();
+      });
+  }
+
+  protected filterCities() {
+    if (!this.provinces) {
+      return;
+    }
+
+    let search = this.multipleCityFilterControl.value;
+    if (!search) {
+      this._filteredMultipleCities.next(this.provinces.slice());
+      return;
+    } else {
+      search = removeDialect(search.toLowerCase());
+    }
+
+    // There is a problem with remove dialect function, or localization of İ/I
+    this._filteredMultipleCities.next(
+      this.provinces.filter(city => removeDialect(city.cityName.toLowerCase()).includes(search))
+    );
   }
 
   getEmailErrorMessage() {
@@ -52,15 +106,23 @@ export class ContactInformationComponent implements OnInit {
   }
 
   isAllFormsValidated() {
-    return this.selectedProvince != null && !this.emailControl.invalid && this.dateOfBirth != null;
+    return !this.multipleCityControl.invalid &&
+      !this.emailControl.invalid &&
+      this.dateOfBirth != null;
   }
 
   emitUserContactInformation() {
-    const value = new UserContactInformation(this.emailControl.value, this.dateOfBirth, this.selectedProvince);
+    const value = new UserContactInformation(this.emailControl.value, this.dateOfBirth, this.multipleCityControl.value);
+    console.log(value);
     this.contactInformationEvent.emit(value);
   }
 
   onBackPressed() {
     console.log('On Back Pressed - User Contact Information');
+  }
+
+  ngOnDestroy() {
+    this._onDestroy.next();
+    this._onDestroy.complete();
   }
 }

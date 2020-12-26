@@ -1,4 +1,5 @@
 
+// TODO(OUZ) Remove this class
 export class EducationDetailModel {
   educationdegrees: Array<string>;
   universities: Array<string>;

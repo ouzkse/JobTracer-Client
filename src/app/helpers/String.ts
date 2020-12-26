@@ -6,7 +6,8 @@ export function removeDialect(value: string): string {
     .replace('ğ', 'g')
     .replace('ö', 'o')
     .replace('ü', 'u')
-    .replace('ı', 'i');
+    .replace('ı', 'i')
+    .replace('ï', 'i');
 }
 
 export function getGraduationYearArray(): Array<string> {

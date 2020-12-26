@@ -32,9 +32,16 @@
     <div fxLayout="row" fxLayoutGap="8px" fxLayout.lt-sm="column">
 
       <mat-form-field color="primary" appearance="outline" fxFlex hideRequiredMarker>
-        <mat-label>Yaşadığınız Şehir</mat-label>
-        <mat-select [(ngModel)]="selectedProvince" (ngModelChange)="selectProvince(selectedProvince)" required>
-          <mat-option *ngFor="let province of provinces" [value]="province">{{ province.cityName }}</mat-option>
+        <mat-label>Çalışmayı düşündüğünüz Şehir</mat-label>
+        <mat-select [formControl]="multipleCityControl" [multiple]="true" #multiSelectCity required>
+          <mat-option>
+            <ngx-mat-select-search [noEntriesFoundLabel]="noEntriesFoundLabel"
+                                   [placeholderLabel]="placeholderLabel"
+                                   [formControl]="multipleCityFilterControl"></ngx-mat-select-search>
+          </mat-option>
+          <mat-option *ngFor="let city of _filteredMultipleCities | async" [value]="city">
+            {{city.cityName}}
+          </mat-option>
         </mat-select>
         <mat-error>Lütfen yaşadığınız şehri seçiniz.</mat-error>
       </mat-form-field>

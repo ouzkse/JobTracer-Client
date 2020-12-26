@@ -34,7 +34,7 @@ export class ResultComponent implements OnInit {
         console.log('result component');
         console.log(data);
       } else {
-        this.resultList = new Array<MatchResultItem>(); // getDummyResultList().matchResultArray;
+        this.resultList = getDummyResultList().matchResultArray; // new Array<MatchResultItem>();
         /* this.commonService.getResultList(data).subscribe(result => {
           this.resultList = result.matchResultArray;
           this.userInformationDataService.setUserInformation(null);

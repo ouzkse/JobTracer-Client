@@ -5,19 +5,77 @@
     <div fxLayout="row" fxLayoutGap="16px" fxLayoutGap.lt-sm="0"
          fxLayout.lt-sm="column">
 
-      <app-education-information-list fxFlexFill (deleteEvent)="onDeleteEvent($event)"></app-education-information-list>
+      <mat-form-field color="primary" appearance="outline" fxFlex="50" hideRequiredMarker>
+        <mat-label>Eğitim Düzeyi</mat-label>
+        <mat-select [formControl]="educationDegreeControl" (ngModelChange)="selectDegree($event)" required>
+          <mat-option *ngFor="let degree of educationDegrees" [value]="degree">{{ degree.name }}</mat-option>
+        </mat-select>
+        <mat-error>Bu alan boş bırakılamaz.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field color="primary" appearance="outline" fxFlex="50" hideRequiredMarker>
+        <mat-label>Mezun olduğunuz yıl</mat-label>
+        <mat-select [formControl]="graduationYearControl" required>
+          <mat-option *ngFor="let year of graduationYears" [value]="year">{{ year }}</mat-option>
+        </mat-select>
+        <mat-error>Bu alan boş bırakılamaz.</mat-error>
+      </mat-form-field>
 
     </div>
 
-    <div fxLayout="row"
-         fxLayoutAlign="center center"
-         [style]="'margin: 16px'"
-         *ngIf="!isAddingInfo">
+    <div fxLayout="column" fxLayout.lt-sm="column" *ngIf="higherEducationInfoRequired">
 
-      <button mat-stroked-button (click)="addNewInfo()">
-        <mat-icon>add_circle_outline</mat-icon>
-        Eğitim Bilgisi Ekle
-      </button>
+      <mat-form-field color="primary" appearance="outline" hideRequiredMarker>
+        <mat-label>Mezun olduğunuz üniversite</mat-label>
+        <mat-select [formControl]="universityCtrl" (ngModelChange)="selectUniversity($event)" #universitySelect required>
+          <mat-option>
+            <ngx-mat-select-search [formControl]="universityFilterCtrl"
+                                   [noEntriesFoundLabel]="noEntriesFoundLabel"
+                                   [placeholderLabel]="placeholderLabel"></ngx-mat-select-search>
+          </mat-option>
+
+          <mat-option *ngFor="let university of _filteredUniversity | async" [value]="university">
+            {{university.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>Bu alan boş bırakılamaz.</mat-error>
+      </mat-form-field>
+
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="16px" fxLayoutGap.lt-sm="0"
+         fxLayout.lt-sm="column" *ngIf="higherEducationInfoRequired">
+
+      <mat-form-field color="primary" appearance="outline" fxFlex="50" hideRequiredMarker>
+        <mat-label>Mezun olduğunuz fakülte</mat-label>
+        <mat-select [formControl]="facultyCtrl" (ngModelChange)="selectFaculty($event)" #facultySelect required>
+          <mat-option>
+            <ngx-mat-select-search [formControl]="facultyFilterCtrl"
+                                   [noEntriesFoundLabel]="noEntriesFoundLabel"
+                                   [placeholderLabel]="placeholderLabel"></ngx-mat-select-search>
+          </mat-option>
+          <mat-option *ngFor="let faculty of _filteredFaculty | async" [value]="faculty">
+            {{faculty.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>Bu alan boş bırakılamaz.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field color="primary" appearance="outline" fxFlex="50" hideRequiredMarker>
+        <mat-label>Mezun olduğunuz bölüm</mat-label>
+        <mat-select [formControl]="departmentCtrl"  #departmentSelect required>
+          <mat-option>
+            <ngx-mat-select-search [formControl]="departmentFilterCtrl"
+                                   [noEntriesFoundLabel]="noEntriesFoundLabel"
+                                   [placeholderLabel]="placeholderLabel"></ngx-mat-select-search>
+          </mat-option>
+          <mat-option *ngFor="let department of _filteredDepartment | async" [value]="department">
+            {{department.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>Bu alan boş bırakılamaz.</mat-error>
+      </mat-form-field>
+
     </div>
 
   </mat-card-content>
@@ -26,7 +84,7 @@
     <button mat-stroked-button matStepperPrevious>Geri Dön</button>
     <button mat-stroked-button
             matStepperNext
-            [disabled]="educationInformationArray.length == 0"
+            [disabled]="!checkValidations()"
             (click)="emitUserEducationInformation()">Devam Et</button>
   </mat-card-actions>
 

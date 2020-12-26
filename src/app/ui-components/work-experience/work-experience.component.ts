@@ -3,7 +3,7 @@ import {CommonTaskService} from '../../services/tasks/common/common.task.service
 import {FormControl, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import { removeDialect } from '../../helpers/String';
+import {removeDialect} from '../../helpers/String';
 import {KeyValuePair} from '../../models/common/KeyValuePair';
 import {UserWorkExperience} from '../../models/work-experience-information/UserWorkExperience';
 

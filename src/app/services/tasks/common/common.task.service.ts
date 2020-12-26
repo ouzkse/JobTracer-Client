@@ -1,10 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {CityCommonModel} from '../../../models/common/CityCommonModel';
 import {Observable} from 'rxjs';
-import {catchError, map, retry} from 'rxjs/operators';
-import {BaseTaskService} from '../base/base.task.service';
+import {map} from 'rxjs/operators';
 import {ApiService} from '../../api/api.service';
-import {EducationDetailModel} from '../../../models/education-information/EducationDetailModel';
 import {LanguageCommonModel} from '../../../models/common/LanguageCommonModel';
 import {MatchResultInformation} from '../../../models/match-result/MatchResultInformation';
 import {UserInformation} from '../../../models/user-information/UserInformation';
@@ -16,9 +14,9 @@ import {Department} from '../../../models/education-information/Department';
 @Injectable({
   providedIn: 'root'
 })
-export class CommonTaskService extends BaseTaskService{
+export class CommonTaskService {
 
-  constructor(private requestService: ApiService) { super(); }
+  constructor(private requestService: ApiService) {}
 
   getProvinces(): Observable<CityCommonModel[]> {
     return this.requestService.get<CityCommonModel[]>('rest/cities')

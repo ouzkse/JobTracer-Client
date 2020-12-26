@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, Output, ViewChild} from '@angular/core';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
 import {UserEducationInformation} from '../../models/education-information/UserEducationInformation';
 import {FormControl, Validators} from '@angular/forms';
@@ -62,14 +62,14 @@ export class EducationInformationComponent implements OnDestroy{
 
     if (this.higherEducationInfoRequired) {
       return new UserEducationInformation(
-        degree,
+        degree.name,
         graduationYear,
         this.universityCtrl.value,
         this.facultyCtrl.value,
         this.departmentCtrl.value
       );
     } else {
-      return new UserEducationInformation(degree, graduationYear, null, null, null);
+      return new UserEducationInformation(degree.name, graduationYear, null, null, null);
     }
   }
 
@@ -86,6 +86,7 @@ export class EducationInformationComponent implements OnDestroy{
   selectUniversity(selectedUniversity: University) {
     console.log(selectedUniversity);
     this.getFacultyList(selectedUniversity.id);
+    this._filteredDepartment.next(Array<Department>());
   }
 
   selectFaculty(selectedFaculty: Faculty) {

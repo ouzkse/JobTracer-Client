@@ -25,7 +25,6 @@ export class PersonalInformationComponent implements OnInit{
 
   isMilitaryStatusDisabled = true;
   selectedGender: GenderCommonModel;
-  nationality: string;
 
   constructor(private commonService: CommonTaskService) { }
 
@@ -59,7 +58,6 @@ export class PersonalInformationComponent implements OnInit{
     const value = new UserPersonalInformation(
       this.selectedGender,
       this.militaryStatusFormControl.value,
-      this.nationality,
       this.driverLicenseFormControl.value
     );
     console.log(value);

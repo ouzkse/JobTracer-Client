@@ -72,7 +72,7 @@ export class CommonTaskService {
   }
 
   getResultList(userInformation: UserInformation): Observable<MatchResultInformation> {
-    return this.requestService.post<MatchResultInformation>('url/url/getResult', userInformation)
+    return this.requestService.post<MatchResultInformation>('rest/resumeInfo', userInformation)
       .pipe(
         map(data => data.body)
       );

@@ -28,17 +28,17 @@ export class ResultComponent implements OnInit {
 
   ngOnInit(): void {
     this.userInformationDataService.userInformation.subscribe(data => {
-      console.log(data);
+      console.log(JSON.stringify(data));
       if (data == null && this.resultList == null) {
         this.openDialog();
         console.log('result component');
         console.log(data);
       } else {
-        this.resultList = getDummyResultList().matchResultArray; // new Array<MatchResultItem>();
-        /* this.commonService.getResultList(data).subscribe(result => {
+        // this.resultList = getDummyResultList().matchResultArray; // new Array<MatchResultItem>();
+        this.commonService.getResultList(data).subscribe(result => {
           this.resultList = result.matchResultArray;
           this.userInformationDataService.setUserInformation(null);
-        }); */
+        });
       }
     });
   }

@@ -62,14 +62,14 @@ export class EducationInformationComponent implements OnDestroy{
 
     if (this.higherEducationInfoRequired) {
       return new UserEducationInformation(
-        degree,
+        degree.name,
         graduationYear,
         this.universityCtrl.value,
         this.facultyCtrl.value,
         this.departmentCtrl.value
       );
     } else {
-      return new UserEducationInformation(degree, graduationYear, null, null, null);
+      return new UserEducationInformation(degree.name, graduationYear, null, null, null);
     }
   }
 

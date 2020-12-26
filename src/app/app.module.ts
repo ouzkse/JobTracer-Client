@@ -20,7 +20,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 import { ContactInformationComponent } from './ui-components/contact-information/contact-information.component';
 import { PopupComponent } from './ui-components/popup/popup.component';
@@ -34,7 +35,7 @@ import { MatchResultComponent } from './ui-components/match-result/match-result.
 import { AppRoutingModule, appRoutingProviders } from './app-routing/app-routing.module';
 import { DashboardComponent } from './route-components/dashboard/dashboard.component';
 import { MainFlowComponent } from './route-components/main-flow/main-flow.component';
-import {Interceptor} from './services/interceptor/interceptor';
+import { Interceptor } from './services/interceptor/interceptor';
 import { LoadingDialogComponent } from './ui-components/loading-dialog/loading-dialog.component';
 import { ResultComponent } from './route-components/result/result.component';
 
@@ -78,7 +79,8 @@ import { ResultComponent } from './route-components/result/result.component';
     MatExpansionModule,
     MatDividerModule,
     RouterModule,
-    MatStepperModule
+    MatStepperModule,
+    NgxMatSelectSearchModule
   ],
   providers: [
     {

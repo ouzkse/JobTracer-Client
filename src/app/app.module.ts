@@ -25,8 +25,6 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 import { ContactInformationComponent } from './ui-components/contact-information/contact-information.component';
 import { PopupComponent } from './ui-components/popup/popup.component';
-import { EducationInformationListComponent } from './ui-components/education-information-list/education-information-list.component';
-import { EducationDetailComponent } from './ui-components/education-detail/education-detail.component';
 import { EducationInformationComponent } from './ui-components/education-information/education-information.component';
 import { PersonalInformationComponent } from './ui-components/personal-information/personal-information.component';
 import { ForeignLanguageInformationComponent } from './ui-components/foreign-language-information/foreign-language-information.component';
@@ -45,8 +43,6 @@ import { ResultComponent } from './route-components/result/result.component';
     PopupComponent,
     ContactInformationComponent,
     EducationInformationComponent,
-    EducationInformationListComponent,
-    EducationDetailComponent,
     PersonalInformationComponent,
     ForeignLanguageInformationComponent,
     WorkExperienceComponent,

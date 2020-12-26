@@ -1,4 +1,6 @@
 
+// TODO(OUZ) Remove this class
+
 export class EducationInformation {
   id: number;
   type: string;

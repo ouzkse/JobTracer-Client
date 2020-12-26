@@ -16,9 +16,6 @@ import {removeDialect} from '../../helpers/String';
 export class ContactInformationComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Output() contactInformationEvent = new EventEmitter<UserContactInformation>();
-
-  @ViewChild('multiSelectCity', { static: true }) multiSelectCity: MatSelect;
-
   componentTitle = 'İletişim Bilgileri';
 
   date = new FormControl(new Date());
@@ -26,6 +23,7 @@ export class ContactInformationComponent implements OnInit, AfterViewInit, OnDes
 
   multipleCityControl: FormControl = new FormControl('', [Validators.required, Validators.min(1)]);
   multipleCityFilterControl: FormControl = new FormControl();
+  @ViewChild('multiSelectCity', { static: true }) multiSelectCity: MatSelect;
 
   dateOfBirth: string;
   dateOfToday = new Date();
@@ -51,9 +49,6 @@ export class ContactInformationComponent implements OnInit, AfterViewInit, OnDes
 
   ngOnInit() {
     this.getProvinces();
-    // bunlar servis çağrısından sonra olmalı
-    this._filteredMultipleCities.next(this.provinces);
-    this.setObservers();
   }
 
   ngAfterViewInit() {

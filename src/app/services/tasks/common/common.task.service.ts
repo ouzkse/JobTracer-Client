@@ -8,6 +8,10 @@ import {EducationDetailModel} from '../../../models/education-information/Educat
 import {LanguageCommonModel} from '../../../models/common/LanguageCommonModel';
 import {MatchResultInformation} from '../../../models/match-result/MatchResultInformation';
 import {UserInformation} from '../../../models/user-information/UserInformation';
+import {University} from '../../../models/education-information/University';
+import {HttpParams} from '@angular/common/http';
+import {Faculty} from '../../../models/education-information/Faculty';
+import {Department} from '../../../models/education-information/Department';
 
 @Injectable({
   providedIn: 'root'
@@ -17,17 +21,35 @@ export class CommonTaskService extends BaseTaskService{
   constructor(private requestService: ApiService) { super(); }
 
   getProvinces(): Observable<CityCommonModel[]> {
-    return this.requestService.post<CityCommonModel[]>('rest/cities', null)
+    return this.requestService.get<CityCommonModel[]>('rest/cities')
       .pipe(
-        map(data => data.body)
+        map(data => data)
       );
   }
 
-  getEducationInformation(): Observable<EducationDetailModel> {
-    return this.requestService.post<EducationDetailModel>('rest/unilist', null)
+  getUniversities(): Observable<University[]> {
+    return this.requestService.get<University[]>('rest/universities')
       .pipe(
-        map(data => data.body)
+        map(data => data)
       );
+  }
+
+  getFaculties(universityId: string): Observable<Faculty[]> {
+    return this.requestService.get<Faculty[]>('rest/faculties', new HttpParams().append('universityId', universityId))
+      .pipe(
+        map(data => data)
+      );
+  }
+
+  getDepartments(universityId: string, facultyId: string): Observable<Department[]> {
+    return this.requestService.get<Department[]>(
+      'rest/departments',
+      new HttpParams()
+        .append('universityId', universityId)
+        .append('facultyId', facultyId)
+    ).pipe(
+      map(data => data)
+    );
   }
 
   getDriverLicenseList(): Observable<[string]> {
@@ -45,9 +67,9 @@ export class CommonTaskService extends BaseTaskService{
   }
 
   getProfessionList(): Observable<Array<string>> {
-    return this.requestService.post<Array<string>>('rest/GetProfessions', null)
+    return this.requestService.get<Array<string>>('rest/positions', null)
       .pipe(
-        map(data => data.body)
+        map(data => data)
       );
   }
 

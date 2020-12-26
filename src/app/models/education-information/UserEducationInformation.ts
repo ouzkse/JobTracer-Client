@@ -1,4 +1,3 @@
-import {Degree} from './Degree';
 import {University} from './University';
 import {Faculty} from './Faculty';
 import {Department} from './Department';

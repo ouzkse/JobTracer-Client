@@ -22,6 +22,8 @@ export class WorkExperienceComponent implements OnInit {
   professionFormControl = new FormControl('', [Validators.required]);
   filteredOptions: Observable<string[]>;
 
+  professionYearControl = new FormControl('', [Validators.required]);
+
   experienceChipList: KeyValuePair[] = [];
   experienceFormControl = new FormControl();
   experienceIdCount = 0;
@@ -73,12 +75,16 @@ export class WorkExperienceComponent implements OnInit {
   }
 
   isValidationsValid() {
-    return !this.professionFormControl.invalid && this.experienceChipList.length >= 3;
+    return !this.professionFormControl.invalid && this.experienceChipList.length >= 3 && !this.professionYearControl.invalid;
   }
 
   emitUserExperiences() {
-    const workExperiences = new UserWorkExperience(this.professionFormControl.value, this.experienceChipList.map(x => x.value));
-    console.log(workExperiences);
+    const workExperiences = new UserWorkExperience(
+      this.professionFormControl.value,
+      this.experienceChipList.map(x => x.value),
+      this.professionYearControl.value
+    );
+    console.log(JSON.stringify(workExperiences));
     this.workExperienceEvent.emit(workExperiences);
   }
 }

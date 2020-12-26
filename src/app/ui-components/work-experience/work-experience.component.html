@@ -5,7 +5,7 @@
     <div fxLayout="row" fxLayoutGap="16px" fxLayoutGap.lt-sm="0"
          fxLayout.lt-sm="column">
 
-      <mat-form-field color="primary" appearance="outline" fxFlex="100">
+      <mat-form-field color="primary" appearance="outline" fxFlex="50">
         <mat-label>Mesleğiniz</mat-label>
         <label>
           <input type="text"
@@ -26,6 +26,17 @@
         </button>
         <mat-error>Bu alan boş bırakılamaz.</mat-error>
       </mat-form-field>
+
+      <mat-form-field color="primary" appearance="outline" fxFlex="50">
+        <mat-label>Mesleğinizde kaçıncı yılınız</mat-label>
+        <label>
+          <input type="number"
+                 matInput
+                 [formControl]="professionYearControl">
+        </label>
+        <mat-error>Bu alan boş bırakılamaz.</mat-error>
+      </mat-form-field>
+
 
     </div>
 

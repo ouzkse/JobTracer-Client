@@ -24,6 +24,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 <s> Page Transitions </s>
 
-Routes
+<s> Routes </s>
 
-MediaQuery Problem with MatTable
+<s> MediaQuery Problem with MatTable </s>

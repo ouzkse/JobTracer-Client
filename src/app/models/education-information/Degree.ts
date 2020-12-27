@@ -11,12 +11,17 @@ export class Degree {
 
 export function getDegrees(): Degree[] {
   return [
-    new Degree(0, 'İlk Okul'),
-    new Degree(1, 'Orta Okul'),
-    new Degree(2, 'Lise'),
-    new Degree(3, 'Ön Lisans'),
-    new Degree(4, 'Lisans'),
-    new Degree(5, 'Yüksek Lisans'),
-    new Degree(6, 'Doktora')
+    new Degree(1, 'İlköğretim Mezunu'),
+    new Degree(2, 'Lise Öğrencisi'),
+    new Degree(3, 'Lise Mezunu'),
+    new Degree(4, 'Meslek Yüksekokulu Öğrencisi'),
+    new Degree(5, 'Meslek Yüksekokulu Mezunu'),
+    new Degree(6, 'Üniversite Öğrencisi'),
+    new Degree(7, 'Üniversite Mezunu'),
+    new Degree(8, 'Master Öğrencisi'),
+    new Degree(9, 'Master Mezunu'),
+    new Degree(10, 'Doktora Öğrencisi'),
+    new Degree(11, 'Doktora Mezunu')
+
   ];
 }

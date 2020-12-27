@@ -9,33 +9,39 @@ export class MatchResultInformation {
 
 export class MatchResultItem {
   id: string;
-  position: string;
   experience: number;
   maxExperience: number;
-  cities: string[];
+  position: string;
+  cities: Array<string>;
   educationStatus: number;
+  clusters: string;
   text: string;
   htmlText: string;
 
-
   constructor(
     id: string,
-    position: string,
     experience: number,
     maxExperience: number,
-    cities: string[],
+    position: string,
+    cities: Array<string>,
     educationStatus: number,
+    clusters: string,
     text: string,
-    htmlText: string
+    htmlText: string,
   ) {
     this.id = id;
-    this.position = position;
     this.experience = experience;
     this.maxExperience = maxExperience;
+    this.position = position;
     this.cities = cities;
     this.educationStatus = educationStatus;
+    this.clusters = clusters;
     this.text = text;
     this.htmlText = htmlText;
+  }
+
+  getCitiesStr(): string {
+    return this.cities.toString();
   }
 }
 

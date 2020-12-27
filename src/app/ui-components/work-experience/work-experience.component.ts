@@ -36,8 +36,8 @@ export class WorkExperienceComponent implements OnInit {
 
   private _filter(value: string): string[] {
     if (value.length >= 3) {
-      const filterValue = removeDialect(value.toLowerCase());
-      return this.professionList.filter(option => removeDialect(option.toLowerCase()).includes(filterValue));
+      const filterValue = removeDialect(value.toLocaleLowerCase('tr'));
+      return this.professionList.filter(option => removeDialect(option.toLocaleLowerCase('tr')).includes(filterValue));
     }
   }
 

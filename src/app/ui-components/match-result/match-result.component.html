@@ -6,7 +6,7 @@
 
   <mat-card-content *ngIf="resultList != null">
 
-    <div fxLayout="row" fxLayoutGap="16px" fxLayoutGap.lt-sm="0"
+    <div fxLayout="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0"
          fxLayout.lt-sm="column" *ngIf="resultList.length > 0">
 
       <mat-accordion multi="false" fxFlexFill>
@@ -23,6 +23,8 @@
 
         </mat-expansion-panel>
       </mat-accordion>
+
+      <mat-paginator [showFirstLastButtons]="false"  [hidePageSize]="true" [pageSize]="1" [length]="totalPage" (page)="onPageChanged($event)"></mat-paginator>
 
     </div>
 

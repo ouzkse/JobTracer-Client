@@ -4,12 +4,13 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ApiService} from '../../api/api.service';
 import {LanguageCommonModel} from '../../../models/common/LanguageCommonModel';
-import {MatchResultItem} from '../../../models/match-result/MatchResultInformation';
+import {MatchResultInformation, MatchResultItem} from '../../../models/match-result/MatchResultInformation';
 import {UserInformation} from '../../../models/user-information/UserInformation';
 import {University} from '../../../models/education-information/University';
 import {HttpParams} from '@angular/common/http';
 import {Faculty} from '../../../models/education-information/Faculty';
 import {Department} from '../../../models/education-information/Department';
+import {PageModel} from '../../../models/match-result/PageModel';
 
 @Injectable({
   providedIn: 'root'
@@ -71,8 +72,15 @@ export class CommonTaskService {
       );
   }
 
-  getResultList(userInformation: UserInformation): Observable<MatchResultItem[]> {
-    return this.requestService.post<MatchResultItem[]>('rest/resumeInfo', userInformation)
+  getResultList(userInformation: UserInformation): Observable<MatchResultInformation> {
+    return this.requestService.post<MatchResultInformation>('rest/resumeInfo', userInformation)
+      .pipe(
+        map(data => data.body)
+      );
+  }
+
+  getResultPageData(pageModel: PageModel): Observable<MatchResultInformation> {
+    return this.requestService.post<MatchResultInformation>('rest/resumeInfoPage', pageModel)
       .pipe(
         map(data => data.body)
       );

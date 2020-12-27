@@ -16,3 +16,7 @@ html, body { height: 100%; margin: 0; width: 100%; }
     width: 100%;
   }
 }
+
+.custom-shadow {
+  @include mat-elevation(15, #303F9F, 0.4);
+}

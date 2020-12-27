@@ -8,6 +8,8 @@ import {Router} from '@angular/router';
 import {MainNavigationService} from './services/navigation/main/main.navigation.service';
 import {MainNavigationEnum} from './models/navigation/MainNavigationEnum';
 import { trigger, transition, group, query, style, animate } from '@angular/animations';
+import {MatchResultDataService} from './services/data/match-result/match-result.data.service';
+import {getMatchResultList} from './models/match-result/MatchResultInformation';
 
 @Component({
   selector: 'app-root',
@@ -51,10 +53,13 @@ export class AppComponent implements OnInit{
     private mainNavigationService: MainNavigationService,
     private dialog: MatDialog,
     private router: Router,
+    // private dataService: MatchResultDataService
   ) {
     this.mainNavigationService.event.subscribe(event => {
       this.evaluateMainNavigationEvent(event);
     });
+
+    // dataService.setMatchResultItems(getMatchResultList());
   }
 
   private evaluateMainNavigationEvent(event: MainNavigationEnum) {

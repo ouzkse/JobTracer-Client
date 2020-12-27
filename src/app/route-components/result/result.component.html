@@ -1,6 +1,6 @@
 
-<div class="result-container">
-  <app-match-result
+<div class="result-container" fxLayoutAlign.gt-md="center">
+  <app-match-result fxFlex.gt-md="60"
     *ngIf="_isLoaded | async"
     (buttonActionEvent)="evaluateButtonAction($event)"></app-match-result>
 </div>

@@ -8,7 +8,7 @@ import {MatchResultDataService} from '../../services/data/match-result/match-res
   templateUrl: './match-result.component.html',
   styleUrls: ['match-result.component.css']
 })
-export class MatchResultComponent {
+export class MatchResultComponent implements OnInit{
 
   componentTitle = 'Arama Sonuçları';
 
@@ -17,12 +17,18 @@ export class MatchResultComponent {
   @Output() buttonActionEvent = new EventEmitter<MatchResultButtonEnum>();
   matchResultButtonEnum = MatchResultButtonEnum;
 
-  constructor(private matchResultDataService: MatchResultDataService) {
+  constructor(private matchResultDataService: MatchResultDataService) {}
+
+  ngOnInit(): void {
     this.matchResultDataService.matchResultList.subscribe(data => {
       console.log(data);
       this.resultList = data;
       console.log(this.resultList);
     });
+  }
+
+  getResultItemCities(resultItem: MatchResultItem): string {
+    return resultItem.cities.toString();
   }
 
   emitButtonAction(value: MatchResultButtonEnum) {

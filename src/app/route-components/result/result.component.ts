@@ -50,9 +50,9 @@ export class ResultComponent implements OnInit {
     if (!this.serviceCalled) {
       this.serviceCalled = true;
       this.commonService.getResultList(data).subscribe(resultList => {
-        this._isLoaded = Promise.resolve(true);
         this.matchResultDataService.setMatchResultItems(resultList);
         this.userInformationDataService.setUserInformation(null);
+        this._isLoaded = Promise.resolve(true);
       });
     }
   }

@@ -4,7 +4,7 @@
      fxLayout="row"
      fxLayoutAlign="center">
 
-  <mat-vertical-stepper [linear]="true" #flowStepper>
+  <mat-vertical-stepper fxFlex.lt-md="100" fxFlex.md="70" fxFlex.lt-lg="60" fxFlex.xl="60" [linear]="true" #flowStepper>
     <mat-step #firstStep>
       <ng-template matStepLabel>İletişim Bilgileriniz</ng-template>
       <ng-container *ngIf="flowStepper.selected === firstStep || userContactInformation != null">

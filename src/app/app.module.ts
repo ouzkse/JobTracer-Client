@@ -22,6 +22,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { MatStepperModule } from '@angular/material/stepper';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { ContactInformationComponent } from './ui-components/contact-information/contact-information.component';
 import { PopupComponent } from './ui-components/popup/popup.component';
@@ -76,7 +77,8 @@ import { ResultComponent } from './route-components/result/result.component';
     MatDividerModule,
     RouterModule,
     MatStepperModule,
-    NgxMatSelectSearchModule
+    NgxMatSelectSearchModule,
+    MatPaginatorModule
   ],
   providers: [
     {

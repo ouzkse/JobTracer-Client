@@ -24,7 +24,6 @@ export class ResultComponent implements OnInit {
 
   _isLoaded: Promise<boolean>;
   serviceCalled = false;
-  // _resultList: ReplaySubject<MatchResultItem[]> = new ReplaySubject<MatchResultItem[]>(1);
 
   constructor(
     private userInformationDataService: UserInformationDataService,
@@ -49,8 +48,8 @@ export class ResultComponent implements OnInit {
   private getMatchResults(data: UserInformation) {
     if (!this.serviceCalled) {
       this.serviceCalled = true;
-      this.commonService.getResultList(data).subscribe(resultList => {
-        this.matchResultDataService.setMatchResultItems(resultList);
+      this.commonService.getResultList(data).subscribe(result => {
+        this.matchResultDataService.setMatchResults(result);
         this.userInformationDataService.setUserInformation(null);
         this._isLoaded = Promise.resolve(true);
       });

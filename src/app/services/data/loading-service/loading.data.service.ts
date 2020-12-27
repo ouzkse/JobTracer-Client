@@ -19,7 +19,7 @@ export class LoadingDataService {
     } else {
       setTimeout( () => {
         this._showLoadingDialog.next(false);
-      }, 1500 ); // Its too fast, no problem with waiting.
+      }, 700); // Its too fast, no problem with waiting.
     }
   }
 

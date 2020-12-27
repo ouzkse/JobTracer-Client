@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {MatchResultItem} from '../../../models/match-result/MatchResultInformation';
+import {MatchResultInformation, MatchResultItem} from '../../../models/match-result/MatchResultInformation';
 import {BehaviorSubject, Subject} from 'rxjs';
 
 @Injectable({
@@ -7,12 +7,12 @@ import {BehaviorSubject, Subject} from 'rxjs';
 })
 export class MatchResultDataService {
 
-  private _matchResultList = new BehaviorSubject<MatchResultItem[]>(null);
+  private _matchResultList = new BehaviorSubject<MatchResultInformation>(null);
   matchResultList = this._matchResultList.asObservable();
 
   constructor() { }
 
-  setMatchResultItems(data: MatchResultItem[]) {
+  setMatchResults(data: MatchResultInformation) {
     this._matchResultList.next(data);
   }
 }

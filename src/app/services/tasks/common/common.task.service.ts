@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ApiService} from '../../api/api.service';
 import {LanguageCommonModel} from '../../../models/common/LanguageCommonModel';
-import {MatchResultInformation} from '../../../models/match-result/MatchResultInformation';
+import {MatchResultItem} from '../../../models/match-result/MatchResultInformation';
 import {UserInformation} from '../../../models/user-information/UserInformation';
 import {University} from '../../../models/education-information/University';
 import {HttpParams} from '@angular/common/http';
@@ -71,8 +71,8 @@ export class CommonTaskService {
       );
   }
 
-  getResultList(userInformation: UserInformation): Observable<MatchResultInformation> {
-    return this.requestService.post<MatchResultInformation>('rest/resumeInfo', userInformation)
+  getResultList(userInformation: UserInformation): Observable<MatchResultItem[]> {
+    return this.requestService.post<MatchResultItem[]>('rest/resumeInfo', userInformation)
       .pipe(
         map(data => data.body)
       );

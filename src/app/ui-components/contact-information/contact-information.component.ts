@@ -89,12 +89,12 @@ export class ContactInformationComponent implements OnInit, AfterViewInit, OnDes
       this._filteredMultipleCities.next(this.provinces.slice());
       return;
     } else {
-      search = removeDialect(search.toLowerCase());
+      search = removeDialect(search.toLocaleLowerCase('tr'));
     }
 
     // There is a problem with remove dialect function, or localization of İ/I
     this._filteredMultipleCities.next(
-      this.provinces.filter(city => removeDialect(city.cityName.toLowerCase()).includes(search))
+      this.provinces.filter(city => removeDialect(city.cityName.toLocaleLowerCase('tr')).includes(search))
     );
   }
 

@@ -1,8 +1,7 @@
 
 <div class="result-container">
   <app-match-result
-    *ngIf="resultList != null"
-    [resultList]="(resultList)"
+    *ngIf="_isLoaded | async"
     (buttonActionEvent)="evaluateButtonAction($event)"></app-match-result>
 </div>
 

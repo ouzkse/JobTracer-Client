@@ -57,25 +57,25 @@ export class EducationInformationComponent implements OnDestroy{
 
   private getEducationInformation(): UserEducationInformation {
 
-    const degree = this.educationDegreeControl.value;
+    const degree = this.educationDegreeControl.value.name.toLocaleLowerCase('tr');
     const graduationYear = this.graduationYearControl.value;
 
     if (this.higherEducationInfoRequired) {
       return new UserEducationInformation(
-        degree.name,
+        degree,
         graduationYear,
         this.universityCtrl.value,
         this.facultyCtrl.value,
         this.departmentCtrl.value
       );
     } else {
-      return new UserEducationInformation(degree.name, graduationYear, null, null, null);
+      return new UserEducationInformation(degree, graduationYear, null, null, null);
     }
   }
 
   selectDegree(selectedDegree: Degree) {
     console.log(selectedDegree);
-    if (selectedDegree.id <= 2) {
+    if (selectedDegree.id <= 3) {
       this.higherEducationInfoRequired = false;
     } else {
       this.higherEducationInfoRequired = true;
@@ -152,12 +152,12 @@ export class EducationInformationComponent implements OnDestroy{
       this._filteredUniversity.next(this.universities.slice());
       return;
     } else {
-      search = removeDialect(search.toLowerCase());
+      search = removeDialect(search.toLocaleLowerCase('tr'));
     }
 
     // There is a problem with remove dialect function, or localization of İ/I
     this._filteredUniversity.next(
-      this.universities.filter(university => removeDialect(university.name.toLowerCase()).includes(search))
+      this.universities.filter(university => removeDialect(university.name.toLocaleLowerCase('tr')).includes(search))
     );
   }
 
@@ -171,12 +171,12 @@ export class EducationInformationComponent implements OnDestroy{
       this._filteredFaculty.next(this.faculties.slice());
       return;
     } else {
-      search = removeDialect(search.toLowerCase());
+      search = removeDialect(search.toLocaleLowerCase('tr'));
     }
 
     // There is a problem with remove dialect function, or localization of İ/I
     this._filteredFaculty.next(
-      this.faculties.filter(faculty => removeDialect(faculty.name.toLowerCase()).includes(search))
+      this.faculties.filter(faculty => removeDialect(faculty.name.toLocaleLowerCase('tr')).includes(search))
     );
   }
 
@@ -190,12 +190,12 @@ export class EducationInformationComponent implements OnDestroy{
       this._filteredDepartment.next(this.departments.slice());
       return;
     } else {
-      search = removeDialect(search.toLowerCase());
+      search = removeDialect(search.toLocaleLowerCase('tr'));
     }
 
     // There is a problem with remove dialect function, or localization of İ/I
     this._filteredDepartment.next(
-      this.departments.filter(department => removeDialect(department.name.toLowerCase()).includes(search))
+      this.departments.filter(department => removeDialect(department.name.toLocaleLowerCase('tr')).includes(search))
     );
   }
 

@@ -8,6 +8,10 @@ import {MainNavigationEnum} from '../../models/navigation/MainNavigationEnum';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
 import {MatchResultItem} from '../../models/match-result/MatchResultInformation';
 import {MatchResultButtonEnum} from '../../models/match-result/MatchResultButtonEnum';
+import {ReplaySubject, Subscription} from 'rxjs';
+import {UserInformation} from '../../models/user-information/UserInformation';
+import {take} from 'rxjs/operators';
+import {MatchResultDataService} from '../../services/data/match-result/match-result.data.service';
 
 @Component({
   selector: 'app-result',
@@ -16,30 +20,41 @@ import {MatchResultButtonEnum} from '../../models/match-result/MatchResultButton
 })
 export class ResultComponent implements OnInit {
 
-  resultList: Array<MatchResultItem> = null;
+  componentTitle = 'Arama Sonuçları';
+
+  _isLoaded: Promise<boolean>;
+  serviceCalled = false;
+  // _resultList: ReplaySubject<MatchResultItem[]> = new ReplaySubject<MatchResultItem[]>(1);
 
   constructor(
     private userInformationDataService: UserInformationDataService,
     private dialog: MatDialog,
     private mainNavigationService: MainNavigationService,
-    private commonService: CommonTaskService
+    private commonService: CommonTaskService,
+    private matchResultDataService: MatchResultDataService
   ) {
   }
 
   ngOnInit(): void {
-    this.userInformationDataService.userInformation.subscribe(data => {
+    this.userInformationDataService.userInformation.pipe(take(1)).subscribe(data => {
       console.log(JSON.stringify(data));
-      if (data == null && this.resultList == null) {
+      if (data == null) {
         this.openDialog();
-        console.log('result component');
-        console.log(data);
       } else {
-        this.commonService.getResultList(data).subscribe(result => {
-          this.resultList = result.matchResultArray;
-          this.userInformationDataService.setUserInformation(null);
-        });
+        this.getMatchResults(data);
       }
     });
+  }
+
+  private getMatchResults(data: UserInformation) {
+    if (!this.serviceCalled) {
+      this.serviceCalled = true;
+      this.commonService.getResultList(data).subscribe(resultList => {
+        this.matchResultDataService.setMatchResultItems(resultList);
+        this.userInformationDataService.setUserInformation(null);
+        this._isLoaded = Promise.resolve(true);
+      });
+    }
   }
 
   private openDialog() {

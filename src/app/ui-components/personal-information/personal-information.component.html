@@ -36,7 +36,14 @@
   </mat-card-content>
 
   <mat-card-actions align="end">
-    <button mat-stroked-button matStepperPrevious (click)="onBackPressed()">Geri Dön</button>
-    <button mat-stroked-button matStepperNext [disabled]="validationControl()" (click)="emitPersonalInformation()">Devam Et</button>
+    <button mat-stroked-button
+            matStepperPrevious
+            class="mat-elevation-z10 button-shadow"
+            (click)="onBackPressed()">Geri Dön</button>
+    <button mat-stroked-button
+            matStepperNext
+            class="mat-elevation-z10 button-shadow"
+            [disabled]="validationControl()"
+            (click)="emitPersonalInformation()">Devam Et</button>
   </mat-card-actions>
 </mat-card>

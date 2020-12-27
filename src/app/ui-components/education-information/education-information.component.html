@@ -81,9 +81,10 @@
   </mat-card-content>
 
   <mat-card-actions align="end">
-    <button mat-stroked-button matStepperPrevious>Geri Dön</button>
+    <button mat-stroked-button class="mat-elevation-z10 button-shadow" matStepperPrevious>Geri Dön</button>
     <button mat-stroked-button
             matStepperNext
+            class="mat-elevation-z10 button-shadow"
             [disabled]="!checkValidations()"
             (click)="emitUserEducationInformation()">Devam Et</button>
   </mat-card-actions>

@@ -20,3 +20,11 @@ html, body { height: 100%; margin: 0; width: 100%; }
 .custom-shadow {
   @include mat-elevation(15, #303F9F, 0.4);
 }
+
+.dashboard-button-shadow {
+  @include mat-elevation(12, #fff, 0.4)
+}
+
+.button-shadow {
+  @include mat-elevation(10, #303F9F, 0.4);
+}

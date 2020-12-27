@@ -12,8 +12,8 @@
   </mat-dialog-content>
 
   <mat-dialog-actions>
-    <button mat-stroked-button *ngIf="componentData.leftButtonText" (click)="close(leftButton)">{{componentData.leftButtonText}}</button>
-    <button mat-stroked-button *ngIf="componentData.rightButtonText" (click)="close(rightButton)">{{componentData.rightButtonText}}</button>
+    <button mat-stroked-button class="mat-elevation-z10 button-shadow" *ngIf="componentData.leftButtonText" (click)="close(leftButton)">{{componentData.leftButtonText}}</button>
+    <button mat-stroked-button class="mat-elevation-z10 button-shadow" *ngIf="componentData.rightButtonText" (click)="close(rightButton)">{{componentData.rightButtonText}}</button>
   </mat-dialog-actions>
 
 </div>

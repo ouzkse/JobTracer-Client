@@ -20,9 +20,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
-import { MatStepperModule } from '@angular/material/stepper';
+import { MatStepperModule, MatStepperIntl } from '@angular/material/stepper';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 
 import { ContactInformationComponent } from './ui-components/contact-information/contact-information.component';
 import { PopupComponent } from './ui-components/popup/popup.component';
@@ -37,6 +37,8 @@ import { MainFlowComponent } from './route-components/main-flow/main-flow.compon
 import { Interceptor } from './services/interceptor/interceptor';
 import { LoadingDialogComponent } from './ui-components/loading-dialog/loading-dialog.component';
 import { ResultComponent } from './route-components/result/result.component';
+import {getTurkishPaginatorIntl} from './helpers/TurkishPaginatorIntl';
+import {getTurkishStepperIntl} from './helpers/TurkishMatStepperIntl';
 
 @NgModule({
   declarations: [
@@ -89,6 +91,14 @@ import { ResultComponent } from './route-components/result/result.component';
     {
       provide: MAT_DATE_LOCALE,
       useValue: 'tr-TR'
+    },
+    {
+      provide: MatPaginatorIntl,
+      useValue: getTurkishPaginatorIntl()
+    },
+    {
+      provide: MatStepperIntl,
+      useValue: getTurkishStepperIntl()
     },
     appRoutingProviders
   ],

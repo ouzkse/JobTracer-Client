@@ -9,7 +9,7 @@ import {UserInformationDataService} from '../../services/data/user-information/u
 import {MainNavigationService} from '../../services/navigation/main/main.navigation.service';
 import {MainNavigationEnum} from '../../models/navigation/MainNavigationEnum';
 import {ForeignLanguageInformation} from '../../models/foreign-language-information/ForeignLanguageInformation';
-import {MatchingPriority} from '../../models/user-information/MatchingPriority';
+import {GlobalVariables} from '../../helpers/GlobalVariables';
 
 @Component({
   selector: 'app-main-flow',
@@ -23,7 +23,7 @@ export class MainFlowComponent implements OnInit {
   userEducationInformation: UserEducationInformation = null;
   userForeignLanguageInformation: Array<ForeignLanguageInformation> = null;
   userWorkExperiences: UserWorkExperience = null;
-  matchingPriority: string = MatchingPriority.LOW;
+  matchingPriority: string = GlobalVariables.matchingPriority;
 
   constructor(private dataService: UserInformationDataService, private mainNavigationService: MainNavigationService) { }
 

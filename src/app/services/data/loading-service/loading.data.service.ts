@@ -13,28 +13,32 @@ export class LoadingDataService {
 
   constructor() { }
 
-  private evaluateSpinnerStatus() {
+  private evaluateSpinnerStatus(showDelay: boolean) {
     if (this.count > 0) {
       this._showLoadingDialog.next(true);
     } else {
+
+      let waitingDuration = 700;
+      if (!showDelay) { waitingDuration = 0; }
+
       setTimeout( () => {
         this._showLoadingDialog.next(false);
-      }, 700); // Its too fast, no problem with waiting.
+      }, waitingDuration); // Its too fast, no problem with waiting.
     }
   }
 
   onRequestStart() {
     this.count = this.count + 1;
-    this.evaluateSpinnerStatus();
+    this.evaluateSpinnerStatus(true);
   }
 
   onResponseReceived() {
     this.count = this.count - 1;
-    this.evaluateSpinnerStatus();
+    this.evaluateSpinnerStatus(true);
   }
 
   resetLoading() {
     this.count = 0;
-    this.evaluateSpinnerStatus();
+    this.evaluateSpinnerStatus(false);
   }
 }

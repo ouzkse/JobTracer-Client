@@ -7,8 +7,9 @@ import {CommonTaskService} from '../../services/tasks/common/common.task.service
 import {PopupComponent} from '../popup/popup.component';
 import {ComponentType} from '@angular/cdk/overlay';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {PopupCommonModel} from '../../models/common/PopupCommonModel';
+import {PopupCommonModel} from '../../models/popup/PopupCommonModel';
 import {UserForeignLanguageInformation} from '../../models/foreign-language-information/UserForeignLanguageInformation';
+import {PopupModelId} from '../../models/popup/PopupModelId';
 
 @Component({
   selector: 'app-foreign-language-information',
@@ -127,6 +128,7 @@ export class ForeignLanguageInformationComponent implements OnInit {
 
   private getNoLanguagesAvailablePopupData() {
     return new PopupCommonModel(
+      PopupModelId.default,
       'Uyarı',
       'Şuan ekleyebileceğiniz başka bir dil sistemimizde bulunmamaktadır.',
       '',

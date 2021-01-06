@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
-import {PopupCommonModel} from '../../models/common/PopupCommonModel';
+import {PopupCommonModel} from '../../models/popup/PopupCommonModel';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {PopupResultModel} from '../../models/popup/PopupResultModel';
 
 @Component({
   selector: 'app-popup',
@@ -22,6 +23,8 @@ export class PopupComponent {
   }
 
   close(buttonId) {
-    this.dialogReference.close(buttonId);
+    this.dialogReference.close(
+      new PopupResultModel(buttonId, this.componentData.id)
+    );
   }
 }

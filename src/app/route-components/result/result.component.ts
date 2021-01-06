@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserInformationDataService} from '../../services/data/user-information/user-information.data.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {PopupCommonModel} from '../../models/common/PopupCommonModel';
+import {PopupCommonModel} from '../../models/popup/PopupCommonModel';
 import {PopupComponent} from '../../ui-components/popup/popup.component';
 import {MainNavigationService} from '../../services/navigation/main/main.navigation.service';
 import {MainNavigationEnum} from '../../models/navigation/MainNavigationEnum';
@@ -12,6 +12,7 @@ import {ReplaySubject, Subscription} from 'rxjs';
 import {UserInformation} from '../../models/user-information/UserInformation';
 import {take} from 'rxjs/operators';
 import {MatchResultDataService} from '../../services/data/match-result/match-result.data.service';
+import {PopupModelId} from '../../models/popup/PopupModelId';
 
 @Component({
   selector: 'app-result',
@@ -61,13 +62,13 @@ export class ResultComponent implements OnInit {
       panelClass: 'dialog-responsive',
       hasBackdrop: true,
       disableClose: true,
-      data: new PopupCommonModel('Uyarı', 'Anasayfaya yönlendirileceksiniz', '', 'Tamam')
+      data: new PopupCommonModel(PopupModelId.default, 'Uyarı', 'Anasayfaya yönlendirileceksiniz', '', 'Tamam')
     };
 
     const dialogRef = this.dialog.open(PopupComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-      data => this.mainNavigationService.setEvent(MainNavigationEnum.dashboard)
+      _ => this.mainNavigationService.setEvent(MainNavigationEnum.dashboard)
     );
   }
 

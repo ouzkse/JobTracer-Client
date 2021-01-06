@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ComponentType} from '@angular/cdk/overlay';
 import {PopupComponent} from './ui-components/popup/popup.component';
-import {PopupCommonModel} from './models/common/PopupCommonModel';
+import {PopupCommonModel} from './models/popup/PopupCommonModel';
 import {UserContactInformation} from './models/contact-information/UserContactInformation';
 import {Router} from '@angular/router';
 import {MainNavigationService} from './services/navigation/main/main.navigation.service';
@@ -10,6 +10,8 @@ import {MainNavigationEnum} from './models/navigation/MainNavigationEnum';
 import { trigger, transition, group, query, style, animate } from '@angular/animations';
 import {MatchResultDataService} from './services/data/match-result/match-result.data.service';
 import {getMatchResultList} from './models/match-result/MatchResultInformation';
+import {ServiceErrorDataService} from './services/data/service-error/service-error.data.service';
+import {PopupModelId} from './models/popup/PopupModelId';
 
 @Component({
   selector: 'app-root',
@@ -52,12 +54,17 @@ export class AppComponent implements OnInit{
 
   constructor(
     private mainNavigationService: MainNavigationService,
+    private errorDataService: ServiceErrorDataService,
     private dialog: MatDialog,
     private router: Router,
     // private dataService: MatchResultDataService
   ) {
     this.mainNavigationService.event.subscribe(event => {
       this.evaluateMainNavigationEvent(event);
+    });
+
+    this.errorDataService.serviceError.subscribe(error => {
+      this.evaluateError(error);
     });
 
     // dataService.setMatchResultItems(getMatchResultList());
@@ -75,20 +82,24 @@ export class AppComponent implements OnInit{
     this.router.navigate([route]);
   }
 
-  openPopupComponent() {
-    this.openDialog(PopupComponent);
-  }
-
-  private openDialog(component: ComponentType<any>) {
+  private openDialog(component: ComponentType<any>, model: PopupCommonModel) {
     const dialogConfig: MatDialogConfig = {
-     panelClass: 'dialog-responsive',
-     data: new PopupCommonModel('Uyarı', 'Description Text', '', 'Tamam')
+      panelClass: 'dialog-responsive',
+      data: model,
+      hasBackdrop: true,
+      disableClose: true
     };
 
     const dialogRef = this.dialog.open(component, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-      data => console.log('Dialog output:', data)
+      data => {
+        console.log('Dialog output:', data);
+        this.errorDataService.setServiceError(null);
+        if (data.popupId === PopupModelId.serviceError) {
+          this.navigate(MainNavigationEnum.dashboard);
+        }
+      }
     );
   }
 
@@ -102,5 +113,12 @@ export class AppComponent implements OnInit{
 
   getDepth(outlet) {
     return outlet.activatedRouteData.depth;
+  }
+
+  private evaluateError(error: PopupCommonModel) {
+    // haha
+    if (error != null) {
+      this.openDialog(PopupComponent, error);
+    }
   }
 }

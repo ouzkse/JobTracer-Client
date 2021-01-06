@@ -50,7 +50,7 @@ export class Interceptor implements HttpInterceptor{
         `body was: ${error.error}`
       );
 
-      if (error.status === 0 || error.status === 500) {
+      /* if (error.status === 0 || error.status === 500) {
         const errorPopupModel = new PopupCommonModel(
           PopupModelId.serviceError,
           'Uyarı',
@@ -59,7 +59,9 @@ export class Interceptor implements HttpInterceptor{
           'Tamam'
         );
         this.errorDataService.setServiceError(errorPopupModel);
-      }
+      } */
+
+      /* Uncomment upper block after the missing services implemented in backend */
     }
     // Return an observable with a user-facing error message.
     return throwError(

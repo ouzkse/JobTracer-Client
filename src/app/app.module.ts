@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule} from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatLineModule, MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
@@ -23,6 +23,7 @@ import { RouterModule } from '@angular/router';
 import { MatStepperModule, MatStepperIntl } from '@angular/material/stepper';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 import { ContactInformationComponent } from './ui-components/contact-information/contact-information.component';
 import { PopupComponent } from './ui-components/popup/popup.component';
@@ -37,8 +38,11 @@ import { MainFlowComponent } from './route-components/main-flow/main-flow.compon
 import { Interceptor } from './services/interceptor/interceptor';
 import { LoadingDialogComponent } from './ui-components/loading-dialog/loading-dialog.component';
 import { ResultComponent } from './route-components/result/result.component';
-import {getTurkishPaginatorIntl} from './helpers/TurkishPaginatorIntl';
-import {getTurkishStepperIntl} from './helpers/TurkishMatStepperIntl';
+import { SettingsComponent } from './ui-components/settings/settings.component';
+import { getTurkishPaginatorIntl } from './helpers/TurkishPaginatorIntl';
+import { getTurkishStepperIntl } from './helpers/TurkishMatStepperIntl';
+import {MatListModule} from '@angular/material/list';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -53,7 +57,8 @@ import {getTurkishStepperIntl} from './helpers/TurkishMatStepperIntl';
     DashboardComponent,
     MainFlowComponent,
     LoadingDialogComponent,
-    ResultComponent
+    ResultComponent,
+    SettingsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -80,7 +85,11 @@ import {getTurkishStepperIntl} from './helpers/TurkishMatStepperIntl';
     RouterModule,
     MatStepperModule,
     NgxMatSelectSearchModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatBottomSheetModule,
+    MatLineModule,
+    MatListModule,
+    MatSliderModule
   ],
   providers: [
     {

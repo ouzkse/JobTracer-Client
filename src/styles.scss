@@ -11,8 +11,18 @@ html, body { height: 100%; margin: 0; width: 100%; }
   width: 50%;
 }
 
+.sheet-responsive {
+  width: 40%;
+  justify-content: center;
+  inline-size: min-content;
+}
+
 @media only screen and (max-width: 760px) {
   .dialog-responsive {
+    width: 100%;
+  }
+
+  .sheet-responsive {
     width: 100%;
   }
 }

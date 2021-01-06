@@ -1,0 +1,35 @@
+
+<p class="mat-headline">{{componentTitle}}</p>
+
+<div fxLayout="column" style="margin-bottom: 32px; margin-top: 32px;">
+
+
+  <div fxLayout="row" fxFlex="100">
+
+    <p class="mat-subheading-1" fxFlex="60">Eşleşme Seviyesi Ayarı</p>
+    <p class="mat-body-2" fxFlex="40" fxLayoutAlign="end center">{{ matchingPriorityText }}</p>
+
+  </div>
+  <mat-divider></mat-divider>
+
+  <mat-slider color="primary" fxFlex="100" min="1" max="5" step="1" tickInterval="1"
+              [value]="getMatchingPriority()"
+              (valueChange)="setMatchingPriority($event)"></mat-slider>
+
+  <p class="mat-card-subtitle" style="margin-top: 32px;">Bu ayar, verdiğiniz bilgiler ile iş ilanları arasındaki eşleşme seviyesini temsil eder. Yüksek değerler ayarlandığında, verdiğiniz bilgilere karşılık daha kişiselleştirilmiş iş ilanları bulunur. </p>
+
+  <mat-divider></mat-divider>
+
+</div>
+
+<div fxLayoutAlign="space-evenly center">
+  <button mat-stroked-button fxFlex="48"
+          class="mat-elevation-z10 button-shadow"
+          (click)="cancel()">{{ cancelButtonText }}</button>
+  <button mat-stroked-button fxFlex="48"
+          class="mat-elevation-z10 button-shadow"
+          (click)="apply()">{{ applyButtonText }}</button>
+</div>
+
+
+

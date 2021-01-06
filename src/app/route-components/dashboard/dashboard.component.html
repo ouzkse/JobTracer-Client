@@ -1,21 +1,41 @@
 
 <div class="dashboard-container"
      fxFlexFill
-     fxLayout="column"
-     fxLayoutAlign="center center">
+     fxLayout="column">
 
-  <p class="mat-display-2 main-title">Dashboard</p>
-  <p class="mat-body-1 sub-title">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Duis at elementum quam.
-    Nam tincidunt est vitae purus dignissim sagittis.
-    Cras.
-  </p>
+  <div
+    fxLayout="column"
+    fxFlex="93"
+    fxLayoutAlign="center center">
 
-  <button mat-stroked-button class="mat-elevation-z12 dashboard-button-shadow" (click)="startJobFindingFlow()">
-    Akışı Başlatma Butonu
-    <mat-icon>arrow_right_alt</mat-icon>
-  </button>
+    <p class="mat-display-2 main-title">Dashboard</p>
+    <p class="mat-body-1 sub-title">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Duis at elementum quam.
+      Nam tincidunt est vitae purus dignissim sagittis.
+      Cras.
+    </p>
+
+    <button mat-stroked-button class="mat-elevation-z12 dashboard-button-shadow" (click)="startJobFindingFlow()">
+      Akışı Başlatma Butonu
+      <mat-icon>arrow_right_alt</mat-icon>
+    </button>
+
+  </div>
+
+  <div fxLayout="column"
+       fxFlex="5"
+       fxLayoutAlign="center center">
+
+    <button mat-stroked-button
+            class="mat-elevation-z10 dashboard-button-shadow"
+            fxLayoutAlign="center center"
+            (click)="openSettingsBottomSheet()">
+      <mat-icon>settings</mat-icon>
+      Ayarlar
+    </button>
+
+  </div>
 
 </div>
 

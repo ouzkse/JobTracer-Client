@@ -44,6 +44,10 @@ export class Interceptor implements HttpInterceptor{
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`
       );
+
+      if (error.status === 500) {
+        console.log('500 - popup - goto dashboard');
+      }
     }
     // Return an observable with a user-facing error message.
     return throwError(

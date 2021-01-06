@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, ValidationErrors, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {removeDialect} from '../../helpers/String';
@@ -19,7 +19,10 @@ export class WorkExperienceComponent implements OnInit {
   @Output() workExperienceEvent = new EventEmitter<UserWorkExperience>();
 
   professionList: Array<string>;
-  professionFormControl = new FormControl('', [Validators.required]);
+  professionFormControl = new FormControl('', [
+    Validators.required,
+    this.requireMatch.bind(this)
+  ]);
   filteredOptions: Observable<string[]>;
 
   professionYearControl = new FormControl('', [Validators.required]);
@@ -86,5 +89,16 @@ export class WorkExperienceComponent implements OnInit {
     );
     console.log(JSON.stringify(workExperiences));
     this.workExperienceEvent.emit(workExperiences);
+  }
+
+  private requireMatch(control: FormControl): ValidationErrors | null {
+    const selection: string = control.value;
+    if (selection.length === 0 || selection.length < 3) {
+      return null;
+    }
+    if (this.professionList && this.professionList.indexOf(selection) < 0) {
+      return { requireMatch: true };
+    }
+    return null;
   }
 }

@@ -20,11 +20,12 @@
         <button mat-button
                 *ngIf="professionFormControl.value"
                 matSuffix mat-icon-button aria-label="Clear"
-                color="warn"
+                color="primary"
                 (click)="professionFormControl.setValue('')">
           <mat-icon>close</mat-icon>
         </button>
-        <mat-error>Bu alan boş bırakılamaz.</mat-error>
+        <mat-error *ngIf="professionFormControl.errors?.required">Bu alan boş bırakılamaz.</mat-error>
+        <mat-error *ngIf="professionFormControl.errors?.requireMatch && !professionFormControl.errors?.required">Lütfen seçeneklerden bir tanesini seçiniz.</mat-error>
       </mat-form-field>
 
       <mat-form-field color="primary" appearance="outline" fxFlex="50">

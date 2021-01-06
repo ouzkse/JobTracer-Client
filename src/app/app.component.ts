@@ -47,6 +47,7 @@ import {getMatchResultList} from './models/match-result/MatchResultInformation';
   ]
 })
 export class AppComponent implements OnInit{
+
   title = 'CME4402-SeniorProject-Client';
 
   constructor(

@@ -12,18 +12,21 @@ export class UserInformation {
   educationInformation: UserEducationInformation;
   foreignLanguageInformation: Array<ForeignLanguageInformation>;
   workExperiences: UserWorkExperience;
+  matchingPriority: string;
 
   constructor(
     contactInformation: UserContactInformation,
     personalInformation: UserPersonalInformation,
     educationInformation: UserEducationInformation,
     foreignLanguageInformation: Array<ForeignLanguageInformation>,
-    workExperiences: UserWorkExperience
+    workExperiences: UserWorkExperience,
+    matchingPriority: string
   ) {
     this.contactInformation = contactInformation;
     this.personalInformation = personalInformation;
     this.educationInformation = educationInformation;
     this.foreignLanguageInformation = foreignLanguageInformation;
     this.workExperiences = workExperiences;
+    this.matchingPriority = matchingPriority;
   }
 }

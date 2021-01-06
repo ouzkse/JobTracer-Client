@@ -36,18 +36,13 @@
 
       <mat-icon fxFlexFill fxLayoutAlign="center" color="warn">error</mat-icon>
 
-      <p class="mat-subheading-2">Girdiğiniz bilgiler ile eşleyen iş alanı malesef bulamadık. Lütfen daha sonra tekrar deneyin.</p>
+      <p class="mat-subheading-2">Girdiğiniz bilgiler ile eşleşen iş alanı malesef bulamadık. Lütfen daha sonra tekrar deneyin.</p>
 
     </div>
 
   </mat-card-content>
 
   <mat-card-actions align="end">
-    <button mat-stroked-button
-            class="mat-elevation-z10 button-shadow"
-            *ngIf="resultList != null"
-            [disabled]="true"
-            (click)="emitButtonAction(matchResultButtonEnum.backToDashboard)">Sonuçları İndir</button>
     <button mat-stroked-button
             class="mat-elevation-z10 button-shadow"
             (click)="emitButtonAction(matchResultButtonEnum.backToDashboard)">Ana sayfa'ya Geri Dön</button>

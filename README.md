@@ -10,20 +10,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## To be Done
 
-<s> Foreign Language Component </s>
+* Chips inside work experience component should be replaced. Doesn't support multiline text.
 
-<s> Personal Info Component </s>
+* User can select matching priority in the dashboard before starting the main flow.
 
-<s> Work Experiences Component </s>
-
-<s> Result Component </s>
-
-<s> Loading Dialog </s>
-
-<s> Main Dashboard --DUMMY </s>
-
-<s> Page Transitions </s>
-
-<s> Routes </s>
-
-<s> MediaQuery Problem with MatTable </s>
+* User can change the matching priority in result component. Info that's taken should be processed with different matching priorities.

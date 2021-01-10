@@ -59,9 +59,9 @@ export class CommonTaskService {
   }
 
   getForeignLanguages(): Observable<Array<LanguageCommonModel>> {
-    return this.requestService.post<Array<LanguageCommonModel>>('rest/languages', null)
+    return this.requestService.get<Array<LanguageCommonModel>>('rest/languages', null)
       .pipe(
-        map(data => data.body)
+        map(data => data)
       );
   }
 

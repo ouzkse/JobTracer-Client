@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import {MatchResultInformation, MatchResultItem} from '../../../models/match-result/MatchResultInformation';
-import {BehaviorSubject, Subject} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {MatchResultInformation} from '../../../models/match-result/MatchResultInformation';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MainFlowComponent } from './main-flow.component';
+import {MainFlowComponent} from './main-flow.component';
 
 describe('MainFlowComponent', () => {
   let component: MainFlowComponent;

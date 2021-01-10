@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatchResultItem} from '../../models/match-result/MatchResultInformation';
 import {MatchResultButtonEnum} from '../../models/match-result/MatchResultButtonEnum';
 import {MatchResultDataService} from '../../services/data/match-result/match-result.data.service';

@@ -7,9 +7,7 @@ import {UserContactInformation} from './models/contact-information/UserContactIn
 import {Router} from '@angular/router';
 import {MainNavigationService} from './services/navigation/main/main.navigation.service';
 import {MainNavigationEnum} from './models/navigation/MainNavigationEnum';
-import { trigger, transition, group, query, style, animate } from '@angular/animations';
-import {MatchResultDataService} from './services/data/match-result/match-result.data.service';
-import {getMatchResultList} from './models/match-result/MatchResultInformation';
+import {animate, group, query, style, transition, trigger} from '@angular/animations';
 import {ServiceErrorDataService} from './services/data/service-error/service-error.data.service';
 import {PopupModelId} from './models/popup/PopupModelId';
 

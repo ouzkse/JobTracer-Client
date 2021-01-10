@@ -3,7 +3,6 @@ import {MainNavigationService} from '../../services/navigation/main/main.navigat
 import {MainNavigationEnum} from '../../models/navigation/MainNavigationEnum';
 import {MatBottomSheet, MatBottomSheetConfig} from '@angular/material/bottom-sheet';
 import {SettingsComponent} from '../../ui-components/settings/settings.component';
-import {MatDialogConfig} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dashboard',

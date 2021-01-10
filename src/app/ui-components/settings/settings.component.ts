@@ -3,8 +3,8 @@ import {MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import {GlobalVariables} from '../../helpers/GlobalVariables';
 import {
   getNumberValueOfMatchingPriority,
-  getStringValueOfMatchingPriority, getValueOfMatchingPriority,
-  MatchingPriority
+  getStringValueOfMatchingPriority,
+  getValueOfMatchingPriority
 } from '../../models/user-information/MatchingPriority';
 
 @Component({

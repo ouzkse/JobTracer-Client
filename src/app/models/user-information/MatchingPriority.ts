@@ -1,5 +1,3 @@
-import {GlobalVariables} from '../../helpers/GlobalVariables';
-
 export enum MatchingPriority {
   NONE = 'NONE',
   LOW = 'LOW',

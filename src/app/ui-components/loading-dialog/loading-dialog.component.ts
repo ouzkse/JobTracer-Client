@@ -1,6 +1,5 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {LoadingDataService} from '../../services/data/loading-service/loading.data.service';
-import {timer} from 'rxjs';
 
 @Component({
   selector: 'app-loading-dialog',

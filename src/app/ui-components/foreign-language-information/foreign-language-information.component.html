@@ -51,7 +51,7 @@
         <mat-label>Yabancı Dil</mat-label>
         <label>
           <mat-select [formControl]="newLanguageFormControl" (ngModelChange)="checkAddOperationValidation()">
-            <mat-option *ngFor="let language of foreignLanguages" [value]="language">{{ language.name }}</mat-option>
+            <mat-option *ngFor="let language of foreignLanguages" [value]="language">{{ language }}</mat-option>
           </mat-select>
         </label>
       </mat-form-field>

@@ -50,8 +50,15 @@
       <mat-form-field color="primary" appearance="outline" fxFlex="50">
         <mat-label>Yabancı Dil</mat-label>
         <label>
-          <mat-select [formControl]="newLanguageFormControl" (ngModelChange)="checkAddOperationValidation()">
-            <mat-option *ngFor="let language of foreignLanguages" [value]="language">{{ language }}</mat-option>
+          <mat-select [formControl]="newLanguageFormControl" (ngModelChange)="checkAddOperationValidation()" #languageSelect>
+            <mat-option>
+              <ngx-mat-select-search [formControl]="languageFilterCtrl"
+                                     [noEntriesFoundLabel]="noEntriesFoundLabel"
+                                     [placeholderLabel]="placeholderLabel"></ngx-mat-select-search>
+            </mat-option>
+            <mat-option *ngFor="let language of _filteredLanguages | async" [value]="language">
+              {{ language }}
+            </mat-option>
           </mat-select>
         </label>
       </mat-form-field>

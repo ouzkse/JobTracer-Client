@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {getDefaultLanguageLevels} from '../../models/common/LanguageLevelCommonModel';
 import {MatTableDataSource} from '@angular/material/table';
@@ -9,13 +9,17 @@ import {ComponentType} from '@angular/cdk/overlay';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {PopupCommonModel} from '../../models/popup/PopupCommonModel';
 import {PopupModelId} from '../../models/popup/PopupModelId';
+import {ReplaySubject, Subject} from 'rxjs';
+import {MatSelect} from '@angular/material/select';
+import {takeUntil} from 'rxjs/operators';
+import {removeDialect} from '../../helpers/String';
 
 @Component({
   selector: 'app-foreign-language-information',
   templateUrl: './foreign-language-information.component.html',
   styleUrls: ['foreign-language-information.component.css']
 })
-export class ForeignLanguageInformationComponent implements OnInit {
+export class ForeignLanguageInformationComponent implements OnInit, OnDestroy {
 
   componentTitle = 'Yabancı Dil Bilgileri';
 
@@ -37,6 +41,15 @@ export class ForeignLanguageInformationComponent implements OnInit {
   newLanguageFormControl = new FormControl('', [Validators.required]);
   foreignLanguages: Array<string>;
 
+  noEntriesFoundLabel = 'Eşleşme bulunamadı.';
+  placeholderLabel = 'Arama';
+
+  languageFilterCtrl: FormControl = new FormControl();
+  _filteredLanguages: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
+  @ViewChild('languageSelect', { static: true }) languageSelect: MatSelect;
+
+  protected _onDestroy = new Subject<void>();
+
   constructor(private commonService: CommonTaskService, private dialog: MatDialog) { }
 
   ngOnInit() {
@@ -47,7 +60,35 @@ export class ForeignLanguageInformationComponent implements OnInit {
     this.commonService.getForeignLanguages().subscribe((data => {
         this.allForeignLanguages = data;
         this.foreignLanguages = this.allForeignLanguages;
+        this._filteredLanguages.next(this.foreignLanguages);
+        this.setLanguageChangeObserver();
     }));
+  }
+
+  private setLanguageChangeObserver() {
+    this.languageFilterCtrl.valueChanges
+      .pipe(takeUntil(this._onDestroy))
+      .subscribe(() => {
+        this.filterLanguages();
+      });
+  }
+
+  private filterLanguages() {
+    if (!this.foreignLanguages) {
+      return;
+    }
+
+    let search = this.languageFilterCtrl.value;
+    if (!search) {
+      this._filteredLanguages.next(this.foreignLanguages.slice());
+      return;
+    } else {
+      search = removeDialect(search.toLocaleLowerCase('tr'));
+    }
+
+    this._filteredLanguages.next(
+      this.foreignLanguages.filter(language => removeDialect(language.toLocaleLowerCase('tr')).includes(search))
+    );
   }
 
   addNewInfo() {
@@ -72,6 +113,7 @@ export class ForeignLanguageInformationComponent implements OnInit {
   filterForeignLanguages() {
     const addedLanguages = this.foreignInformationList.map(x => x.name);
     this.foreignLanguages = this.foreignLanguages.filter(x => !addedLanguages.includes(x));
+    this._filteredLanguages.next(this.foreignLanguages);
   }
 
   checkAddOperationValidation() {
@@ -125,13 +167,16 @@ export class ForeignLanguageInformationComponent implements OnInit {
     );
   }
 
-  private getNoLanguagesAvailablePopupData() {
-    return new PopupCommonModel(
-      PopupModelId.default,
-      'Uyarı',
-      'Şuan ekleyebileceğiniz başka bir dil sistemimizde bulunmamaktadır.',
-      '',
-      'Tamam'
-    );
+  private getNoLanguagesAvailablePopupData = () => new PopupCommonModel(
+    PopupModelId.default,
+    'Uyarı',
+    'Şuan ekleyebileceğiniz başka bir dil sistemimizde bulunmamaktadır.',
+    '',
+    'Tamam'
+  )
+
+  ngOnDestroy() {
+    this._onDestroy.next();
+    this._onDestroy.complete();
   }
 }

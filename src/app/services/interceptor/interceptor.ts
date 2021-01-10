@@ -1,11 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import { map, tap} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {LoadingDataService} from '../data/loading-service/loading.data.service';
 import {ServiceErrorDataService} from '../data/service-error/service-error.data.service';
-import {PopupCommonModel} from '../../models/popup/PopupCommonModel';
-import {PopupModelId} from '../../models/popup/PopupModelId';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor{

@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { ServiceErrorDataService } from './service-error.data.service';
+import {ServiceErrorDataService} from './service-error.data.service';
 
 describe('ServiceErrorDataServiceService', () => {
   let service: ServiceErrorDataService;

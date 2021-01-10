@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {getDefaultLanguageLevels, LanguageCommonModel} from '../../models/common/LanguageCommonModel';
+import {getDefaultLanguageLevels} from '../../models/common/LanguageLevelCommonModel';
 import {MatTableDataSource} from '@angular/material/table';
 import {ForeignLanguageInformation} from '../../models/foreign-language-information/ForeignLanguageInformation';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
@@ -8,7 +8,6 @@ import {PopupComponent} from '../popup/popup.component';
 import {ComponentType} from '@angular/cdk/overlay';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {PopupCommonModel} from '../../models/popup/PopupCommonModel';
-import {UserForeignLanguageInformation} from '../../models/foreign-language-information/UserForeignLanguageInformation';
 import {PopupModelId} from '../../models/popup/PopupModelId';
 
 @Component({
@@ -34,9 +33,9 @@ export class ForeignLanguageInformationComponent implements OnInit {
   newLanguageLevelFormControl = new FormControl('', [Validators.required]);
   languageLevelOptions = getDefaultLanguageLevels();
 
-  private allForeignLanguages: Array<LanguageCommonModel>;
+  private allForeignLanguages: Array<string>;
   newLanguageFormControl = new FormControl('', [Validators.required]);
-  foreignLanguages: Array<LanguageCommonModel>;
+  foreignLanguages: Array<string>;
 
   constructor(private commonService: CommonTaskService, private dialog: MatDialog) { }
 
@@ -72,7 +71,7 @@ export class ForeignLanguageInformationComponent implements OnInit {
 
   filterForeignLanguages() {
     const addedLanguages = this.foreignInformationList.map(x => x.name);
-    this.foreignLanguages = this.foreignLanguages.filter(x => !addedLanguages.includes(x.name));
+    this.foreignLanguages = this.foreignLanguages.filter(x => !addedLanguages.includes(x));
   }
 
   checkAddOperationValidation() {
@@ -81,7 +80,7 @@ export class ForeignLanguageInformationComponent implements OnInit {
 
   saveLanguageInformation() {
     const value = new ForeignLanguageInformation(
-      this.count, this.newLanguageFormControl.value.name, this.newLanguageLevelFormControl.value
+      this.count, this.newLanguageFormControl.value, this.newLanguageLevelFormControl.value
     );
     this.foreignInformationList.push(value);
     this.count = this.count + 1;

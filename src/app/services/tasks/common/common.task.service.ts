@@ -3,8 +3,7 @@ import {CityCommonModel} from '../../../models/common/CityCommonModel';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ApiService} from '../../api/api.service';
-import {LanguageCommonModel} from '../../../models/common/LanguageCommonModel';
-import {MatchResultInformation, MatchResultItem} from '../../../models/match-result/MatchResultInformation';
+import {MatchResultInformation} from '../../../models/match-result/MatchResultInformation';
 import {UserInformation} from '../../../models/user-information/UserInformation';
 import {University} from '../../../models/education-information/University';
 import {HttpParams} from '@angular/common/http';
@@ -58,10 +57,10 @@ export class CommonTaskService {
       );
   }
 
-  getForeignLanguages(): Observable<Array<LanguageCommonModel>> {
-    return this.requestService.post<Array<LanguageCommonModel>>('rest/languages', null)
+  getForeignLanguages(): Observable<Array<string>> {
+    return this.requestService.get<Array<string>>('rest/languages', null)
       .pipe(
-        map(data => data.body)
+        map(data => data)
       );
   }
 

@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
-import {Form, FormControl, Validators} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {CityCommonModel} from '../../models/common/CityCommonModel';
 import {UserContactInformation} from '../../models/contact-information/UserContactInformation';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';

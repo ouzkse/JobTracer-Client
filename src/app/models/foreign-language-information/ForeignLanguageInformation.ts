@@ -1,4 +1,4 @@
-import {LanguageLevelCommonModel} from '../common/LanguageCommonModel';
+import {LanguageLevelCommonModel} from '../common/LanguageLevelCommonModel';
 
 export class ForeignLanguageInformation {
   id: number;

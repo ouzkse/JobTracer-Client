@@ -1,13 +1,5 @@
 import {ForeignLanguageLevel} from '../foreign-language-information/ForeignLanguageInformation';
 
-export class LanguageCommonModel {
-  name: string;
-
-  constructor(name: string) {
-    this.name = name;
-  }
-}
-
 export class LanguageLevelCommonModel {
   levelName: string;
   levelType: ForeignLanguageLevel;

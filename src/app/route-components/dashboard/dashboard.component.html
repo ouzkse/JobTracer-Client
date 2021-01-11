@@ -1,12 +1,12 @@
+<!--
 
-<div class="dashboard-container"
-     fxFlexFill
-     fxLayout="column">
+<div class="haha">
 
-  <div
-    fxLayout="column"
-    fxFlex="93"
-    fxLayoutAlign="center center">
+  <video class="video-fluid view" playsinline autoplay muted loop>
+    <source src="https://mdbootstrap.com/img/video/Lines.mp4" type="video/mp4" />
+  </video>
+
+  <div>
 
     <p class="mat-display-2 main-title">Dashboard</p>
     <p class="mat-body-1 sub-title">
@@ -23,17 +23,93 @@
 
   </div>
 
-  <div fxLayout="column"
-       fxFlex="5"
-       fxLayoutAlign="center center">
+  <div class="dashboard-container"
+       fxLayout="column">
 
-    <button mat-stroked-button
-            class="mat-elevation-z10 dashboard-button-shadow"
-            fxLayoutAlign="center center"
-            (click)="openSettingsBottomSheet()">
-      <mat-icon>settings</mat-icon>
-      Ayarlar
-    </button>
+    <div
+      fxLayout="column"
+      fxFlex="93"
+      fxLayoutAlign="center center">
+
+      <p class="mat-display-2 main-title">Dashboard</p>
+      <p class="mat-body-1 sub-title">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Duis at elementum quam.
+        Nam tincidunt est vitae purus dignissim sagittis.
+        Cras.
+      </p>
+
+      <button mat-stroked-button class="mat-elevation-z12 dashboard-button-shadow" (click)="startJobFindingFlow()">
+        Akışı Başlatma Butonu
+        <mat-icon>arrow_right_alt</mat-icon>
+      </button>
+
+    </div>
+
+    <div fxLayout="column"
+         fxFlex="5"
+         fxLayoutAlign="center center">
+
+      <button mat-stroked-button
+              class="mat-elevation-z10 dashboard-button-shadow"
+              fxLayoutAlign="center center"
+              (click)="openSettingsBottomSheet()">
+        <mat-icon>settings</mat-icon>
+        Ayarlar
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+-->
+
+
+
+<div id="fullwidth-video">
+  <div class="fullwidth-video-bg">
+    <video playsinline autoplay muted loop>
+      <source src="https://mdbootstrap.com/img/video/Lines.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="dashboard-container"
+       fxLayout="column">
+
+    <div
+      fxLayout="column"
+      fxFlex="93"
+      fxLayoutAlign="center center">
+
+      <p class="mat-display-2 main-title dashboard-item">Dashboard</p>
+      <p class="mat-body-1 sub-title dashboard-item">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Duis at elementum quam.
+        Nam tincidunt est vitae purus dignissim sagittis.
+        Cras.
+      </p>
+
+      <button mat-stroked-button class="mat-elevation-z12 dashboard-button-shadow dashboard-item" (click)="startJobFindingFlow()">
+        Akışı Başlatma Butonu
+        <mat-icon>arrow_right_alt</mat-icon>
+      </button>
+
+    </div>
+
+    <div fxLayout="column"
+         fxFlex="5"
+         fxLayoutAlign="center center">
+
+      <button mat-stroked-button
+              class="mat-elevation-z10 dashboard-button-shadow dashboard-item"
+              fxLayoutAlign="center center"
+              (click)="openSettingsBottomSheet()">
+        <mat-icon>settings</mat-icon>
+        Ayarlar
+      </button>
+
+    </div>
 
   </div>
 

@@ -38,3 +38,7 @@ html, body { height: 100%; margin: 0; width: 100%; }
 .button-shadow {
   @include mat-elevation(10, #303F9F, 0.4);
 }
+
+.list-item-shadow {
+  @include mat-elevation(5, #303F9F, 0.4);
+}

@@ -44,9 +44,9 @@
     <div fxLayout="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0" fxFlexFill
          fxLayout.lt-sm="column"
          [style]="'margin-bottom: 16px'"
-         *ngIf="experienceChipList.length > 0">
+         *ngIf="experienceList.length > 0">
 
-      <mat-chip-list #chipList>
+      <!-- <mat-chip-list #chipList>
         <mat-chip
           *ngFor="let experience of experienceChipList"
           [selectable]=true
@@ -55,7 +55,16 @@
           {{experience.value}}
           <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
-      </mat-chip-list>
+      </mat-chip-list> -->
+
+      <mat-list>
+        <mat-list-item class="mat-elevation-z5 list-item-shadow list-item" *ngFor="let experience of experienceList">
+          <p matLine class="mat-body-1 list-text">{{experience.value}}</p>
+          <button mat-button (click)="removeExperience(experience.key)" style="cursor: hand">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
 
     </div>
 
@@ -73,23 +82,20 @@
       </mat-form-field>
     </div>
 
-    <mat-divider></mat-divider>
-
     <div fxLayout="row" fxLayoutGap="16px" fxLayoutGap.lt-sm="0"
          fxLayout.lt-sm="column" [style]="'margin-top: 4px;'">
 
-      <mat-expansion-panel class="mat-elevation-z0" fxFlexFill>
+      <mat-expansion-panel class="mat-elevation-z15 custom-shadow" [style]="'margin-bottom: 4px;'" fxFlexFill>
         <mat-expansion-panel-header>
-          <mat-panel-title>
-            <mat-icon color="warn" [style]="'margin-right: 8px; margin-top: 4px;'">warning</mat-icon>
-            <p class="mat-title">Önemli Uyarı</p>
+          <mat-panel-title class="mat-body-2" style="font-size: 16px;">
+            <mat-icon color="warn" style="margin-right: 16px;">warning</mat-icon>
+            Uyarı
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <p class="mat-subheading-2">Bu kısımda verdiğiniz bilgiler sistemimiz tarafından kullanılan algoritma için önem arz etmektedir. Lütfen deneyimlerinizi tek cümle halinde sırayla ekleyiniz. Bir sonraki aşamaya geçebilmeniz için en az 3 iş deneyimi girmeniz beklenmektedir. </p>
+        <mat-divider></mat-divider>
+        <p class="mat-subheading-1" style="margin-top: 16px;">Bu kısımda verdiğiniz bilgiler sistemimiz tarafından kullanılan algoritma için önem arz etmektedir. Lütfen deneyimlerinizi tek cümle halinde sırayla ekleyiniz. Bir sonraki aşamaya geçebilmeniz için en az 3 iş deneyimi girmeniz beklenmektedir. </p>
       </mat-expansion-panel>
     </div>
-
-    <mat-divider></mat-divider>
 
   </mat-card-content>
 

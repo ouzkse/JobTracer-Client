@@ -27,7 +27,7 @@ export class WorkExperienceComponent implements OnInit {
 
   professionYearControl = new FormControl('', [Validators.required]);
 
-  experienceChipList: KeyValuePair[] = [];
+  experienceList: KeyValuePair[] = [];
   experienceFormControl = new FormControl();
   experienceIdCount = 0;
 
@@ -62,15 +62,15 @@ export class WorkExperienceComponent implements OnInit {
   addExperience() {
     const text = this.experienceFormControl.value;
     if (text.length > 0) {
-      this.experienceChipList.push({key: this.experienceIdCount, value: text});
+      this.experienceList.push({key: this.experienceIdCount, value: text});
       this.experienceIdCount = this.experienceIdCount + 1;
       this.experienceFormControl.setValue('');
-      console.log(this.experienceChipList);
+      console.log(this.experienceList);
     }
   }
 
   removeExperience(id: number) {
-    this.experienceChipList = this.experienceChipList.filter( x => x.key !== id);
+    this.experienceList = this.experienceList.filter(x => x.key !== id);
   }
 
   onBackPressed() {
@@ -78,13 +78,13 @@ export class WorkExperienceComponent implements OnInit {
   }
 
   isValidationsValid() {
-    return !this.professionFormControl.invalid && this.experienceChipList.length >= 3 && !this.professionYearControl.invalid;
+    return !this.professionFormControl.invalid && this.experienceList.length >= 3 && !this.professionYearControl.invalid;
   }
 
   emitUserExperiences() {
     const workExperiences = new UserWorkExperience(
       this.professionFormControl.value,
-      this.experienceChipList.map(x => x.value),
+      this.experienceList.map(x => x.value),
       this.professionYearControl.value
     );
     console.log(JSON.stringify(workExperiences));

@@ -4,7 +4,7 @@ import {GlobalVariables} from '../../helpers/GlobalVariables';
 import {
   getNumberValueOfMatchingPriority,
   getStringValueOfMatchingPriority,
-  getValueOfMatchingPriority
+  getValueOfMatchingPriority, MatchingPriority
 } from '../../models/user-information/MatchingPriority';
 
 @Component({
@@ -44,5 +44,9 @@ export class SettingsComponent implements OnInit {
   setMatchingPriority(value: number) {
     this.matchingPriority = value.toString();
     this.matchingPriorityText = getStringValueOfMatchingPriority(value);
+  }
+
+  isWarningVisible(): boolean {
+    return this.matchingPriority === '5' || this.matchingPriority === MatchingPriority.HIGHEST;
   }
 }

@@ -42,3 +42,7 @@ html, body { height: 100%; margin: 0; width: 100%; }
 .list-item-shadow {
   @include mat-elevation(5, #303F9F, 0.4);
 }
+
+.warn-color {
+  color: mat-color($app-warn) !important;
+}

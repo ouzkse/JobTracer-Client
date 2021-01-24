@@ -10,6 +10,11 @@
     <p class="mat-body-2" fxFlex="40" fxLayoutAlign="end center">{{ matchingPriorityText }}</p>
 
   </div>
+
+  <div fxLayout="row" fxFlex="100" *ngIf="isWarningVisible()">
+    <p class="mat-body-2 warn-color" fxFlex="100">Eşleşme seviyesi "En Yüksek" olarak ayarlanması eşleşme sayısında düşüşe sebep olur.</p>
+  </div>
+
   <mat-divider></mat-divider>
 
   <mat-slider color="primary" fxFlex="100" min="1" max="5" step="1" tickInterval="1"

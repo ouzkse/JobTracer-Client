@@ -5,6 +5,13 @@ import {MatchResultDataService} from '../../services/data/match-result/match-res
 import {PageEvent} from '@angular/material/paginator';
 import {CommonTaskService} from '../../services/tasks/common/common.task.service';
 import {PageModel} from '../../models/match-result/PageModel';
+import {
+  getNumberValueOfMatchingPriority,
+  getPriorityList,
+  getStringValueOfMatchingPriority, getValueOfMatchingPriority
+} from '../../models/user-information/MatchingPriority';
+import {KeyValuePair} from '../../models/common/KeyValuePair';
+import {GlobalVariables} from '../../helpers/GlobalVariables';
 
 @Component({
   selector: 'app-match-result',
@@ -13,11 +20,15 @@ import {PageModel} from '../../models/match-result/PageModel';
 })
 export class MatchResultComponent implements OnInit{
 
-  componentTitle = 'Arama Sonuçları';
+  componentTitle = 'Eşleşme Sonuçları';
+
+  priorityList = getPriorityList();
+  selectedPriority: KeyValuePair;
 
   resultList: Array<MatchResultItem> = null;
   totalPage: number;
   pageId: number;
+  pageIndex = 0;
 
   @Output() buttonActionEvent = new EventEmitter<MatchResultButtonEnum>();
   matchResultButtonEnum = MatchResultButtonEnum;
@@ -30,8 +41,18 @@ export class MatchResultComponent implements OnInit{
       this.resultList = data.jobs;
       this.totalPage = data.totalPages;
       this.pageId = data.listId;
+      this.pageIndex = 0;
       console.log(this.resultList);
     });
+
+    this.getInitialPriority();
+  }
+
+  private getInitialPriority() {
+    const globalPriority = GlobalVariables.matchingPriority;
+    this.selectedPriority = {
+      key: getNumberValueOfMatchingPriority(globalPriority), value: getStringValueOfMatchingPriority(globalPriority)
+    };
   }
 
   getResultItemCities(resultItem: MatchResultItem): string {
@@ -44,8 +65,19 @@ export class MatchResultComponent implements OnInit{
 
   onPageChanged(event: PageEvent) {
     console.log(event);
-    this.commonService.getResultPageData(new PageModel(this.pageId, event.pageIndex)).subscribe(result => {
+    this.pageIndex = event.pageIndex;
+    this.commonService.getResultPageData(new PageModel(this.pageId, event.pageIndex, null)).subscribe(result => {
       this.resultList = result.jobs;
+    });
+  }
+
+  setMatchingPriority(value: KeyValuePair) {
+    this.commonService.getResultPageData(new PageModel(this.pageId, 0, getValueOfMatchingPriority(value.toString())))
+      .subscribe(result => {
+        this.resultList = result.jobs;
+        this.totalPage = result.totalPages;
+        this.pageId = result.listId;
+        this.pageIndex = 0;
     });
   }
 }

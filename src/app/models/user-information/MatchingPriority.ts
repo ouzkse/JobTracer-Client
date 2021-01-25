@@ -1,3 +1,5 @@
+import {KeyValuePair} from '../common/KeyValuePair';
+
 export enum MatchingPriority {
   NONE = 'NONE',
   LOW = 'LOW',
@@ -58,4 +60,14 @@ export function getStringValueOfMatchingPriority(priority): string {
     case MatchingPriority.HIGHEST:
       return 'Çok Yüksek';
   }
+}
+
+export function getPriorityList(): Array<KeyValuePair> {
+  return new Array<KeyValuePair>(
+    {key: 1, value: 'Çok Düşük'},
+    {key: 2, value: 'Düşük'},
+    {key: 3, value: 'Orta'},
+    {key: 4, value: 'Yüksek'},
+    {key: 5, value: 'Çok Yüksek'}
+  );
 }

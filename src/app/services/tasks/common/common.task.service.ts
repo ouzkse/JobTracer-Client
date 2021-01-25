@@ -50,13 +50,6 @@ export class CommonTaskService {
     );
   }
 
-  getDriverLicenseList(): Observable<[string]> {
-    return this.requestService.post<[string]>('rest/driverlicencetypes', null)
-      .pipe(
-        map(data => data.body)
-      );
-  }
-
   getForeignLanguages(): Observable<Array<string>> {
     return this.requestService.get<Array<string>>('rest/languages', null)
       .pipe(

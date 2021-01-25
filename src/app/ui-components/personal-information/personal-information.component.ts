@@ -1,8 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {GenderCommonModel, GenderType, getDefaultGenderOptions} from '../../models/common/GenderCommonModel';
 import {UserPersonalInformation} from '../../models/personal-information/UserPersonalInformation';
-import {FormControl} from '@angular/forms';
-import {CommonTaskService} from '../../services/tasks/common/common.task.service';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-personal-information',
@@ -17,7 +16,7 @@ export class PersonalInformationComponent implements OnInit{
 
   genderOptions = getDefaultGenderOptions();
 
-  militaryStatusFormControl = new FormControl();
+  militaryStatusFormControl = new FormControl('', [Validators.required]);
   militaryStatusOptions = ['Yaptım', 'Yapmadım', 'Tecilli'];
 
   driverLicenseFormControl = new FormControl();
@@ -26,9 +25,10 @@ export class PersonalInformationComponent implements OnInit{
   isMilitaryStatusDisabled = true;
   selectedGender: GenderCommonModel;
 
-  constructor(private commonService: CommonTaskService) { }
+  constructor() { }
 
   ngOnInit() {
+    this.militaryStatusFormControl.disable();
   }
 
   selectGender(value) {
@@ -38,10 +38,16 @@ export class PersonalInformationComponent implements OnInit{
 
   private evaluateMilitaryFieldVisibility() {
     this.isMilitaryStatusDisabled = this.selectedGender.type !== GenderType.man;
+    if (this.isMilitaryStatusDisabled) {
+      this.militaryStatusFormControl.disable();
+    } else {
+      this.militaryStatusFormControl.enable();
+    }
+    this.validationControl();
   }
 
   validationControl() {
-    return !this.isMilitaryStatusDisabled && this.militaryStatusFormControl.invalid;
+    return !this.isMilitaryStatusDisabled && !this.militaryStatusFormControl.disabled && this.militaryStatusFormControl.invalid;
   }
 
   onBackPressed() {

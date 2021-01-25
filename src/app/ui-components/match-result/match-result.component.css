@@ -15,3 +15,13 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.mat-stroked-button {
+  margin-top: 4px !important;
+  min-height: 51px;
+  max-height: 51px !important;
+  white-space: pre-line !important;
+  overflow-x: hidden !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}

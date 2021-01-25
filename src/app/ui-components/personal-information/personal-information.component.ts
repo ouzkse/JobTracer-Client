@@ -21,7 +21,7 @@ export class PersonalInformationComponent implements OnInit{
   militaryStatusOptions = ['Yaptım', 'Yapmadım', 'Tecilli'];
 
   driverLicenseFormControl = new FormControl();
-  driverLicenseOptions = ['A', 'B', 'C', 'D', 'E', 'F'];
+  driverLicenseOptions = ['M', 'A1', 'A2', 'A', 'B1', 'B', 'BE', 'C1', 'C1E', 'C', 'CE', 'D1', 'D1E', 'D', 'DE', 'F', 'G'];
 
   isMilitaryStatusDisabled = true;
   selectedGender: GenderCommonModel;
@@ -29,11 +29,6 @@ export class PersonalInformationComponent implements OnInit{
   constructor(private commonService: CommonTaskService) { }
 
   ngOnInit() {
-    this.getDriverLicenseList();
-  }
-
-  getDriverLicenseList() {
-    this.commonService.getDriverLicenseList().subscribe(data => this.driverLicenseOptions = data);
   }
 
   selectGender(value) {

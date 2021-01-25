@@ -10,6 +10,7 @@ import {MainNavigationEnum} from './models/navigation/MainNavigationEnum';
 import {animate, group, query, style, transition, trigger} from '@angular/animations';
 import {ServiceErrorDataService} from './services/data/service-error/service-error.data.service';
 import {PopupModelId} from './models/popup/PopupModelId';
+import {UserInformation} from './models/user-information/UserInformation';
 
 @Component({
   selector: 'app-root',
@@ -55,7 +56,7 @@ export class AppComponent implements OnInit{
     private errorDataService: ServiceErrorDataService,
     private dialog: MatDialog,
     private router: Router,
-    // private dataService: MatchResultDataService
+    // private dataService: UserInformationDataService
   ) {
     this.mainNavigationService.event.subscribe(event => {
       this.evaluateMainNavigationEvent(event);
@@ -65,7 +66,7 @@ export class AppComponent implements OnInit{
       this.evaluateError(error);
     });
 
-    // dataService.setMatchResultItems(getMatchResultList());
+    // this.dataService.setUserInformation(this.createTestSubject());
   }
 
   private evaluateMainNavigationEvent(event: MainNavigationEnum) {
@@ -118,5 +119,55 @@ export class AppComponent implements OnInit{
     if (error != null) {
       this.openDialog(PopupComponent, error);
     }
+  }
+
+  private createTestSubject(): UserInformation {
+    const str = '{\n' +
+      '   "contactInformation":{\n' +
+      '      "emailAddress":"oguzkose11@gmail.com",\n' +
+      '      "dateOfBirth":"2002-12-01T22:00:00.000Z",\n' +
+      '      "city":[\n' +
+      '         {\n' +
+      '            "cityName":"** Tüm Türkiye",\n' +
+      '            "zipCode":"66"\n' +
+      '         }\n' +
+      '      ]\n' +
+      '   },\n' +
+      '   "personalInformation":{\n' +
+      '      "gender":{\n' +
+      '         "type":1,\n' +
+      '         "name":"Erkek"\n' +
+      '      },\n' +
+      '      "militaryServiceStatus":"Yaptım",\n' +
+      '      "driverLicence":[\n' +
+      '         "B",\n' +
+      '         "C",\n' +
+      '         "D"\n' +
+      '      ]\n' +
+      '   },\n' +
+      '   "educationInformation":{\n' +
+      '      "degree":"lise mezunu",\n' +
+      '      "graduationYear":"2020",\n' +
+      '      "university":null,\n' +
+      '      "faculty":null,\n' +
+      '      "department":null\n' +
+      '   },\n' +
+      '   "foreignLanguageInformation":[\n' +
+      '\n' +
+      '   ],\n' +
+      '   "workExperiences":{\n' +
+      '      "profession":"Kasiyer",\n' +
+      '      "experiences":[\n' +
+      '         "Kasiyerlik yaptım",\n' +
+      '         "mükemmelim",\n' +
+      '         "iyiyim"\n' +
+      '      ],\n' +
+      '      "totalExperience":12\n' +
+      '   },\n' +
+      '   "matchingPriority": "LOW"\n' +
+      '}';
+    const info = JSON.parse(str);
+    console.log(info);
+    return info;
   }
 }

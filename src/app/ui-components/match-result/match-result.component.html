@@ -24,7 +24,7 @@
         </mat-expansion-panel>
       </mat-accordion>
 
-      <mat-paginator [showFirstLastButtons]="false"  [hidePageSize]="true" [pageSize]="1" [length]="totalPage" (page)="onPageChanged($event)"></mat-paginator>
+      <mat-paginator [showFirstLastButtons]="false"  [hidePageSize]="true" [pageSize]="1" [length]="totalPage" [pageIndex]="pageIndex" (page)="onPageChanged($event)"></mat-paginator>
 
     </div>
 
@@ -46,7 +46,20 @@
 
   </mat-card-content>
 
-  <mat-card-actions align="end">
+  <mat-card-actions align="end"
+                    fxLayout="row"
+                    fxLayout.md="row"
+                    fxLayoutGap.gt-md="8px"
+                    fxLayoutGap.md="8px"
+                    fxLayout.lt-md="column">
+      <mat-form-field color="primary" appearance="outline" hideRequiredMarker>
+        <mat-label>Eşleşme Seviyesi</mat-label>
+        <mat-select [(value)]="selectedPriority.key" (valueChange)="setMatchingPriority($event)" required>
+          <mat-option *ngFor="let priority of priorityList" [value]="priority.key">{{ priority.value }}</mat-option>
+        </mat-select>
+        <mat-error>Bu alan boş bırakılamaz.</mat-error>
+      </mat-form-field>
+
     <button mat-stroked-button
             class="mat-elevation-z10 button-shadow"
             (click)="emitButtonAction(matchResultButtonEnum.backToDashboard)">Ana sayfa'ya Geri Dön</button>

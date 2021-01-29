@@ -55,8 +55,16 @@ export class MatchResultComponent implements OnInit{
     };
   }
 
-  getResultItemCities(resultItem: MatchResultItem): string {
-    return resultItem.cities.toString();
+  getCitiesForHeader(resultItem: MatchResultItem): string {
+    return resultItem.cities.slice(0, 3).toString();
+  }
+
+  getCitiesForDescription(item: MatchResultItem): string {
+    if (item.cities.length > 3) {
+      return item.cities.slice(3, item.cities.length).toString();
+    } else {
+      return undefined;
+    }
   }
 
   emitButtonAction(value: MatchResultButtonEnum) {

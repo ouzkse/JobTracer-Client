@@ -75,7 +75,7 @@ export class EducationInformationComponent implements OnDestroy{
 
   selectDegree(selectedDegree: Degree) {
     console.log(selectedDegree);
-    if (selectedDegree.id <= 3) {
+    if (selectedDegree.id <= 6 && selectedDegree.id !== 5) {
       this.higherEducationInfoRequired = false;
     } else {
       this.higherEducationInfoRequired = true;

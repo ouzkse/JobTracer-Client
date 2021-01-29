@@ -14,12 +14,17 @@
 
           <mat-expansion-panel-header>
             <mat-panel-title class="mat-body-2" style="margin: auto;">{{ result.position }} İlanı</mat-panel-title>
-            <mat-panel-description class="mat-body-2">{{ getResultItemCities(result) }}</mat-panel-description>
+            <mat-panel-description class="mat-body-2">{{ getCitiesForHeader(result) }}</mat-panel-description>
           </mat-expansion-panel-header>
 
           <mat-divider></mat-divider>
 
           <p class="mat-caption" [style]="'margin-top:16px; margin-bottom:8px;'" [innerHTML]="result.htmlText"></p>
+
+          <div fxLayout="column" *ngIf="getCitiesForDescription(result)">
+            <mat-divider></mat-divider>
+            <p class="mat-body-2" [style]="'margin-top: 24px;'"> Bu ilan için uygun olan diğer şehirler: <b>{{ getCitiesForDescription(result) }}</b></p>
+          </div>
 
         </mat-expansion-panel>
       </mat-accordion>

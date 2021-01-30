@@ -1,117 +1,44 @@
-<!--
 
-<div class="haha">
+<div fxFlexFill class="right-container">
 
-  <video class="video-fluid view" playsinline autoplay muted loop>
-    <source src="https://mdbootstrap.com/img/video/Lines.mp4" type="video/mp4" />
-  </video>
+  <div class="left-container"
+       fxLayout="column"
+       fxFlex.lt-md="100"
+       fxFlex.md="50"
+       fxFlex.lg="50"
+       fxFlex="50" fxLayoutAlign="center center">
 
-  <div>
+    <p class="mat-body-2 main-title">JobTracer</p>
 
-    <p class="mat-display-2 main-title">Dashboard</p>
-    <p class="mat-body-1 sub-title">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Duis at elementum quam.
-      Nam tincidunt est vitae purus dignissim sagittis.
-      Cras.
+    <p class="mat-body-2 quote-title">
+      İş bulmanın yeni, pratik ve hızlı yolu
     </p>
 
-    <button mat-stroked-button class="mat-elevation-z12 dashboard-button-shadow" (click)="startJobFindingFlow()">
-      Akışı Başlatma Butonu
-      <mat-icon>arrow_right_alt</mat-icon>
-    </button>
+    <p class="mat-body-1 sub-title">
+      JobTracer, öz gecmisinizi ve profesyonel yaşamdaki tecrübelerinizi kullanarak size en uygun iş ilanlarini bulmak için tasarlandı.
+    </p>
 
-  </div>
-
-  <div class="dashboard-container"
-       fxLayout="column">
-
-    <div
-      fxLayout="column"
-      fxFlex="93"
-      fxLayoutAlign="center center">
-
-      <p class="mat-display-2 main-title">Dashboard</p>
-      <p class="mat-body-1 sub-title">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Duis at elementum quam.
-        Nam tincidunt est vitae purus dignissim sagittis.
-        Cras.
-      </p>
-
-      <button mat-stroked-button class="mat-elevation-z12 dashboard-button-shadow" (click)="startJobFindingFlow()">
-        Akışı Başlatma Butonu
-        <mat-icon>arrow_right_alt</mat-icon>
+    <div class="button-container" fxLayout="row" fxLayoutGap="16px">
+      <button fxFlex="45" mat-stroked-button class="landing-buttons mat-elevation-z15 custom-shadow" (click)="startJobFindingFlow()">
+        İş Ara
       </button>
 
-    </div>
-
-    <div fxLayout="column"
-         fxFlex="5"
-         fxLayoutAlign="center center">
-
-      <button mat-stroked-button
-              class="mat-elevation-z10 dashboard-button-shadow"
-              fxLayoutAlign="center center"
-              (click)="openSettingsBottomSheet()">
-        <mat-icon>settings</mat-icon>
+      <button fxFlex="45" mat-stroked-button class="landing-buttons mat-elevation-z15 custom-shadow" (click)="openSettingsBottomSheet()">
         Ayarlar
       </button>
+    </div>
+  </div>
 
+    <div class="diagonal-bg">
+      <div class="stars">
+        <div class="small"></div>
+        <div class="medium"></div>
+        <div class="big"></div>
+      </div>
     </div>
 
-  </div>
 </div>
 
--->
 
 
-
-<div id="fullwidth-video">
-  <div class="fullwidth-video-bg">
-    <video playsinline autoplay muted loop>
-      <source src="https://mdbootstrap.com/img/video/Lines.mp4" type="video/mp4" />
-    </video>
-  </div>
-
-  <div class="dashboard-container"
-       fxLayout="column">
-
-    <div
-      fxLayout="column"
-      fxFlex="93"
-      fxLayoutAlign="center center">
-
-      <p class="mat-display-2 main-title dashboard-item">Yeni bir iş?</p>
-      <p class="mat-body-1 sub-title dashboard-item">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Duis at elementum quam.
-        Nam tincidunt est vitae purus dignissim sagittis.
-        Cras.
-      </p>
-
-      <button mat-stroked-button class="mat-elevation-z12 dashboard-button-shadow dashboard-item" (click)="startJobFindingFlow()">
-        İş Bul
-        <mat-icon>arrow_right_alt</mat-icon>
-      </button>
-
-    </div>
-
-    <div fxLayout="column"
-         fxFlex="5"
-         fxLayoutAlign="center center">
-
-      <button mat-stroked-button
-              class="mat-elevation-z10 dashboard-button-shadow dashboard-item"
-              fxLayoutAlign="center center"
-              (click)="openSettingsBottomSheet()">
-        <mat-icon>settings</mat-icon>
-        Ayarlar
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
 

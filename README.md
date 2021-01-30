@@ -7,7 +7,3 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 #### Kamil Oğuz Köse
 #### Ahmet Melih Çelik
 #### Tuğrul Yüksel
-
-## To be Done
-
-* Update Landing Page Design
